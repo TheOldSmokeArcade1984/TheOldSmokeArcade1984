@@ -635,7 +635,7 @@
         installBtn.addEventListener('click', async () => { snd.playClick(); if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') installBtn.style.display = 'none'; deferredPrompt = null; } });
         
         if ('serviceWorker' in navigator) { 
-            window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').then(r => console.log('SW v5.0 Registrato')).catch(e => console.log('SW Errore:', e)); }); 
+            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').then(r => console.log('SW v5.0 Registrato')).catch(e => console.log('SW Errore:', e)); }); 
         }
 
         let bootInterval, isBooting = true;
