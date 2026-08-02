@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TheOldSmokeArcade1984 - OS</title>
+    <title>TheOldSmokeArcade1984 - OS v5.0</title>
     
-    <meta name="description" content="TheOldSmokeArcade1984 OS - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 titoli giocabili nel browser o installabili come Progressive Web App. Privacy by design. Il Sistema osserva ma non registra. La privacy è locale, la presenza è globale. La libertà è nel codice che non dipende da nulla.">
-    <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, giochi browser, theoldsmokearcade1984, null sector, neon specter, privacy">
-    <meta name="author" content="TheOldSmokeArcade1984">
+    <!-- === METADATI SEO AVANZATI E PER MOTORI DI RICERCA === -->
+    <meta name="description" content="TheOldSmokeArcade1984 OS v5.0 - Hub ufficiale di giochi retro arcade e cyberpunk indie. 14 titoli completi giocabili nel browser o installabili come Progressive Web App (PWA). Privacy by design.">
+    <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, giochi browser, theoldsmokearcade1984, HTML5 games, indie developer, javascript games">
+    <meta name="author" content="Gianmarco - TheOldSmokeArcade1984">
+    
+    <!-- === CONTROLLO CRAWLER E AI AGENTS === -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="GPTBot" content="index, follow"> <!-- Consente ai crawler AI (ChatGPT) di analizzare il progetto -->
+    <meta name="ClaudeBot" content="index, follow"> <!-- Consente ai crawler di Anthropic -->
+    
     <link rel="canonical" href="https://theoldsmokearcade1984.github.io/">
 
+    <!-- === OPEN GRAPH (Facebook, LinkedIn, Discord) === -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="TheOldSmokeArcade1984 - OS">
-    <meta property="og:description" content="Entra nel terminale. Collezione indie di giochi retro arcade e cyberpunk. Gioca subito o installa come App. Il Sistema osserva ma non registra. La privacy è locale, la presenza è globale. La libertà è nel codice che non dipende da nulla.">
+    <meta property="og:title" content="TheOldSmokeArcade1984 - OS v5.0">
+    <meta property="og:description" content="Entra nel terminale. Collezione indie di giochi retro arcade e cyberpunk. Gioca subito o installa come App PWA. La privacy è locale, la presenza è globale.">
     <meta property="og:url" content="https://theoldsmokearcade1984.github.io/">
     <meta property="og:image" content="https://theoldsmokearcade1984.github.io/og-banner.jpg">
     <meta property="og:image:width" content="1200">
@@ -22,21 +30,24 @@
     <meta property="og:site_name" content="TheOldSmokeArcade1984">
     <meta property="og:locale" content="it_IT">
 
+    <!-- === TWITTER CARDS === -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TheOldSmokeArcade1984 - OS">
-    <meta name="twitter:description" content="Hub ufficiale retro arcade cyberpunk - 12 giochi browser + PWA installabile. Il Sistema osserva ma non registra. La privacy è locale, la presenza è globale. La libertà è nel codice che non dipende da nulla.">
+    <meta name="twitter:title" content="TheOldSmokeArcade1984 - OS v5.0">
+    <meta name="twitter:description" content="Hub ufficiale retro arcade cyberpunk - 14 giochi browser + PWA installabile. Nessun server, nessun tracking. La libertà è nel codice.">
     <meta name="twitter:image" content="https://theoldsmokearcade1984.github.io/og-banner.jpg">
-    <meta name="twitter:image:alt" content="TheOldSmokeArcade1984 OS">
+    <meta name="twitter:image:alt" content="TheOldSmokeArcade1984 OS Banner">
 
+    <!-- === DATI STRUTTURATI (JSON-LD) PER GOOGLE === -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "TheOldSmokeArcade1984 OS",
+      "name": "TheOldSmokeArcade1984 OS v5.0",
       "url": "https://theoldsmokearcade1984.github.io/",
-      "description": "Hub ufficiale di sviluppo indipendente retro arcade e cyberpunk. Collezione di 12 videogiochi giocabili direttamente nel browser.",
+      "description": "Hub ufficiale di sviluppo indipendente retro arcade e cyberpunk. Collezione di 14 videogiochi completi, creati in HTML5/JS, giocabili direttamente nel browser senza tracciamento.",
       "applicationCategory": "GameApplication",
-      "operatingSystem": "Web Browser, Android, iOS, Windows",
+      "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
+      "softwareVersion": "5.0",
       "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie"],
       "offers": {
         "@type": "Offer",
@@ -45,24 +56,30 @@
       },
       "author": {
         "@type": "Person",
-        "name": "TheOldSmokeArcade1984",
-        "url": "https://theoldsmokearcade1984.github.io/"
+        "name": "Gianmarco (TheOldSmokeArcade1984)",
+        "url": "https://github.com/TheOldSmokeArcade1984"
       }
     }
     </script>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%2305010a'/><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>" type="image/svg+xml">
+    <!-- === GESTIONE ICONE PWA E BROWSER === -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="icon-256.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
     
-    <!-- PWA Manifest v3 & Meta aggiornato -->
+    <!-- PWA Manifest (Il nome resta v3 ma il contenuto è aggiornato a 5.0) -->
     <link rel="manifest" href="manifest-v3.json">
     <meta name="theme-color" content="#05010a">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="OldSmokeArcade">
+    <meta name="apple-mobile-web-app-title" content="OldSmoke OS">
 
     <style>
-        /* === 0. PALETTE CYBERPUNK / SYNTHWAVE === */
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        /* === 0. PALETTE CYBERPUNK / SYNTHWAVE & BOOT VARS === */
         :root {
             --bg-void: #05010a;
             --bg-panel: #0a0514;
@@ -72,22 +89,29 @@
             --laser-sec: #00ffcc;
             --plasma-pri: #bc13fe;
             --plasma-sec: #fcee0a;
+            
+            /* Boot Sequence Layout Vars */
+            --pyr-base-scale: 1;
+            --cube-base-scale: 1;
+            --pyr-end-top: 12dvh;
+            --logo-end-top: 24dvh;
+            --text-start-top: 42dvh;
+            --logo-end-scale: 0.65;
+            --text-font-size: clamp(1.2rem, 3.5vmin, 2.2rem);
+            --text-line-height: 1.8;
         }
 
-        /* === 1. RESET E BLOCCO SCROLL (Fix Scaling 100dvh) === */
+        /* === 1. RESET E BLOCCO SCROLL === */
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; }
         
         html, body {
             background-color: var(--bg-void); color: var(--text-main);
             font-family: 'Courier New', Courier, monospace;
             overflow: hidden; perspective: 1200px;
-            position: fixed; 
-            top: 0; left: 0;
-            width: 100vw; 
-            height: 100dvh; 
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100dvh; 
         }
 
-        /* Effetto CRT Globale (Cinematic PC) */
         .global-crt {
             position: fixed; inset: 0; pointer-events: none; z-index: 99998;
             background: radial-gradient(circle at center, transparent 40%, rgba(5, 1, 10, 0.9) 100%);
@@ -158,37 +182,86 @@
         .btn-back:hover { background: var(--laser-pri); color: var(--text-main); box-shadow: 0 0 15px var(--laser-pri); }
 
         /* === 4. SEQUENZA DI BOOT === */
-        #screen-boot { background: #000; z-index: 9000; }
-        .title-container { position: absolute; top: 15%; display: inline-block; z-index: 5; }
-        .boot-title { font-size: clamp(2rem, 6vw, 4rem); text-transform: uppercase; font-weight: bold; text-align: center; text-shadow: 0 0 10px var(--laser-sec), 0 0 30px var(--laser-pri); clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); animation: textRevealSplash 2s ease-in-out forwards; }
-        .laser-spark { position: absolute; top: -10%; left: 0; height: 120%; width: 6px; background: #fff; border-radius: 50%; opacity: 0; z-index: 10; box-shadow: 0 0 20px 10px #fff, 0 0 40px 20px var(--laser-sec), 0 0 80px 40px var(--laser-pri); animation: sparkMove 2s ease-in-out forwards; }
-        @keyframes textRevealSplash { 0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); opacity: 0; } 10% { opacity: 1; } 90%, 100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; } }
-        @keyframes sparkMove { 0% { left: 0%; opacity: 1; transform: scaleY(0.2); } 10% { transform: scaleY(1); } 80% { left: 100%; opacity: 1; transform: scaleY(1.2); } 90%, 100% { left: 100%; opacity: 0; transform: scaleY(0); } }
+        #screen-boot { background: var(--bg-void); z-index: 9000; cursor: pointer; }
+        #boot-stage { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; font-family: 'VT323', monospace; }
 
-        .laser-border { position: absolute; top: 4%; left: 4%; width: 92%; height: 92%; border: 2px solid transparent; border-radius: 10px; z-index: 1; opacity: 0; animation: drawBorder 1s 2s forwards; }
-        @keyframes drawBorder { to { opacity: 1; border-color: var(--laser-sec); box-shadow: inset 0 0 20px rgba(0, 255, 204, 0.2), 0 0 20px rgba(0, 255, 204, 0.2); } }
+        .pyramid-wrap {
+            position: absolute; top: 50dvh; left: 50%; width: 80px; height: 100px;
+            margin-left: -40px; margin-top: -50px; transform: scale(var(--pyr-base-scale)); opacity: 0;
+            animation: pyr-fade-in 1s ease-out forwards, pyr-move-up 1.5s 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        @keyframes pyr-fade-in { to { opacity: 1; } }
+        @keyframes pyr-move-up { to { top: var(--pyr-end-top); } }
+        .pyramid { width: 100%; height: 100%; transform-style: preserve-3d; transform-origin: center center; animation: obj-spin-y 4s linear infinite; }
+        .pyr-face { position: absolute; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 100px solid rgba(0, 255, 204, 0.08); filter: drop-shadow(0 0 8px var(--laser-sec)); transform-origin: bottom center; }
+        .p-front { transform: translateZ(40px) rotateX(21.8deg); border-bottom-color: rgba(0, 255, 204, 0.8); }
+        .p-back { transform: rotateY(180deg) translateZ(40px) rotateX(21.8deg); }
+        .p-right { transform: rotateY(90deg) translateZ(40px) rotateX(21.8deg); }
+        .p-left { transform: rotateY(-90deg) translateZ(40px) rotateX(21.8deg); }
+        @keyframes obj-spin-y { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
 
-        .interactive-area { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; z-index: 10; animation: fadeIn 1s 2.5s forwards; }
-        @keyframes fadeIn { to { opacity: 1; } }
+        .cube-wrap {
+            position: absolute; top: 50dvh; left: 50%; width: 120px; height: 120px;
+            margin-left: -60px; margin-top: -60px; transform-style: preserve-3d; transform: scale(0); opacity: 0;
+            animation: cube-appear 1.5s 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+                       cube-glitch 1s 6.5s steps(10) forwards, cube-explode 0.5s 7.5s ease-out forwards;
+        }
+        .cube { width: 100%; height: 100%; transform-style: preserve-3d; animation: vertex-spin 2s linear infinite; }
+        .c-face { position: absolute; width: 100%; height: 100%; border: 2px solid var(--laser-sec); background: rgba(0, 255, 204, 0.05); box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.3); }
+        .c-front { transform: translateZ(60px); } .c-back { transform: rotateY(180deg) translateZ(60px); }
+        .c-right { transform: rotateY(90deg) translateZ(60px); } .c-left { transform: rotateY(-90deg) translateZ(60px); }
+        .c-top { transform: rotateX(90deg) translateZ(60px); } .c-bottom { transform: rotateX(-90deg) translateZ(60px); }
+        @keyframes vertex-spin { 0% { transform: rotateX(-35.264deg) rotateZ(45deg) rotateY(0deg); } 100% { transform: rotateX(-35.264deg) rotateZ(45deg) rotateY(360deg); } }
+        
+        @keyframes cube-appear { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(var(--cube-base-scale)); opacity: 1; } }
+        @keyframes cube-glitch {
+            0% { transform: scale(var(--cube-base-scale)) skew(0deg); filter: brightness(1); }
+            20% { transform: scale(calc(var(--cube-base-scale) * 1.1)) translate(-20px, 10px) skew(25deg); filter: brightness(2) drop-shadow(10px 0 0 var(--laser-pri)); }
+            40% { transform: scale(calc(var(--cube-base-scale) * 0.9)) translate(20px, -10px) skew(-25deg); filter: invert(1); }
+            60% { transform: scale(calc(var(--cube-base-scale) * 1.2)) translate(-10px, 20px) skew(15deg); filter: brightness(0.5); }
+            80% { transform: scale(calc(var(--cube-base-scale) * 0.8)) translate(15px, -15px) skew(-15deg); filter: brightness(3) drop-shadow(-10px 0 0 var(--plasma-pri)); }
+            100% { transform: scale(var(--cube-base-scale)) skew(0deg); filter: brightness(1); }
+        }
+        @keyframes cube-explode { 0% { transform: scale(var(--cube-base-scale)); opacity: 1; filter: brightness(3); } 100% { transform: scale(calc(var(--cube-base-scale) * 5)); opacity: 0; filter: blur(15px) brightness(5); display: none; } }
 
-        .drag-instruction { color: var(--laser-sec); font-size: 1.2rem; font-weight: bold; text-shadow: 0 0 10px var(--laser-sec); margin-bottom: 20px; margin-top: 100px; text-transform: uppercase; text-align: center;}
-        .drag-instruction.blinking { animation: blink 1.5s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .cursor-projectile {
+            position: absolute; top: var(--pyr-end-top); left: 50%; width: 12px; height: 20px;
+            background-color: var(--laser-pri); box-shadow: 0 0 20px var(--laser-pri);
+            transform: translate(-50%, 0); opacity: 0; animation: cursor-shoot 0.3s 6.2s ease-in forwards;
+        }
+        @keyframes cursor-shoot { 0% { top: var(--pyr-end-top); opacity: 1; } 99% { top: 50dvh; opacity: 1; } 100% { top: 50dvh; opacity: 0; } }
 
-        .coin-wrapper { position: relative; width: 120px; height: 120px; margin-bottom: 60px; }
-        .coin-draggable { position: absolute; inset: 0; cursor: grab; filter: drop-shadow(0 0 15px rgba(0,255,204,0.5)); touch-action: none; transform-style: preserve-3d; z-index: 30; animation: spawnCoin 1s 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards; }
-        .coin-draggable:active { cursor: grabbing; filter: drop-shadow(0 0 25px var(--laser-sec)); }
-        .coin-svg { width: 100%; height: 100%; pointer-events: none; }
-        @keyframes spawnCoin { 0% { transform: scale(0) rotateY(720deg); opacity: 0; } 100% { transform: scale(1) rotateY(0deg); opacity: 1; } }
+        .logo-text {
+            position: absolute; top: 50dvh; left: 50%; opacity: 0; font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: normal; letter-spacing: 5px; color: var(--laser-sec);
+            text-shadow: 0 0 15px var(--laser-sec), 0 0 40px var(--laser-pri);
+            white-space: nowrap; z-index: 100; transform: translate(-50%, -50%) scale(0);
+            animation: logo-pop 1s 7.5s ease-out forwards, logo-move-up 1.5s 8.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        @keyframes logo-pop { 0% { transform: translate(-50%, -50%) scale(0); opacity: 0; filter: blur(10px); } 60% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; filter: blur(0px); } 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; filter: blur(0px); } }
+        @keyframes logo-move-up { 0% { top: 50dvh; transform: translate(-50%, -50%) scale(1); } 100% { top: var(--logo-end-top); transform: translate(-50%, -50%) scale(var(--logo-end-scale)); } }
 
-        .finger-guide { position: absolute; right: -30px; top: 30px; font-size: 2.5rem; pointer-events: none; z-index: 50; animation: swipeDown 2s infinite 3s; opacity: 0; }
-        @keyframes swipeDown { 0% { transform: translateY(0) rotate(-15deg); opacity: 0; } 20% { opacity: 1; } 80% { transform: translateY(120px) rotate(-15deg); opacity: 1; } 100% { transform: translateY(140px) rotate(-15deg); opacity: 0; } }
-
-        .coin-slot-container { position: relative; width: 140px; height: 30px; display: flex; justify-content: center; }
-        .coin-slot-hole { position: absolute; bottom: 5px; width: 110px; height: 10px; background: #000; border-radius: 4px; z-index: 20; box-shadow: inset 0 0 15px rgba(255,0,85,0.8); }
-        .coin-slot-front { position: absolute; bottom: 0; width: 120px; height: 8px; background: #110005; border: 2px solid var(--laser-pri); border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 5px 15px var(--laser-pri); z-index: 40; }
-        .coin-slot-front::after { content: ''; position: absolute; top: -5px; left: 10%; width: 80%; height: 5px; background: linear-gradient(90deg, transparent, var(--laser-pri), transparent); filter: blur(2px); }
-        .coin-slot-mask { position: absolute; top: 30px; left: -100px; width: 340px; height: 200px; background: var(--bg-void); z-index: 40; }
+        .typewriter-area {
+            position: absolute; top: var(--text-start-top); left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 900px; text-align: center; color: var(--laser-sec);
+            font-size: var(--text-font-size); line-height: var(--text-line-height);
+            letter-spacing: 2px; text-shadow: 0 0 8px var(--laser-sec); z-index: 50;
+        }
+        .permanent-cursor {
+            display: inline-block; width: clamp(10px, 2vmin, 18px); height: clamp(18px, 3.5vmin, 30px);
+            background-color: var(--laser-sec); box-shadow: 0 0 15px var(--laser-sec);
+            vertical-align: bottom; margin-left: 8px; margin-bottom: 2px; opacity: 0;
+            animation: cursor-reveal 0.1s 9.8s forwards, blink 1s 9.8s step-start infinite;
+        }
+        @keyframes cursor-reveal { to { opacity: 1; } }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .skip-hint {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            color: var(--text-dim); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
+            opacity: 0; animation: fadeInSkip 2s 3s forwards; z-index: 100;
+        }
+        @keyframes fadeInSkip { to { opacity: 0.5; } }
 
         /* === 5. SCREEN GATEWAY === */
         .os-title { font-size: clamp(2rem, 6vw, 4rem); text-transform: uppercase; font-weight: bold; text-align: center; text-shadow: 0 0 10px var(--laser-sec), 0 0 30px var(--laser-pri); line-height: 1.2; padding: 0 10px; }
@@ -201,6 +274,7 @@
         .gateway-plasma { background: rgba(188, 19, 254, 0.05); border: 2px solid var(--plasma-pri); color: var(--plasma-pri); box-shadow: inset 0 0 20px rgba(188, 19, 254, 0.2), 0 0 20px rgba(188, 19, 254, 0.1); }
         .gateway-plasma:hover { background: rgba(188, 19, 254, 0.15); box-shadow: inset 0 0 40px rgba(188, 19, 254, 0.4), 0 0 40px rgba(188, 19, 254, 0.4); transform: translateY(-5px) scale(1.05); }
         .gateway-desc { font-size: 0.8rem; color: var(--text-dim); font-weight: normal; }
+        .privacy-note { font-size: 0.8rem; color: #555; margin-top: 40px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
 
         /* === 6. SLIDERS E CARDS === */
         .section-title { font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; text-align: center; }
@@ -243,6 +317,7 @@
         .card-laser::before { background: conic-gradient(from 0deg, var(--laser-pri), var(--laser-sec), var(--laser-pri), var(--laser-sec), var(--laser-pri)); }
         .card-plasma::before { background: conic-gradient(from 0deg, var(--plasma-pri), var(--plasma-sec), var(--plasma-pri), var(--plasma-sec), var(--plasma-pri)); }
         .card-laser::after, .card-plasma::after { content: ''; position: absolute; inset: 4px; border-radius: 4px; z-index: -1; transition: background 0.3s; background: var(--bg-panel); }
+        @keyframes spinBorder { 100% { transform: rotate(360deg); } }
 
         @media (hover: hover) {
             .card-laser.active:hover { transform: translateZ(30px) rotateX(2deg) rotateY(-2deg); border-color: var(--laser-pri); box-shadow: 0 15px 40px rgba(255,0,85,0.4); }
@@ -301,14 +376,23 @@
         }
 
         @media (orientation: landscape) and (max-height: 600px) {
+            :root {
+                --pyr-base-scale: 0.5;   
+                --cube-base-scale: 0.55;
+                --pyr-end-top: 8dvh;       
+                --logo-end-top: 22dvh;     
+                --text-start-top: 40dvh;   
+                --logo-end-scale: 0.40;
+                --text-font-size: clamp(0.9rem, 6.5dvh, 1.4rem);
+                --text-line-height: 1.4; 
+            }
             .screen { 
                 display: block !important; overflow-y: auto !important; overflow-x: hidden !important; 
                 padding-top: 80px !important; padding-bottom: 60px !important; text-align: center;
                 -webkit-overflow-scrolling: touch;
             }
+            #screen-boot { overflow: hidden !important; padding: 0 !important; }
             #screen-game { display: flex !important; overflow: hidden !important; padding-top: 60px !important; }
-            .interactive-area { position: relative; padding-top: 30px; }
-            .laser-border { display: none; }
             .gateway-controls { flex-direction: row; gap: 15px; padding: 0 15px; margin: 0 auto; max-width: 600px; display: flex; }
             .gateway-btn { padding: 15px 10px; min-width: 200px; }
             .slider-wrapper { height: 260px; }
@@ -325,7 +409,7 @@
 
     <div class="global-crt"></div>
 
-    <nav class="system-bar visible" id="sys-bar" aria-label="Barra di sistema" role="navigation">
+    <nav class="system-bar" id="sys-bar" aria-label="Barra di sistema" role="navigation">
         <div class="sys-group">
             <button class="sys-btn home-btn hover-snd click-snd" id="btn-home" 
                     onclick="navHome()" data-i18n="btn_home"
@@ -365,26 +449,32 @@
         </div>
     </nav>
 
-    <div id="screen-boot" class="screen active">
-        <div class="title-container"><div class="laser-spark" id="splash-spark"></div><div class="boot-title" id="splash-txt">TheOldSmoke<br>Arcade1984</div></div>
-        <div class="laser-border"></div>
-        <div class="interactive-area">
-            <!-- Rimosso testo Trascina e disattivato data-i18n -->
-            <div class="drag-instruction" id="drag-txt"></div>
-            <div class="coin-wrapper" id="coin-wrapper">
-                <div class="finger-guide" id="finger-guide">👆</div>
-                <div class="coin-draggable hover-snd" id="drag-coin" role="button">
-                    <svg viewBox="0 0 100 100" class="coin-svg">
-                        <defs><path id="coinPathTop" d="M 15,50 a 35,35 0 1,1 70,0" /><path id="coinPathBot" d="M 85,50 a 35,35 0 1,1 -70,0" /></defs>
-                        <circle cx="50" cy="50" r="45" fill="#0a0514" stroke="#00ffcc" stroke-width="2"/>
-                        <text fill="#00ffcc" font-size="9" font-family="monospace" font-weight="bold" letter-spacing="2"><textPath href="#coinPathTop" startOffset="50%" text-anchor="middle">THE OLDSMOKE</textPath></text>
-                        <text fill="#00ffcc" font-size="9" font-family="monospace" font-weight="bold" letter-spacing="1"><textPath href="#coinPathBot" startOffset="50%" text-anchor="middle">ARCADE 1984</textPath></text>
-                        <path d="M 35,35 L 50,60 L 65,35" fill="none" stroke="#ff0055" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="drop-shadow(0 0 5px #ff0055)"/>
-                    </svg>
+    <div id="screen-boot" class="screen active" onclick="skipBoot()">
+        <div id="boot-stage">
+            <div class="pyramid-wrap">
+                <div class="pyramid">
+                    <div class="pyr-face p-front"></div><div class="pyr-face p-back"></div>
+                    <div class="pyr-face p-right"></div><div class="pyr-face p-left"></div>
                 </div>
             </div>
-            <div class="coin-slot-container" id="coin-slot"><div class="coin-slot-hole"></div><div class="coin-slot-front"></div><div class="coin-slot-mask"></div></div>
+
+            <div class="cube-wrap">
+                <div class="cube">
+                    <div class="c-face c-front"></div><div class="c-face c-back"></div>
+                    <div class="c-face c-right"></div><div class="c-face c-left"></div>
+                    <div class="c-face c-top"></div><div class="c-face c-bottom"></div>
+                </div>
+            </div>
+
+            <div class="cursor-projectile"></div>
+
+            <div class="logo-text">TheOldSmokeArcade1984</div>
+
+            <div class="typewriter-area">
+                <span id="typed-text"></span><span class="permanent-cursor" id="blinking-cursor"></span>
+            </div>
         </div>
+        <div class="skip-hint" data-i18n="skip_hint">Tap to Skip</div>
     </div>
 
     <div id="screen-gateway" class="screen">
@@ -393,7 +483,7 @@
         <div class="gateway-controls">
             <div class="gateway-btn gateway-laser hover-snd click-snd focus-pad-target" id="gate-git-btn" onclick="navTo('screen-github')" role="button" tabindex="0">
                 <span data-i18n="gate_git">/// Server Hub [GitHub]</span>
-                <span class="gateway-desc" data-i18n="gate_git_desc">12 Giochi + Moduli</span>
+                <span class="gateway-desc" data-i18n="gate_git_desc">14 Giochi + Moduli</span>
             </div>
             <div class="gateway-btn gateway-plasma hover-snd click-snd focus-pad-target" id="gate-itch-btn" onclick="navTo('screen-itch')" role="button" tabindex="0">
                 <span data-i18n="gate_itch">>_ Mirror Nodes [itch.io]</span>
@@ -435,7 +525,7 @@
 
     <div id="help-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-box" style="border-color: var(--laser-sec);">
-            <h2 class="overlay-title">>_ SYSTEM INFO</h2>
+            <h2 class="overlay-title">>_ SYSTEM INFO v5.0</h2>
             <div class="overlay-text" style="text-align: left;">
                 <span data-i18n="help_p1" class="help-highlight">Cos'è TheOldSmokeArcade1984?</span><br>
                 <span data-i18n="help_p2">Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.</span>
@@ -450,11 +540,13 @@
     </div>
 
     <script>
-        console.log("%c/// MANIFESTO DI SISTEMA ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
+        console.log("%c/// MANIFESTO DI SISTEMA V5.0 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
 
         const gamesGithub = [
             { genre: "12-IN-1 COLLECTION", title: "ARCADE HUB", subtitle: "Arcade Collection (12)", url: "https://theoldsmokearcade1984.github.io/TheTwelveClassicGameTheOldSmokeArcade1984/", overlay: { it: "Sistema operativo: Attivo.\nAccesso alla libreria dei 12 titoli completi.\nControlli touch integrati.", en: "OS: Active.\nAccess to the full 12-game library.\nIntegrated touch controls." }, cardDesc: { it: "La raccolta completa con controlli touch.", en: "The complete collection with touch controls." } },
             { genre: "TACTICAL STEALTH", title: "NULL SECTOR", subtitle: "Octacore: Null Sector", url: "https://theoldsmokearcade1984.github.io/OCTACORE-NULL_SECTOR-Advanced/", overlay: { it: "Infiltrazione tattica richiesta.\nModulo Advanced Edition attivato.", en: "Tactical infiltration required.\nAdvanced Edition module activated." }, cardDesc: { it: "Sistema di infiltrazione tattica attivato.", en: "Tactical infiltration system activated." } },
+            { genre: "STRATEGY AI", title: "OCTACORE BATTLE AI", subtitle: "Octacore Battle AI", url: "https://theoldsmokearcade1984.github.io/Octacore-Multicore-Battle-AI/", overlay: { it: "Simulazione tattica multicore.\nSconfiggi l'IA in un duello di calcolo.", en: "Multicore tactical simulation.\nDefeat the AI in a computing duel." }, cardDesc: { it: "Affronta l'intelligenza artificiale in questa simulazione.", en: "Face the AI in this tactical simulation." } },
+            { genre: "LOGIC PUZZLE", title: "KNIGHT'S TOUR GREEN", subtitle: "Knight's Tour (Green)", url: "https://theoldsmokearcade1984.github.io/Knight_Tours_GreenEdition/", overlay: { it: "Terminale a fosfori verdi.\nRisolvi il percorso logico del cavallo.", en: "Green phosphor terminal.\nSolve the knight's logic path." }, cardDesc: { it: "Edizione classica a fosfori verdi dell'enigma.", en: "Classic green phosphor edition puzzle." } },
             { genre: "LOGIC PUZZLE", title: "KNIGHT'S TOUR", subtitle: "Knight's Tour", url: "https://theoldsmokearcade1984.github.io/Knigth-s_Tour/", overlay: { it: "Algoritmo logico caricato.\nMuovi il cavallo toccando tutte le caselle della scacchiera.", en: "Logic algorithm loaded.\nMove the knight touching all squares." }, cardDesc: { it: "Risolvi il classico enigma scacchistico.", en: "Solve the classic chess enigma." } },
             { genre: "ARCADE ACTION", title: "NEON SPECTER", subtitle: "Neon Specter", url: "https://theoldsmokearcade1984.github.io/Neon_Specter/", overlay: { it: "Azione arcade frenetica.\nObiettivo: Sfuggi al sistema.", en: "Frantic arcade action.\nObjective: Escape the system." }, cardDesc: { it: "Sfuggi ai sistemi di sicurezza nella città al neon.", en: "Escape security systems in the neon city." } }
         ];
@@ -543,31 +635,60 @@
         installBtn.addEventListener('click', async () => { snd.playClick(); if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') installBtn.style.display = 'none'; deferredPrompt = null; } });
         
         if ('serviceWorker' in navigator) { 
-            window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').then(r => console.log('SW Registrato')).catch(e => console.log('SW Errore:', e)); }); 
+            window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').then(r => console.log('SW v5.0 Registrato')).catch(e => console.log('SW Errore:', e)); }); 
         }
 
-        const coin = document.getElementById('drag-coin');
-        let isCoinDragging = false, startCoinY = 0, currentCoinY = 0;
+        let bootInterval, isBooting = true;
+        
+        function startBootSequence() {
+            const manifestos = {
+                it: "Il Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.\n",
+                en: "The System watches but does not record.\nPrivacy is local, presence is global.\nFreedom is in code that depends on nothing.\n"
+            };
+            const manifesto = manifestos[currentLang] || manifestos['en'];
+            const textElement = document.getElementById('typed-text');
+            let charIndex = 0;
 
-        function startDrag(e) {
-            isCoinDragging = true; document.getElementById('finger-guide').style.display = 'none'; 
-            try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (err) {} 
-            const point = e.touches ? e.touches[0] : e; startCoinY = point.clientY - currentCoinY; coin.style.transition = 'none'; coin.setPointerCapture(e.pointerId);
+            function typeChar() {
+                if(!isBooting) return;
+                
+                if(charIndex < manifesto.length) {
+                    let char = manifesto.charAt(charIndex);
+                    textElement.innerHTML += (char === '\n') ? '<br>' : char;
+                    charIndex++;
+                    
+                    if (audioEnabled && snd.ctx && snd.ctx.state === 'running' && char.trim() !== '') {
+                        const osc = snd.ctx.createOscillator(); const gain = snd.ctx.createGain();
+                        osc.type = 'square'; osc.frequency.setValueAtTime(Math.random() * 200 + 800, snd.ctx.currentTime);
+                        gain.gain.setValueAtTime(0.015, snd.ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, snd.ctx.currentTime + 0.04);
+                        osc.connect(gain); gain.connect(snd.masterGain); osc.start(); osc.stop(snd.ctx.currentTime + 0.04);
+                    }
+                    bootInterval = setTimeout(typeChar, 60); 
+                } else {
+                    setTimeout(() => { if(isBooting) completeBoot(); }, 1500);
+                }
+            }
+            bootInterval = setTimeout(typeChar, 9800);
         }
-        function moveDrag(e) { if (!isCoinDragging) return; e.preventDefault(); const point = e.touches ? e.touches[0] : e; currentCoinY = point.clientY - startCoinY; if (currentCoinY < -50) currentCoinY = -50; if (currentCoinY > 150) currentCoinY = 150; coin.style.transform = `translateY(${currentCoinY}px)`; }
-        function endDrag(e) {
-            if (!isCoinDragging) return; isCoinDragging = false; try { coin.releasePointerCapture(e.pointerId); } catch (_) {}
-            if (currentCoinY > 60) { coin.style.transition = 'all 0.5s ease-in'; coin.style.transform = `translateY(${currentCoinY + 100}px) scale(0.5) rotateX(60deg)`; coin.style.opacity = '0'; snd.playClick(); setTimeout(bootSystem, 600); } 
-            else { coin.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)'; currentCoinY = 0; coin.style.transform = 'translateY(0px)'; }
-        }
-        coin.addEventListener('pointerdown', startDrag); window.addEventListener('pointermove', moveDrag); window.addEventListener('pointerup', endDrag); window.addEventListener('pointercancel', endDrag);
 
-        function bootSystem() {
-            snd.playBoot(); const dragTxt = document.getElementById('drag-txt'); document.getElementById('coin-wrapper').style.display = 'none'; document.getElementById('coin-slot').style.display = 'none';
-            dragTxt.style.opacity = '1'; dragTxt.style.textAlign = 'left'; dragTxt.style.fontFamily = 'monospace'; dragTxt.style.textTransform = 'none'; dragTxt.style.lineHeight = '1.8'; dragTxt.style.marginTop = '0';
-            const bootLog = "> SYSTEM BOOT...<br>> LOADING INDIE GAMES...<br>> ZERO EXTERNAL ASSETS...<br>> PRIVACY: NO TRACKING.<br>> ENTERING HUB..."; dragTxt.innerHTML = bootLog;
-            setTimeout(() => { navTo('screen-gateway'); setTimeout(() => document.getElementById('sys-bar').classList.add('visible'), 800); }, 2500);
+        function completeBoot() {
+            isBooting = false;
+            snd.playBoot();
+            navTo('screen-gateway');
+            setTimeout(() => document.getElementById('sys-bar').classList.add('visible'), 800);
         }
+
+        function skipBoot() {
+            if(!isBooting) return;
+            clearTimeout(bootInterval);
+            try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (err) {}
+            completeBoot();
+        }
+
+        window.addEventListener('load', () => {
+            document.body.addEventListener('click', () => { try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (e) {} }, { once: true });
+            startBootSequence();
+        });
 
         function navTo(screenId) {
             document.querySelectorAll('.screen').forEach(s => { s.classList.remove('active'); setTimeout(() => { if(!s.classList.contains('active')) s.style.visibility = 'hidden'; }, 800); });
@@ -632,8 +753,8 @@
         function exitGame() { snd.playClick(); document.getElementById('game-frame').src = ''; navTo('screen-gateway'); }
 
         const translations = {
-            it: { subtitle: "Tutti i progetti", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", drag_coin: "", gate_git_desc: "12 Giochi + Moduli", gate_itch_desc: "Standalone & Support", btn_init: "Inizializza", btn_cancel: "Annulla", btn_boot: "Avvia Sistema", btn_back: "◀ RIT.", privacy_text: "Privacy by Design: Nessun tracciamento. Salvataggi in locale.", btn_exit_game: "◀ CHIUDI GIOCO", help_p1: "Cos'è TheOldSmokeArcade1984?", help_p2: "Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.", help_l1: "🎮 Giochi completi in-browser", help_l2: "🖥️ Zero-Assets (Tutto codice, zero PNG/MP3 esterni)", help_l3: "🔒 Privacy assoluta: no server, no tracking" },
-            en: { subtitle: "All Projects", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", drag_coin: "", gate_git_desc: "12 Games + Modules", gate_itch_desc: "Standalone & Support", btn_init: "Initialize", btn_cancel: "Cancel", btn_boot: "Boot System", btn_back: "◀ BACK", privacy_text: "Privacy by Design: No tracking. Local saves only.", btn_exit_game: "◀ CLOSE GAME", help_p1: "What is TheOldSmokeArcade1984?", help_p2: "Not just a website. It's a virtual OS acting as a Hub for my indie game collection.", help_l1: "🎮 Full in-browser games", help_l2: "🖥️ Zero-Assets (Pure code, no external PNG/MP3)", help_l3: "🔒 Absolute privacy: no servers, no tracking" }
+            it: { subtitle: "Tutti i progetti", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "14 Giochi + Moduli", gate_itch_desc: "Standalone & Support", btn_init: "Inizializza", btn_cancel: "Annulla", btn_boot: "Avvia Sistema", btn_back: "◀ RIT.", privacy_text: "Privacy by Design: Nessun tracciamento. Salvataggi in locale.", btn_exit_game: "◀ CHIUDI GIOCO", help_p1: "Cos'è TheOldSmokeArcade1984?", help_p2: "Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.", help_l1: "🎮 Giochi completi in-browser", help_l2: "🖥️ Zero-Assets (Tutto codice, zero PNG/MP3 esterni)", help_l3: "🔒 Privacy assoluta: no server, no tracking", skip_hint: "Tocca per Saltare" },
+            en: { subtitle: "All Projects", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "14 Games + Modules", gate_itch_desc: "Standalone & Support", btn_init: "Initialize", btn_cancel: "Cancel", btn_boot: "Boot System", btn_back: "◀ BACK", privacy_text: "Privacy by Design: No tracking. Local saves only.", btn_exit_game: "◀ CLOSE GAME", help_p1: "What is TheOldSmokeArcade1984?", help_p2: "Not just a website. It's a virtual OS acting as a Hub for my indie game collection.", help_l1: "🎮 Full in-browser games", help_l2: "🖥️ Zero-Assets (Pure code, no external PNG/MP3)", help_l3: "🔒 Absolute privacy: no servers, no tracking", skip_hint: "Tap to Skip" }
         };
         let currentLang = 'it';
 
@@ -642,7 +763,6 @@
             document.querySelectorAll('[data-i18n]').forEach(el => { if (translations[lang][el.getAttribute('data-i18n')]) el.innerText = translations[lang][el.getAttribute('data-i18n')]; });
             document.querySelectorAll('p[data-i18n-dyn-card-it]').forEach(p => { const t = p.getAttribute('data-i18n-dyn-card-' + lang); if (t) p.innerText = t; });
             document.querySelectorAll('#sys-bar .sys-btn').forEach(btn => { const text = lang === 'it' ? btn.getAttribute('data-tooltip-it') : btn.getAttribute('data-tooltip-en'); if (text) btn.setAttribute('data-tooltip', text); });
-            if(document.getElementById('drag-txt').innerHTML.includes('LOADING')) { document.getElementById('drag-txt').innerHTML = "> SYSTEM BOOT...<br>> LOADING INDIE GAMES...<br>> ZERO EXTERNAL ASSETS...<br>> PRIVACY: NO TRACKING.<br>> ENTERING HUB..."; }
         }
 
         function toggleFullScreen() { const btn = document.getElementById('fs-btn'); const doc = document.documentElement; if (!document.fullscreenElement) { if (doc.requestFullscreen) doc.requestFullscreen().then(() => btn.classList.add('active')).catch(()=>{}); } else { if (document.exitFullscreen) { document.exitFullscreen(); btn.classList.remove('active'); } } }
