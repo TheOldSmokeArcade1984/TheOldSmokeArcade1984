@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TheOldSmokeArcade1984 - OS v6.0</title>
+    <title>TheOldSmokeArcade1984 - OS v6.5</title>
     
-    <meta name="description" content="TheOldSmokeArcade1984 OS v6.0 - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi arcade in un'app e 4 titoli singoli giocabili nel browser o installabili come Progressive Web App (PWA). Privacy by design.">
-    <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, giochi browser, theoldsmokearcade1984, HTML5 games, indie developer, javascript games">
+    <meta name="description" content="TheOldSmokeArcade1984 OS - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi in un'app e 4 titoli singoli (PWA). Privacy by design, accessibilità totale.">
+    <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, theoldsmokearcade1984, HTML5 games, accessibilità, screen reader">
     <meta name="author" content="TheOldSmokeArcade1984">
     
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -17,8 +17,8 @@
     <link rel="canonical" href="https://theoldsmokearcade1984.github.io/">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="TheOldSmokeArcade1984 - OS v6.0">
-    <meta property="og:description" content="Entra nel terminale. Collezione indie: 1 app da 12 giochi + 4 titoli singoli. Gioca subito o installa come App PWA. La privacy è locale, la presenza è globale.">
+    <meta property="og:title" content="TheOldSmokeArcade1984 - OS">
+    <meta property="og:description" content="Entra nel terminale. Collezione indie: 1 app da 12 giochi + 4 titoli singoli. PWA accessibile, navigazione da tastiera, zero tracciamento.">
     <meta property="og:url" content="https://theoldsmokearcade1984.github.io/">
     <meta property="og:site_name" content="TheOldSmokeArcade1984">
     <meta property="og:locale" content="it_IT">
@@ -28,35 +28,50 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="TheOldSmokeArcade1984 OS - Retro Cyberpunk Arcade Hub Banner">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TheOldSmokeArcade1984 - OS v6.0">
-    <meta name="twitter:description" content="Hub ufficiale retro arcade cyberpunk - 12-in-1 App + 4 giochi singoli. Nessun server, nessun tracking. La libertà è nel codice.">
+    <meta name="twitter:title" content="TheOldSmokeArcade1984 - OS">
+    <meta name="twitter:description" content="Hub ufficiale retro arcade cyberpunk - 12-in-1 App + 4 giochi singoli. Zero server, accessibilità totale.">
     <meta name="twitter:image" content="https://theoldsmokearcade1984.github.io/og-banner.jpg">
-    <meta name="twitter:image:alt" content="TheOldSmokeArcade1984 OS Cyberpunk Banner">
 
+    <!-- JSON-LD POTENZIATO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "TheOldSmokeArcade1984 OS v6.0",
+      "name": "TheOldSmokeArcade1984 OS",
       "url": "https://theoldsmokearcade1984.github.io/",
-      "description": "Hub ufficiale di sviluppo indipendente retro arcade e cyberpunk. Collezione contenente un'app da 12 giochi e 4 titoli singoli, creati in HTML5/JS.",
+      "description": "Sistema Operativo virtuale HTML5 che funge da Hub per videogiochi indie retro-cyberpunk. Architettura basata su due nodi: 'Server Hub' (giochi nativi ospitati su GitHub Pages tramite Iframe) e 'Mirror Nodes' (moduli esterni integrati tramite widget Itch.io).",
       "applicationCategory": "GameApplication",
       "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
-      "softwareVersion": "6.0",
-      "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie"],
+      "softwareVersion": "6.5",
+      "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie", "Logic Puzzle", "Tactical Stealth"],
+      "accessibilityFeature": ["alternativeText", "ARIA", "keyboardNavigation", "screenReader", "dynamicTooltips"],
+      "accessibilityControl": ["fullKeyboardControl", "fullMouseControl", "fullTouchControl"],
+      "accessibilitySummary": "L'interfaccia OS supporta la navigazione completa tramite tasto TAB, attivazione via INVIO/SPAZIO, tag ARIA dinamici multilingua per screen reader e una barra di sistema riposizionabile (su, giù, destra, sinistra) per non ostacolare i controlli nativi dei giochi.",
+      "featureList": [
+        "Privacy by Design: Nessun tracciamento, nessun server esterno, salvataggi esclusivamente in localStorage.",
+        "Zero-Assets: Grafica, effetti CRT e audio synthwave generati algoritmicamente via codice (JS/CSS/WebAudio API), zero file PNG/MP3.",
+        "PWA Support: Installabile offline su device mobili e desktop.",
+        "Multilingua Intelligente: Rilevamento automatico di IT, EN, ES, DE, FR, JA, ZH."
+      ],
+      "hasPart": [
+        { "@type": "SoftwareApplication", "name": "Arcade Collection (12-in-1)", "description": "Raccolta di 12 classici arcade con controlli touch." },
+        { "@type": "SoftwareApplication", "name": "Octacore: Null Sector", "description": "Gioco tattico stealth." },
+        { "@type": "SoftwareApplication", "name": "Octacore Battle AI", "description": "Simulazione tattica multicore VS intelligenza artificiale." },
+        { "@type": "SoftwareApplication", "name": "Knight's Tour (Standard & Green)", "description": "Enigma scacchistico di logica." },
+        { "@type": "SoftwareApplication", "name": "Neon Specter", "description": "Azione arcade frenetica d'evasione." }
+      ],
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
       "author": { "@type": "Person", "name": "TheOldSmokeArcade1984", "url": "https://github.com/TheOldSmokeArcade1984" }
     }
     </script>
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%2305010a'/><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>">
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=6.0">
-    <link rel="icon" type="image/png" sizes="256x256" href="icon-256.png?v=6.0">
-    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=6.0">
-    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png?v=6.0">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=6.5">
+    <link rel="icon" type="image/png" sizes="256x256" href="icon-256.png?v=6.5">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=6.5">
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png?v=6.5">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OldSmoke OS">
@@ -69,29 +84,24 @@
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
         :root {
-            --bg-void: #05010a;
-            --bg-panel: #0a0514;
-            --text-main: #ffffff;
-            --text-dim: #aaaaaa;
-            --laser-pri: #ff0055;
-            --laser-sec: #00ffcc;
-            --plasma-pri: #bc13fe;
-            --plasma-sec: #fcee0a;
+            --bg-void: #05010a; --bg-panel: #0a0514;
+            --text-main: #ffffff; --text-dim: #aaaaaa;
+            --laser-pri: #ff0055; --laser-sec: #00ffcc;
+            --plasma-pri: #bc13fe; --plasma-sec: #fcee0a;
             
-            --pyr-base-scale: 1;
-            --cube-base-scale: 1;
-            --pyr-end-top: 12dvh;
-            --logo-end-top: 24dvh;
-            --text-start-top: 42dvh;
-            --logo-end-scale: 0.65;
-            --text-font-size: clamp(1.2rem, 3.5vmin, 2.2rem);
+            --pyr-base-scale: 1; --cube-base-scale: 1;
+            --pyr-end-top: 12dvh; --logo-end-top: 24dvh; --text-start-top: 42dvh;
+            --logo-end-scale: 0.65; --text-font-size: clamp(1.2rem, 3.5vmin, 2.2rem);
             --text-line-height: 1.8;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; }
+        /* NASCONDE SCROLLBAR PER LOOK NATIVO OS */
+        ::-webkit-scrollbar { display: none; width: 0; height: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; scrollbar-width: none; -ms-overflow-style: none; }
+        
         html, body { background-color: var(--bg-void); color: var(--text-main); font-family: 'Courier New', Courier, monospace; overflow: hidden; perspective: 1200px; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; }
 
-        :focus-visible { outline: 2px dashed var(--laser-sec); outline-offset: 4px; border-radius: 4px; }
+        :focus-visible { outline: 2px dashed var(--laser-sec); outline-offset: 4px; border-radius: 4px; z-index: 999999; }
 
         .global-crt { position: fixed; inset: 0; pointer-events: none; z-index: 99998; background: radial-gradient(circle at center, transparent 40%, rgba(5, 1, 10, 0.9) 100%); display: none; }
         @media (min-width: 900px) {
@@ -105,71 +115,82 @@
         .screen.active { opacity: 1; pointer-events: auto; z-index: 20; transform: scale(1) translateZ(0); }
         body.modal-open .screen.active, body.modal-open .system-bar { filter: blur(8px) brightness(0.4); transform: scale(0.95); pointer-events: none; }
 
-        /* === SISTEMA TOOLTIP ADATTAVO E ANTI-TRONCAMENTO === */
+        /* === SISTEMA TOOLTIP V6.5 (Risolto Bug Taglio & Inversione Laterale) === */
         @media (hover: hover) and (pointer: fine) {
             .has-tooltip { position: relative; }
             .has-tooltip::after {
                 content: attr(data-tooltip); position: absolute;
-                background: rgba(5, 1, 10, 0.97); color: #fff;
-                font-size: 0.75rem; padding: 10px 14px; border-radius: 6px;
-                border: 1px solid var(--laser-sec);
-                box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
-                
-                white-space: normal; 
-                word-break: break-word;
-                width: max-content; 
-                min-width: 140px;
-                max-width: clamp(180px, 80vw, 280px); 
-                text-align: center;
-                
-                z-index: 999999; opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-                font-family: 'Courier New', Courier, monospace; letter-spacing: 0; font-weight: normal; text-transform: none; line-height: 1.4;
+                background: rgba(5, 1, 10, 0.97); color: #fff; font-size: 0.75rem; padding: 10px 14px; border-radius: 6px;
+                border: 1px solid var(--laser-sec); box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+                white-space: pre-wrap; word-break: break-word; width: max-content; min-width: 100px; max-width: 220px;
+                z-index: 999999; opacity: 0; pointer-events: none; transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+                font-family: 'Courier New', Courier, monospace; letter-spacing: 0; font-weight: normal; line-height: 1.4;
+                writing-mode: horizontal-tb !important; /* Mantiene testo leggibile */
             }
-            
-            .has-tooltip:not(.tt-bottom):not(.tt-right)::after { bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(10px); }
-            .has-tooltip:not(.tt-bottom):not(.tt-right):hover::after, .has-tooltip:not(.tt-bottom):not(.tt-right):focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0); }
-            
-            .has-tooltip.tt-bottom::after { top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(-10px); }
-            .has-tooltip.tt-bottom:hover::after, .has-tooltip.tt-bottom:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0); }
-            
-            .has-tooltip.tt-right::after { top: 50%; left: calc(100% + 15px); transform: translateY(-50%) translateX(-10px); }
-            .has-tooltip.tt-right:hover::after, .has-tooltip.tt-right:focus-visible::after { opacity: 1; transform: translateY(-50%) translateX(0); }
+            .has-tooltip:hover::after, .has-tooltip:focus-visible::after { opacity: 1; }
 
-            #btn-home.has-tooltip::after { left: 0; transform: translateX(0) translateY(-10px); }
-            #btn-home.has-tooltip:hover::after, #btn-home.has-tooltip:focus-visible::after { transform: translateX(0) translateY(0); }
+            /* Tooltip TOP DOCK */
+            .dock-top .has-tooltip::after { top: calc(100% + 12px); bottom: auto; left: 50%; transform: translateX(-50%); text-align: center; }
+            .dock-top .sys-group:first-child .has-tooltip::after { left: 0; transform: none; text-align: left; }
+            .dock-top .sys-group:last-child .has-tooltip::after { left: auto; right: 0; transform: none; text-align: right; }
             
-            #lang-cycle-btn.has-tooltip::after { left: auto; right: 0; transform: translateX(0) translateY(-10px); }
-            #lang-cycle-btn.has-tooltip:hover::after, #lang-cycle-btn.has-tooltip:focus-visible::after { transform: translateX(0) translateY(0); }
+            /* Tooltip BOTTOM DOCK */
+            .dock-bottom .has-tooltip::after { bottom: calc(100% + 12px); top: auto; left: 50%; transform: translateX(-50%); text-align: center; }
+            .dock-bottom .sys-group:first-child .has-tooltip::after { left: 0; transform: none; text-align: left; }
+            .dock-bottom .sys-group:last-child .has-tooltip::after { left: auto; right: 0; transform: none; text-align: right; }
+
+            /* Tooltip LEFT DOCK */
+            .dock-left .has-tooltip::after { left: calc(100% + 12px); right: auto; top: 50%; transform: translateY(-50%); text-align: left; }
+            /* Se il pulsante è ruotato di 180°, bisogna invertire le regole localmente e contro-ruotare! */
+            .dock-left .has-tooltip:not(.no-rotate)::after { right: calc(100% + 12px); left: auto; transform: translateY(-50%) rotate(180deg); text-align: left; }
+
+            /* Tooltip RIGHT DOCK */
+            .dock-right .has-tooltip::after { right: calc(100% + 12px); left: auto; top: 50%; transform: translateY(-50%); text-align: right; }
+            /* Se il pulsante è ruotato di 180°, bisogna invertire le regole localmente e contro-ruotare! */
+            .dock-right .has-tooltip:not(.no-rotate)::after { left: calc(100% + 12px); right: auto; transform: translateY(-50%) rotate(180deg); text-align: right; }
+
+            /* Tooltip Schermate Interne Generiche */
+            .screen .has-tooltip::after { bottom: calc(100% + 10px); top: auto; left: 50%; transform: translateX(-50%); text-align: center; }
         }
 
-        /* === BARRA DI SISTEMA TRASPARENTE / OPACA === */
+        /* === BARRA DI SISTEMA DINAMICA (4-WAY DOCK) === */
+        /* Rimosso overflow: hidden che decapitava i tooltip! */
         .system-bar { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 60px; 
-            background: transparent; 
-            backdrop-filter: none; -webkit-backdrop-filter: none; 
-            border-bottom: 1px solid transparent; display: flex; justify-content: space-between; align-items: center; 
-            padding: 0 15px; z-index: 100000; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; pointer-events: none; 
-            transform: translateZ(0); 
+            position: fixed; background: transparent; display: flex; z-index: 100000; 
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; pointer-events: none; transform: translateZ(0); 
+            flex-wrap: nowrap; 
         }
         .system-bar.visible { animation: fadeInSys 1s forwards; pointer-events: auto; }
-        
-        /* Diventa scura al passaggio o al focus */
-        .system-bar.visible:hover, .system-bar.visible:active, .system-bar.visible:focus-within { 
-            background: rgba(5, 1, 10, 0.95); 
-            border-bottom: 1px solid #222; 
-        }
         @keyframes fadeInSys { to { opacity: 1; } }
-        
-        .sys-group { display: flex; gap: 10px; align-items: center; }
-        .sys-btn { background: rgba(5, 1, 10, 0.6); border: 1px solid #555; color: var(--text-dim); padding: 6px 10px; cursor: pointer; font-family: inherit; font-weight: bold; transition: all 0.3s; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+
+        .sys-group { display: flex; gap: 6px; align-items: center; flex-wrap: nowrap; }
+
+        .dock-top { top: 0; left: 0; width: 100vw; height: 60px; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 10px; border-bottom: 1px solid transparent; }
+        .dock-bottom { bottom: 0; left: 0; width: 100vw; height: 60px; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 10px; border-top: 1px solid transparent; }
+        .dock-left { top: 0; left: 0; width: 60px; height: 100vh; flex-direction: column; justify-content: space-between; align-items: center; padding: 10px 0; border-right: 1px solid transparent; }
+        .dock-right { top: 0; right: 0; width: 60px; height: 100vh; flex-direction: column; justify-content: space-between; align-items: center; padding: 10px 0; border-left: 1px solid transparent; }
+
+        .dock-top .sys-group, .dock-bottom .sys-group { flex-direction: row; }
+        .dock-left .sys-group, .dock-right .sys-group { flex-direction: column; }
+
+        .dock-top.visible:hover, .dock-top.visible:focus-within { background: rgba(5, 1, 10, 0.95); border-bottom: 1px solid #222; }
+        .dock-bottom.visible:hover, .dock-bottom.visible:focus-within { background: rgba(5, 1, 10, 0.95); border-top: 1px solid #222; }
+        .dock-left.visible:hover, .dock-left.visible:focus-within { background: rgba(5, 1, 10, 0.95); border-right: 1px solid #222; }
+        .dock-right.visible:hover, .dock-right.visible:focus-within { background: rgba(5, 1, 10, 0.95); border-left: 1px solid #222; }
+
+        .sys-btn { background: rgba(5, 1, 10, 0.6); border: 1px solid #555; color: var(--text-dim); padding: 5px 8px; cursor: pointer; font-family: inherit; font-weight: bold; transition: all 0.3s; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; white-space: nowrap; flex-shrink: 0; }
         .sys-btn:hover { color: var(--text-main); border-color: var(--text-main); background: rgba(255,255,255,0.1); }
         .sys-btn.active { color: var(--laser-sec); border-color: var(--laser-sec); text-shadow: 0 0 8px var(--laser-sec); }
-        #lang-cycle-btn { min-width: 90px; }
-        #pwa-install-btn { color: #fff; border-color: var(--laser-sec); background: rgba(0, 255, 204, 0.1); box-shadow: 0 0 10px rgba(0,255,204,0.3); display: none; }
-        #pwa-install-btn:hover { background: var(--laser-sec); color: #000; }
-        .btn-back { color: var(--laser-pri); border-color: var(--laser-pri); opacity: 0; display: none; pointer-events: none; }
-        .btn-back.visible { opacity: 1; display: flex; pointer-events: auto; }
-        .btn-back:hover { background: var(--laser-pri); color: var(--text-main); box-shadow: 0 0 15px var(--laser-pri); }
+        
+        .dock-left .sys-btn, .dock-right .sys-btn { writing-mode: vertical-rl; transform: rotate(180deg); padding: 8px 6px; }
+        .dock-left .sys-btn.no-rotate, .dock-right .sys-btn.no-rotate { writing-mode: horizontal-tb; transform: none; padding: 6px 8px;}
+
+        #lang-cycle-btn { min-width: 85px; }
+        .dock-left #lang-cycle-btn, .dock-right #lang-cycle-btn { min-width: auto; min-height: 85px; }
+        
+        #pwa-install-btn { color: #fff; border-color: var(--laser-sec); background: rgba(0, 255, 204, 0.1); display: none; }
+        .btn-back { color: var(--laser-pri); border-color: var(--laser-pri); display: none; }
+        .btn-back.visible { display: flex; }
 
         /* === BOOT === */
         #screen-boot { background: var(--bg-void); z-index: 9000; cursor: default; }
@@ -215,22 +236,22 @@
         @keyframes fadeInSkip { to { opacity: 0.5; } }
 
         /* === GATEWAY === */
-        .os-title { font-size: clamp(2rem, 6vw, 4rem); text-transform: uppercase; font-weight: bold; text-align: center; text-shadow: 0 0 10px var(--laser-sec), 0 0 30px var(--laser-pri); line-height: 1.2; padding: 0 10px; }
-        .os-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin: 10px 0 40px; text-align: center; }
-        .gateway-controls { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; width: 100%; max-width: 800px; padding: 0 20px; }
+        .os-title { font-size: clamp(2rem, 6vw, 4rem); text-transform: uppercase; font-weight: bold; text-align: center; text-shadow: 0 0 10px var(--laser-sec), 0 0 30px var(--laser-pri); line-height: 1.2; padding: 0 10px; width: 100%; }
+        .os-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin: 10px 0 40px; text-align: center; width: 100%; }
+        .gateway-controls { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; width: 100%; max-width: 800px; padding: 0 20px; margin: 0 auto; }
         .gateway-btn { position: relative; z-index: 50; pointer-events: auto !important; flex: 1; min-width: 260px; padding: 25px 15px; font-weight: bold; text-transform: uppercase; font-size: 1.2rem; border-radius: 8px; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
         .gateway-laser { background: rgba(255, 0, 85, 0.05); border: 2px solid var(--laser-pri); color: var(--laser-pri); box-shadow: inset 0 0 20px rgba(255,0,85,0.2), 0 0 20px rgba(255,0,85,0.1); }
         .gateway-laser:hover { background: rgba(255, 0, 85, 0.15); box-shadow: inset 0 0 40px rgba(255,0,85,0.4), 0 0 40px rgba(255,0,85,0.4); transform: translateY(-5px) scale(1.05); }
         .gateway-plasma { background: rgba(188, 19, 254, 0.05); border: 2px solid var(--plasma-pri); color: var(--plasma-pri); box-shadow: inset 0 0 20px rgba(188, 19, 254, 0.2), 0 0 20px rgba(188, 19, 254, 0.1); }
         .gateway-plasma:hover { background: rgba(188, 19, 254, 0.15); box-shadow: inset 0 0 40px rgba(188, 19, 254, 0.4), 0 0 40px rgba(188, 19, 254, 0.4); transform: translateY(-5px) scale(1.05); }
         .gateway-desc { font-size: 0.8rem; color: var(--text-dim); font-weight: normal; }
-        .privacy-note { font-size: 0.8rem; color: #555; margin-top: 40px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+        .privacy-note { font-size: 0.8rem; color: #555; margin-top: 40px; text-align: center; text-transform: uppercase; letter-spacing: 1px; width: 100%; }
 
         /* === SLIDERS E CARDS === */
-        .section-title { font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; text-align: center; }
+        .section-title { font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; text-align: center; width: 100%; }
         .laser-title { color: var(--laser-pri); text-shadow: 0 0 10px var(--laser-pri); border-bottom-color: rgba(255,0,85,0.3); }
         .plasma-title { color: var(--plasma-pri); text-shadow: 0 0 10px var(--plasma-pri); border-bottom-color: rgba(188, 19, 254, 0.3); }
-        .slider-section { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 400px; padding: 0 20px; }
+        .slider-section { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 400px; padding: 0 20px; margin: 0 auto; }
         .slider-wrapper { position: relative; width: 100%; height: 380px; perspective: 1000px; }
         .slider-bottom-controls { display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 25px; width: 100%; }
         .nav-btn { background: transparent; border: none; font-size: 2.5rem; font-family: monospace; cursor: pointer; padding: 5px; z-index: 20; transition: transform 0.2s, text-shadow 0.2s; display: flex; align-items: center; justify-content: center; }
@@ -267,10 +288,10 @@
         .btn-laser { background: var(--laser-pri); color: #fff; } .card-laser:hover .btn-laser { background: var(--laser-sec); color: #000; box-shadow: 0 0 20px var(--laser-sec); }
         .btn-plasma { background: var(--plasma-pri); color: #fff; } .card-plasma:hover .btn-plasma { background: var(--plasma-sec); color: #000; box-shadow: 0 0 20px var(--plasma-sec); }
 
-        /* === OVERLAYS === */
+        /* === OVERLAYS MODALI SCROLLABILI === */
         .system-overlay { position: fixed; inset: 0; background-color: rgba(5,1,10,0.85); z-index: 100000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(5px); padding: 20px; }
         .system-overlay.active { display: flex; opacity: 1; }
-        .modal-box { background: var(--bg-panel); border: 2px solid; border-radius: 8px; padding: 40px 30px; width: 100%; max-width: 500px; max-height: 85vh; overflow-y: auto; text-align: center; box-shadow: 0 0 40px rgba(0,0,0,0.9); transform: scale(0.9) translateY(20px); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .modal-box { background: var(--bg-panel); border: 2px solid; border-radius: 8px; padding: 40px 30px; width: 100%; max-width: 500px; max-height: 85vh; overflow-y: auto; overflow-x: hidden; margin: 0 auto; text-align: center; box-shadow: 0 0 40px rgba(0,0,0,0.9); transform: scale(0.9) translateY(20px); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
         .system-overlay.active .modal-box { transform: scale(1) translateY(0); }
         .theme-laser .modal-box { border-color: var(--laser-sec); box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 20px rgba(0, 255, 204, 0.15); }
         .theme-plasma .modal-box { border-color: var(--plasma-sec); box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 20px rgba(252, 238, 10, 0.15); }
@@ -291,9 +312,9 @@
         .itch-warning.visible { display: block; animation: fadeInItch 1s forwards; }
         @keyframes fadeInItch { from { opacity: 0; bottom: 0; } to { opacity: 1; bottom: 20px; } }
 
-        /* === VERSIONE PC E LANDSCAPE === */
+        /* === VERSIONE PC === */
         @media (min-width: 900px) {
-            .slider-section { max-width: 900px; padding: 0; } .slider-wrapper { height: 350px; }
+            .slider-section { max-width: 900px; padding: 0; margin: 0 auto; } .slider-wrapper { height: 350px; }
             .card-base { flex-direction: row; align-items: center; justify-content: space-between; padding: 40px 50px; }
             @keyframes cardFloat { 0%, 100% { transform: scale(1) translateZ(0) translateY(0); } 50% { transform: scale(1.02) translateZ(10px) translateY(-5px); } }
             .card-base.active { animation: cardFloat 6s ease-in-out infinite; }
@@ -301,20 +322,40 @@
             .btn-game { width: auto; min-width: 250px; margin: 0; padding: 20px; font-size: 1.2rem; } .os-title { font-size: 5rem; }
         }
 
+        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE === */
         @media (orientation: landscape) and (max-height: 600px) {
-            #boot-stage { transform: scale(0.65); transform-origin: center 40%; }
-            .screen { display: block !important; overflow-y: auto !important; overflow-x: hidden !important; padding-top: 80px !important; padding-bottom: 60px !important; text-align: center; -webkit-overflow-scrolling: touch; }
-            #screen-boot { overflow: hidden !important; padding: 0 !important; }
+            :root {
+                --pyr-base-scale: 0.35;   
+                --cube-base-scale: 0.35;
+                --pyr-end-top: 8vh;       
+                --logo-end-top: 22vh;     
+                --text-start-top: 45vh;   
+                --logo-end-scale: 0.35;
+                --text-font-size: clamp(0.7rem, 6vh, 1rem);
+            }
+            
+            .screen { display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start; overflow-y: auto !important; overflow-x: hidden !important; padding-top: 70px !important; padding-bottom: 40px !important; text-align: center; -webkit-overflow-scrolling: touch; }
+            #screen-boot { display: flex !important; align-items: center; justify-content: center; overflow: hidden !important; padding: 0 !important; }
             #screen-game { display: flex !important; overflow: hidden !important; padding-top: 0 !important; }
-            .typewriter-area.move-up { top: 30dvh; transform: translateX(-50%) scale(0.75); }
-            .coin-wrapper { top: 62dvh; transform: translate(-50%, -50%) scale(0) !important; }
-            .coin-wrapper.show { transform: translate(-50%, -50%) scale(0.55) !important; display: block; }
-            .coin-slot-container { top: 88dvh; transform: translateX(-50%) scale(0.65); }
-            .gateway-controls { flex-direction: row; gap: 15px; padding: 0 15px; margin: 0 auto; max-width: 600px; display: flex; }
-            .gateway-btn { padding: 15px 10px; min-width: 200px; } .slider-wrapper { height: 260px; }
-            .card-base { padding: 15px 20px; flex-direction: row; gap: 15px; align-items: center; justify-content: space-between; }
-            .card-text-content { text-align: left; max-width: 60%; } .modal-box { padding: 20px 15px; max-height: 80vh; } .help-list { font-size: 0.8rem; }
+            
+            .typewriter-area.move-up { top: 32vh; transform: translateX(-50%) scale(0.8); }
+            .coin-wrapper { top: 62vh !important; }
+            .coin-wrapper.show { transform: translate(-50%, -50%) scale(0.45) !important; display: block; }
+            .coin-slot-container { top: 88vh !important; transform: translateX(-50%) scale(0.6); }
+
+            .gateway-controls { flex-direction: row; gap: 10px; padding: 0 10px; margin: 0 auto; max-width: 100%; display: flex; justify-content: center; }
+            .gateway-btn { padding: 12px 10px; min-width: 48%; flex: 1; font-size: 1rem; }
+            .slider-wrapper { height: 240px; }
+            .card-base { padding: 10px 15px; flex-direction: row; gap: 10px; align-items: center; justify-content: space-between; }
+            .card-text-content { text-align: left; max-width: 55%; } 
+            .card-base h2 { font-size: 1.5rem; margin-bottom: 5px; }
+            .card-base p { font-size: 0.8rem; }
+            .btn-game { padding: 10px 15px; font-size: 1rem; min-width: 120px; margin: 0; }
+            .modal-box { padding: 15px; max-height: 85vh; margin-top: 20px; overflow-x: hidden; }
+            .overlay-title { margin-bottom: 10px; font-size: 1.2rem; }
+            .help-list { font-size: 0.8rem; margin: 10px 0 10px 15px; }
         }
+        
         .help-list { text-align: left; margin: 15px 0 15px 25px; color: #fff; font-family: 'Courier New', Courier, monospace; }
         .help-list li { margin-bottom: 8px; text-shadow: none; } .help-highlight { color: var(--laser-sec); font-weight: bold; }
     </style>
@@ -323,18 +364,21 @@
 
     <div class="global-crt" aria-hidden="true"></div>
 
-    <nav class="system-bar" id="sys-bar" aria-label="System Menu" role="navigation">
+    <nav class="system-bar dock-top" id="sys-bar" aria-label="System Menu" role="navigation">
         <div class="sys-group">
-            <button class="sys-btn has-tooltip tt-bottom home-btn hover-snd click-snd" id="btn-home" onclick="navHome()" data-i18n="btn_home" data-i18n-tooltip="tt_home">◀ HOME</button>
-            <button class="sys-btn has-tooltip tt-bottom btn-back hover-snd click-snd" id="btn-back" onclick="navTo('screen-gateway')" data-i18n="btn_back" data-i18n-tooltip="tt_back">◀ RIT.</button>
-            <button class="sys-btn has-tooltip tt-bottom hover-snd click-snd" onclick="openHelp()" style="color: var(--laser-sec); border-color: var(--laser-sec);" data-i18n-tooltip="tt_help">[ ? ]</button>
+            <button class="sys-btn has-tooltip home-btn hover-snd click-snd" id="btn-home" onclick="navHome()" data-i18n="btn_home" data-i18n-tooltip="tt_home">◀ HOME</button>
+            <button class="sys-btn has-tooltip btn-back hover-snd click-snd" id="btn-back" onclick="navTo('screen-gateway')" data-i18n="btn_back" data-i18n-tooltip="tt_back">◀ RIT.</button>
+            <button class="sys-btn has-tooltip hover-snd click-snd" id="help-btn" onclick="openHelp()" style="color: var(--laser-sec); border-color: var(--laser-sec);" data-i18n-tooltip="tt_help">?</button>
         </div>
 
         <div class="sys-group">
-            <button class="sys-btn has-tooltip tt-bottom hover-snd click-snd" id="pwa-install-btn" data-i18n-tooltip="tt_install"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>&nbsp;APP</button>
-            <button class="sys-btn has-tooltip tt-bottom active hover-snd click-snd" id="audio-btn" onclick="toggleAudio()" data-i18n-tooltip="tt_audio">🔊</button>
-            <button class="sys-btn has-tooltip tt-bottom hover-snd click-snd" id="fs-btn" onclick="toggleFullScreen()" data-i18n-tooltip="tt_fs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg></button>
-            <button class="sys-btn has-tooltip tt-bottom active lang-btn hover-snd click-snd" id="lang-cycle-btn" onclick="cycleLang()" data-i18n-tooltip="tt_lang">LANG: IT</button>
+            <button class="sys-btn has-tooltip hover-snd click-snd no-rotate" id="dock-btn" onclick="cycleDock()" data-i18n-tooltip="tt_dock">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </button>
+            <button class="sys-btn has-tooltip hover-snd click-snd" id="pwa-install-btn" data-i18n-tooltip="tt_install"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>&nbsp;APP</button>
+            <button class="sys-btn has-tooltip active hover-snd click-snd no-rotate" id="audio-btn" onclick="toggleAudio()" data-i18n-tooltip="tt_audio">🔊</button>
+            <button class="sys-btn has-tooltip hover-snd click-snd no-rotate" id="fs-btn" onclick="toggleFullScreen()" data-i18n-tooltip="tt_fs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg></button>
+            <button class="sys-btn has-tooltip active lang-btn hover-snd click-snd" id="lang-cycle-btn" onclick="cycleLang()" data-i18n-tooltip="tt_lang">LANG: IT</button>
         </div>
     </nav>
 
@@ -390,9 +434,9 @@
         <h2 class="section-title laser-title" data-i18n="gate_git_title">/// Server Hub</h2>
         <div class="slider-section"><div class="slider-wrapper" id="wrap-github"></div>
             <div class="slider-bottom-controls">
-                <button class="nav-btn laser-btn prev-btn has-tooltip tt-bottom hover-snd click-snd" data-i18n-tooltip="tt_prev">[&lt;]</button>
+                <button class="nav-btn laser-btn prev-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_prev">[&lt;]</button>
                 <div class="slider-indicators" id="ind-github" role="tablist"></div>
-                <button class="nav-btn laser-btn next-btn has-tooltip tt-bottom hover-snd click-snd" data-i18n-tooltip="tt_next">[&gt;]</button>
+                <button class="nav-btn laser-btn next-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_next">[&gt;]</button>
             </div>
         </div>
     </div>
@@ -401,16 +445,16 @@
         <h2 class="section-title plasma-title" data-i18n="gate_itch_title">>_ Mirror Nodes</h2>
         <div class="slider-section"><div class="slider-wrapper" id="wrap-itch"></div>
             <div class="slider-bottom-controls">
-                <button class="nav-btn plasma-btn prev-btn has-tooltip tt-bottom hover-snd click-snd" data-i18n-tooltip="tt_prev">[&lt;]</button>
+                <button class="nav-btn plasma-btn prev-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_prev">[&lt;]</button>
                 <div class="slider-indicators" id="ind-itch" role="tablist"></div>
-                <button class="nav-btn plasma-btn next-btn has-tooltip tt-bottom hover-snd click-snd" data-i18n-tooltip="tt_next">[&gt;]</button>
+                <button class="nav-btn plasma-btn next-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_next">[&gt;]</button>
             </div>
         </div>
     </div>
 
     <div id="screen-game" class="screen" aria-hidden="true">
         <iframe id="game-frame" src="" title="Game Execution Environment"></iframe>
-        <button class="btn-exit-game has-tooltip tt-right hover-snd click-snd" onclick="exitGame()" data-i18n="btn_exit_game" data-i18n-tooltip="tt_exit">◀ CHIUDI GIOCO</button>
+        <button class="btn-exit-game has-tooltip hover-snd click-snd" onclick="exitGame()" data-i18n="btn_exit_game" data-i18n-tooltip="tt_exit">◀ CHIUDI GIOCO</button>
         <div id="itch-warning" class="itch-warning" data-i18n="itch_warning" role="alert">Nota: Chiudi la finestra di Itch.io per tornare al menu principale.</div>
     </div>
 
@@ -427,7 +471,7 @@
 
     <div id="help-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
         <div class="modal-box" style="border-color: var(--laser-sec);">
-            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.0</h2>
+            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.5</h2>
             <div class="overlay-text" style="text-align: left;">
                 <span data-i18n="help_p1" class="help-highlight">Cos'è TheOldSmokeArcade1984?</span><br>
                 <span data-i18n="help_p2">Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.</span>
@@ -442,7 +486,7 @@
     </div>
 
     <script>
-        console.log("%c/// MANIFESTO DI SISTEMA V6.0 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
+        console.log("%c/// MANIFESTO DI SISTEMA V6.5 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
 
         const langsList = ['it', 'en', 'es', 'de', 'fr', 'ja', 'zh'];
         
@@ -457,19 +501,19 @@
 
         const translations = {
             it: { subtitle: "Tutti i progetti", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12-in-1 App + 4 Singoli", gate_itch_desc: "Standalone & Support", btn_init: "Inizializza", btn_cancel: "Annulla", btn_boot: "Avvia Sistema", btn_back: "◀ RIT.", privacy_text: "Privacy by Design: Nessun tracciamento. Salvataggi in locale.", btn_exit_game: "◀ CHIUDI GIOCO", help_p1: "Cos'è TheOldSmokeArcade1984?", help_p2: "Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.", help_l1: "🎮 Giochi completi in-browser", help_l2: "🖥️ Zero-Assets (Tutto codice, zero PNG/MP3 esterni)", help_l3: "🔒 Privacy assoluta: no server, no tracking", skip_hint: "Tocca per Saltare", btn_home: "◀ HOME", itch_warning: "Nota: Chiudi la finestra di Itch.io per tornare al menu principale.",
-                tt_home: "Torna alla Home / Chiudi Gioco", tt_back: "Torna alla schermata precedente", tt_help: "Informazioni sul Sistema", tt_install: "Installa come Web App nativa (PWA)", tt_audio: "Attiva/Disattiva effetti sonori", tt_fs: "Attiva/Disattiva schermo intero", tt_lang: "Cambia la lingua del sistema", tt_gate_git: "Accedi al server principale (HTML5)", tt_gate_itch: "Accedi ai moduli esterni (Iframe)", tt_prev: "Titolo precedente", tt_next: "Titolo successivo", tt_exit: "Termina l'esecuzione e chiudi", tt_boot: "Inizializza ed avvia questo modulo", tt_cancel: "Annulla e chiudi questa finestra", tt_close: "Chiudi" },
+                tt_home: "Torna alla Home / Chiudi Gioco", tt_back: "Torna alla schermata precedente", tt_help: "Informazioni sul Sistema", tt_install: "Installa come Web App nativa (PWA)", tt_audio: "Attiva/Disattiva effetti sonori", tt_fs: "Attiva/Disattiva schermo intero", tt_lang: "Cambia la lingua del sistema", tt_gate_git: "Accedi al server principale (HTML5)", tt_gate_itch: "Accedi ai moduli esterni (Iframe)", tt_prev: "Titolo precedente", tt_next: "Titolo successivo", tt_exit: "Termina l'esecuzione e chiudi", tt_boot: "Inizializza ed avvia questo modulo", tt_cancel: "Annulla e chiudi questa finestra", tt_close: "Chiudi", tt_dock: "Sposta la barra di sistema ai lati dello schermo" },
             en: { subtitle: "All Projects", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12-in-1 App + 4 Singles", gate_itch_desc: "Standalone & Support", btn_init: "Initialize", btn_cancel: "Cancel", btn_boot: "Boot System", btn_back: "◀ BACK", privacy_text: "Privacy by Design: No tracking. Local saves only.", btn_exit_game: "◀ CLOSE GAME", help_p1: "What is TheOldSmokeArcade1984?", help_p2: "Not just a website. It's a virtual OS acting as a Hub for my indie game collection.", help_l1: "🎮 Full in-browser games", help_l2: "🖥️ Zero-Assets (Pure code, no external PNG/MP3)", help_l3: "🔒 Absolute privacy: no servers, no tracking", skip_hint: "Tap to Skip", btn_home: "◀ HOME", itch_warning: "Note: Close the Itch.io window to return to the main menu.",
-                tt_home: "Return to Home / Close Game", tt_back: "Return to previous screen", tt_help: "System Information", tt_install: "Install as native Web App (PWA)", tt_audio: "Toggle sound effects", tt_fs: "Toggle fullscreen mode", tt_lang: "Change system language", tt_gate_git: "Access main server (HTML5)", tt_gate_itch: "Access external modules (Iframe)", tt_prev: "Previous title", tt_next: "Next title", tt_exit: "Terminate execution and close", tt_boot: "Initialize and boot this module", tt_cancel: "Cancel and close this window", tt_close: "Close" },
+                tt_home: "Return to Home / Close Game", tt_back: "Return to previous screen", tt_help: "System Information", tt_install: "Install as native Web App (PWA)", tt_audio: "Toggle sound effects", tt_fs: "Toggle fullscreen mode", tt_lang: "Change system language", tt_gate_git: "Access main server (HTML5)", tt_gate_itch: "Access external modules (Iframe)", tt_prev: "Previous title", tt_next: "Next title", tt_exit: "Terminate execution and close", tt_boot: "Initialize and boot this module", tt_cancel: "Cancel and close this window", tt_close: "Close", tt_dock: "Move system bar to screen edges" },
             es: { subtitle: "Todos los proyectos", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "App 12-en-1 + 4 Singles", gate_itch_desc: "Independiente y Soporte", btn_init: "Inicializar", btn_cancel: "Cancelar", btn_boot: "Iniciar Sistema", btn_back: "◀ VOLVER", privacy_text: "Privacy by Design: Sin rastreo. Guardado local.", btn_exit_game: "◀ CERRAR JUEGO", help_p1: "¿Qué es TheOldSmokeArcade1984?", help_p2: "No es solo un sitio web. Es un SO virtual que actúa como Hub para mi colección indie.", help_l1: "🎮 Juegos completos en navegador", help_l2: "🖥️ Zero-Assets (Puro código, sin PNG/MP3)", help_l3: "🔒 Privacidad absoluta: sin servidores", skip_hint: "Toca para Saltar", btn_home: "◀ INICIO", itch_warning: "Nota: Cierra la ventana de Itch.io para volver al menú principal.",
-                tt_home: "Volver a Inicio / Cerrar juego", tt_back: "Volver a la pantalla anterior", tt_help: "Información del sistema", tt_install: "Instalar como Web App nativa (PWA)", tt_audio: "Activar/Desactivar sonido", tt_fs: "Alternar pantalla completa", tt_lang: "Cambiar idioma del sistema", tt_gate_git: "Acceder al servidor principal (HTML5)", tt_gate_itch: "Acceder a módulos externos (Iframe)", tt_prev: "Título anterior", tt_next: "Título siguiente", tt_exit: "Terminar ejecución y cerrar", tt_boot: "Inicializar y arrancar este módulo", tt_cancel: "Cancelar y cerrar esta ventana", tt_close: "Cerrar" },
+                tt_home: "Volver a Inicio / Cerrar juego", tt_back: "Volver a la pantalla anterior", tt_help: "Información del sistema", tt_install: "Instalar como Web App nativa (PWA)", tt_audio: "Activar/Desactivar sonido", tt_fs: "Alternar pantalla completa", tt_lang: "Cambiar idioma del sistema", tt_gate_git: "Acceder al servidor principal (HTML5)", tt_gate_itch: "Acceder a módulos externos (Iframe)", tt_prev: "Título anterior", tt_next: "Título siguiente", tt_exit: "Terminar ejecución y cerrar", tt_boot: "Inicializar y arrancar este módulo", tt_cancel: "Cancelar y cerrar esta ventana", tt_close: "Cerrar", tt_dock: "Mover la barra del sistema a los bordes" },
             de: { subtitle: "Alle Projekte", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12-in-1 App + 4 Einzelspiele", gate_itch_desc: "Standalone & Support", btn_init: "Initialisieren", btn_cancel: "Abbrechen", btn_boot: "System Starten", btn_back: "◀ ZURÜCK", privacy_text: "Privacy by Design: Kein Tracking. Nur lokales Speichern.", btn_exit_game: "◀ SPIEL BEENDEN", help_p1: "Was ist TheOldSmokeArcade1984?", help_p2: "Nicht nur eine Website. Ein virtuelles OS als Hub für meine Indie-Sammlung.", help_l1: "🎮 Komplette Browser-Spiele", help_l2: "🖥️ Zero-Assets (Nur Code, keine PNG/MP3)", help_l3: "🔒 Absolute Privatsphäre: keine Server", skip_hint: "Tippen zum Überspringen", btn_home: "◀ START", itch_warning: "Hinweis: Schließen Sie das Itch.io-Fenster, um zum Hauptmenü zurückzukehren.",
-                tt_home: "Zurück zur Startseite / Spiel schließen", tt_back: "Zurück zum vorherigen Bildschirm", tt_help: "Systeminformationen", tt_install: "Als native Web App (PWA) installieren", tt_audio: "Töne ein-/ausschalten", tt_fs: "Vollbild umschalten", tt_lang: "Systemsprache ändern", tt_gate_git: "Hauptserver aufrufen (HTML5)", tt_gate_itch: "Externe Module aufrufen (Iframe)", tt_prev: "Vorheriger Titel", tt_next: "Nächster Titel", tt_exit: "Ausführung beenden und schließen", tt_boot: "Modul initialisieren und starten", tt_cancel: "Abbrechen und Fenster schließen", tt_close: "Schließen" },
+                tt_home: "Zurück zur Startseite / Spiel schließen", tt_back: "Zurück zum vorherigen Bildschirm", tt_help: "Systeminformationen", tt_install: "Als native Web App (PWA) installieren", tt_audio: "Töne ein-/ausschalten", tt_fs: "Vollbild umschalten", tt_lang: "Systemsprache ändern", tt_gate_git: "Hauptserver aufrufen (HTML5)", tt_gate_itch: "Externe Module aufrufen (Iframe)", tt_prev: "Vorheriger Titel", tt_next: "Nächster Titel", tt_exit: "Ausführung beenden und schließen", tt_boot: "Modul initialisieren und starten", tt_cancel: "Abbrechen und Fenster schließen", tt_close: "Schließen", tt_dock: "Systemleiste verschieben" },
             fr: { subtitle: "Tous les projets", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "App 12-en-1 + 4 Jeux", gate_itch_desc: "Autonome & Support", btn_init: "Initialiser", btn_cancel: "Annuler", btn_boot: "Démarrer Système", btn_back: "◀ RETOUR", privacy_text: "Privacy by Design: Aucun suivi. Sauvegarde locale.", btn_exit_game: "◀ FERMER LE JEU", help_p1: "Qu'est-ce que TheOldSmokeArcade1984?", help_p2: "Pas juste un site web. C'est un OS virtuel servant de Hub pour ma collection indé.", help_l1: "🎮 Jeux complets sur navigateur", help_l2: "🖥️ Zero-Assets (Code pur, sans PNG/MP3)", help_l3: "🔒 Confidentialité absolue : sans serveurs", skip_hint: "Appuyez pour Passer", btn_home: "◀ ACCUEIL", itch_warning: "Note : Fermez la fenêtre Itch.io pour retourner au menu principal.",
-                tt_home: "Retour à l'accueil / Fermer le jeu", tt_back: "Retour à l'écran précédent", tt_help: "Informations système", tt_install: "Installer comme Web App native (PWA)", tt_audio: "Activer/Désactiver le son", tt_fs: "Basculer en plein écran", tt_lang: "Changer la langue du système", tt_gate_git: "Accéder au serveur principal (HTML5)", tt_gate_itch: "Accéder aux modules externes (Iframe)", tt_prev: "Titre précédent", tt_next: "Titre suivant", tt_exit: "Terminer l'exécution et fermer", tt_boot: "Initialiser et démarrer ce module", tt_cancel: "Annuler et fermer cette fenêtre", tt_close: "Fermer" },
+                tt_home: "Retour à l'accueil / Fermer le jeu", tt_back: "Retour à l'écran précédent", tt_help: "Informations système", tt_install: "Installer comme Web App native (PWA)", tt_audio: "Activer/Désactiver le son", tt_fs: "Basculer en plein écran", tt_lang: "Changer la langue du système", tt_gate_git: "Accéder au serveur principal (HTML5)", tt_gate_itch: "Accéder aux modules externes (Iframe)", tt_prev: "Titre précédent", tt_next: "Titre suivant", tt_exit: "Terminer l'exécution et fermer", tt_boot: "Initialiser et démarrer ce module", tt_cancel: "Annuler et fermer cette fenêtre", tt_close: "Fermer", tt_dock: "Déplacer la barre système" },
             ja: { subtitle: "すべてのプロジェクト", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12-in-1アプリ+4シングル", gate_itch_desc: "スタンドアロン＆サポート", btn_init: "初期化", btn_cancel: "キャンセル", btn_boot: "システム起動", btn_back: "◀ 戻る", privacy_text: "Privacy by Design: 追跡なし。ローカル保存のみ。", btn_exit_game: "◀ ゲームを閉じる", help_p1: "TheOldSmokeArcade1984とは？", help_p2: "インディーゲームコレクションのハブとなる仮想OSです。", help_l1: "🎮 完全なブラウザゲーム", help_l2: "🖥️ ゼロアセット（純粋なコード）", help_l3: "🔒 完全なプライバシー：サーバーなし", skip_hint: "タップしてスキップ", btn_home: "◀ ホーム", itch_warning: "注：メインメニューに戻るには、Itch.ioのウィンドウを閉じてください。",
-                tt_home: "ホームに戻る / ゲームを閉じる", tt_back: "前の画面に戻る", tt_help: "システム情報", tt_install: "ネイティブWebアプリ（PWA）としてインストール", tt_audio: "効果音のオン/オフ", tt_fs: "全画面表示の切り替え", tt_lang: "システム言語の変更", tt_gate_git: "メインサーバーにアクセス (HTML5)", tt_gate_itch: "外部モジュールにアクセス (Iframe)", tt_prev: "前のタイトル", tt_next: "次のタイトル", tt_exit: "実行を終了して閉じる", tt_boot: "このモジュールを初期化して起動", tt_cancel: "キャンセルしてこのウィンドウを閉じる", tt_close: "閉じる" },
+                tt_home: "ホームに戻る / ゲームを閉じる", tt_back: "前の画面に戻る", tt_help: "システム情報", tt_install: "ネイティブWebアプリ（PWA）としてインストール", tt_audio: "効果音のオン/オフ", tt_fs: "全画面表示の切り替え", tt_lang: "システム言語の変更", tt_gate_git: "メインサーバーにアクセス (HTML5)", tt_gate_itch: "外部モジュールにアクセス (Iframe)", tt_prev: "前のタイトル", tt_next: "次のタイトル", tt_exit: "実行を終了して閉じる", tt_boot: "このモジュールを初期化して起動", tt_cancel: "キャンセルしてこのウィンドウを閉じる", tt_close: "閉じる", tt_dock: "システムバーを移動する" },
             zh: { subtitle: "所有项目", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12合1应用+4单机", gate_itch_desc: "独立与支持", btn_init: "初始化", btn_cancel: "取消", btn_boot: "启动系统", btn_back: "◀ 返回", privacy_text: "Privacy by Design: 无追踪。仅本地保存。", btn_exit_game: "◀ 关闭游戏", help_p1: "TheOldSmokeArcade1984 是什么？", help_p2: "它是一个虚拟操作系统，作为我独立游戏收藏的中心。", help_l1: "🎮 完整的浏览器游戏", help_l2: "🖥️ 零资产（纯代码，无PNG/MP3）", help_l3: "🔒 绝对隐私：无服务器", skip_hint: "点击跳过", btn_home: "◀ 首页", itch_warning: "注：关闭 Itch.io 窗口即可返回主菜单。",
-                tt_home: "返回首页 / 关闭游戏", tt_back: "返回上一屏幕", tt_help: "系统信息", tt_install: "安装为原生Web应用 (PWA)", tt_audio: "切换音效", tt_fs: "切换全屏", tt_lang: "更改系统语言", tt_gate_git: "访问主服务器 (HTML5)", tt_gate_itch: "访问外部模块 (Iframe)", tt_prev: "上一个标题", tt_next: "下一个标题", tt_exit: "终止执行并关闭", tt_boot: "初始化并启动此模块", tt_cancel: "取消并关闭此窗口", tt_close: "关闭" }
+                tt_home: "返回首页 / 关闭游戏", tt_back: "返回上一屏幕", tt_help: "系统信息", tt_install: "安装为原生Web应用 (PWA)", tt_audio: "切换音效", tt_fs: "切换全屏", tt_lang: "更改系统语言", tt_gate_git: "访问主服务器 (HTML5)", tt_gate_itch: "访问外部模块 (Iframe)", tt_prev: "上一个标题", tt_next: "下一个标题", tt_exit: "终止执行并关闭", tt_boot: "初始化并启动此模块", tt_cancel: "取消并关闭此窗口", tt_close: "关闭", tt_dock: "移动系统栏" }
         };
 
         const gamesGithub = [
@@ -502,16 +546,23 @@
         
         function setLang(lang) { 
             currentLang = lang; document.getElementById('lang-cycle-btn').innerText = 'LANG: ' + lang.toUpperCase();
-            
             document.querySelectorAll('[data-i18n]').forEach(el => { if (translations[lang][el.getAttribute('data-i18n')]) el.innerText = translations[lang][el.getAttribute('data-i18n')]; }); 
-            
             document.querySelectorAll('.game-link').forEach(link => { const index = parseInt(link.getAttribute('data-index')); const isPlasma = link.classList.contains('card-plasma'); const gameObj = isPlasma ? gamesItch[index] : gamesGithub[index]; const descP = link.querySelector('.dyn-desc'); if (descP) descP.innerText = gameObj.cardDesc[lang] || gameObj.cardDesc['en'] || gameObj.cardDesc['it']; });
-            
-            // Ripristinato solo per gli elementi che NON sono la .card-base per non sovrascrivere lo pseudo-elemento ::after
             document.querySelectorAll('.sys-btn[data-i18n-tooltip], .btn-game[data-i18n-tooltip], .btn-close[data-i18n-tooltip], .gateway-btn[data-i18n-tooltip], .nav-btn[data-i18n-tooltip]').forEach(el => { 
                 const ttText = translations[lang][el.getAttribute('data-i18n-tooltip')];
                 if(ttText) { el.classList.add('has-tooltip'); el.setAttribute('data-tooltip', ttText); el.setAttribute('aria-label', ttText); }
             });
+        }
+
+        /* === LOGICA DOCK === */
+        const dockPositions = ['dock-top', 'dock-right', 'dock-bottom', 'dock-left'];
+        let currentDockIndex = 0;
+        function cycleDock() {
+            snd.playClick();
+            const bar = document.getElementById('sys-bar');
+            bar.classList.remove(dockPositions[currentDockIndex]);
+            currentDockIndex = (currentDockIndex + 1) % dockPositions.length;
+            bar.classList.add(dockPositions[currentDockIndex]);
         }
 
         function startBootSequence() {
@@ -587,8 +638,7 @@
             const wrap = document.getElementById(containerId); const themeClass = isPlasma ? 'card-plasma' : 'card-laser'; const btnClass = isPlasma ? 'btn-plasma' : 'btn-laser';
             data.forEach((game, i) => { const activeClass = i === 0 ? 'active' : ''; const scanline = isPlasma ? '<div class="scanline-overlay"></div>' : ''; const genreBadge = game.genre ? `<span class="genre-badge">${game.genre}</span>` : '';
                 const desc = game.cardDesc[currentLang] || game.cardDesc['en'] || game.cardDesc['it'];
-                // La Card NON ha data-i18n-tooltip per evitare di sovrascrivere lo sfondo ::after
-                const html = `<div class="card-base ${themeClass} game-link ${activeClass} hover-snd click-snd" data-index="${i}" data-url="${game.url}" data-external="${isPlasma}" role="button" tabindex="0" aria-label="Seleziona ${game.subtitle}">${scanline}<div class="card-text-content">${genreBadge}<h2>${game.subtitle}</h2><p class="dyn-desc">${desc}</p></div><div class="btn-game ${btnClass}" data-i18n="btn_init" tabindex="-1">Inizializza</div></div>`; wrap.insertAdjacentHTML('beforeend', html); });
+                const html = `<div class="card-base ${themeClass} game-link ${activeClass} hover-snd click-snd" data-index="${i}" data-url="${game.url}" data-external="${isPlasma}" role="button" tabindex="0">${scanline}<div class="card-text-content">${genreBadge}<h2>${game.subtitle}</h2><p class="dyn-desc">${desc}</p></div><div class="btn-game ${btnClass}" data-i18n="btn_init" tabindex="-1">Inizializza</div></div>`; wrap.insertAdjacentHTML('beforeend', html); });
         }
         buildSlider('wrap-github', gamesGithub, false); buildSlider('wrap-itch', gamesItch, true);
 
@@ -628,10 +678,26 @@
         function exitGame() { snd.playClick(); document.getElementById('game-frame').src = ''; navTo('screen-gateway'); }
         function toggleFullScreen() { const btn = document.getElementById('fs-btn'); const doc = document.documentElement; if (!document.fullscreenElement) { if (doc.requestFullscreen) doc.requestFullscreen().then(() => btn.classList.add('active')).catch(()=>{}); } else { if (document.exitFullscreen) { document.exitFullscreen(); btn.classList.remove('active'); } } }
 
+        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.5 */
         let deferredPrompt; const installBtn = document.getElementById('pwa-install-btn'); window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'flex'; });
         installBtn.addEventListener('click', async () => { snd.playClick(); if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') installBtn.style.display = 'none'; deferredPrompt = null; } });
         
-        if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js').then(r => console.log('SW v6.0 Registrato')).catch(e => console.log('SW Errore:', e)); }
+        if ('serviceWorker' in navigator) { 
+            window.addEventListener('load', () => { 
+                navigator.serviceWorker.register('./sw.js?v=6.5').then(reg => { 
+                    console.log('SW v6.5 Registrato');
+                    reg.onupdatefound = () => {
+                        const installingWorker = reg.installing;
+                        installingWorker.onstatechange = () => {
+                            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                console.log('Nuovo aggiornamento PWA trovato. Ricarico...');
+                                window.location.reload();
+                            }
+                        };
+                    };
+                }).catch(e => console.log('SW Errore:', e)); 
+            }); 
+        }
 
         document.addEventListener('DOMContentLoaded', () => { 
             setLang(currentLang);
