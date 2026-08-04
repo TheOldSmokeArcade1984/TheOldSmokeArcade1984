@@ -1,11 +1,11 @@
-const CACHE_NAME = 'oldsmoke-os-v6.5';
+const CACHE_NAME = 'oldsmoke-os-v6.10';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './manifest-v3.json',
-    './icon-192.png?v=6.5',
-    './icon-256.png?v=6.5',
-    './icon-512.png?v=6.5'
+    './icon-192.png',
+    './icon-256.png',
+    './icon-512.png'
 ];
 
 // Installazione e salvataggio in cache
@@ -13,21 +13,21 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) => {
-            console.log('[SW v6.5] Caching asset principali');
+            console.log('[SW v6.10] Caching asset principali');
             return cache.addAll(ASSETS_TO_CACHE);
         })
         .then(() => self.skipWaiting())
     );
 });
 
-// Pulizia cache vecchie
+// Pulizia cache vecchie (rimuove v6.9 e precedenti)
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cache) => {
                     if (cache !== CACHE_NAME) {
-                        console.log('[SW v6.5] Eliminazione vecchia cache:', cache);
+                        console.log('[SW v6.10] Eliminazione vecchia cache:', cache);
                         return caches.delete(cache);
                     }
                 })
