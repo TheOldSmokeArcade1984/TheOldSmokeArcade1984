@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TheOldSmokeArcade1984 - OS v6.13</title>
+    <title>TheOldSmokeArcade1984 - OS v6.15</title>
     
     <meta name="description" content="TheOldSmokeArcade1984 OS - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi in un'app e 4 titoli singoli (PWA). Privacy by design, accessibilità totale.">
     <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, theoldsmokearcade1984, HTML5 games, accessibilità, screen reader">
@@ -43,7 +43,7 @@
       "description": "Sistema Operativo virtuale HTML5 che funge da Hub per videogiochi indie retro-cyberpunk. Architettura basata su due nodi: 'Server Hub' (giochi nativi ospitati su GitHub Pages tramite Iframe) e 'Mirror Nodes' (moduli esterni integrati tramite widget Itch.io).",
       "applicationCategory": "GameApplication",
       "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
-      "softwareVersion": "6.13",
+      "softwareVersion": "6.15",
       "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie", "Logic Puzzle", "Tactical Stealth"],
       "accessibilityFeature": ["alternativeText", "ARIA", "keyboardNavigation", "screenReader", "dynamicTooltips"],
       "accessibilityControl": ["fullKeyboardControl", "fullMouseControl", "fullTouchControl"],
@@ -71,13 +71,16 @@
     <link rel="icon" type="image/png" sizes="256x256" href="icon-256.png">
     <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Meta tag corretti e modernizzati per le Web App -->
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OldSmoke OS">
+    
     <link rel="mask-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>" color="#05010a">
     <meta name="theme-color" content="#05010a">
     <meta name="msapplication-TileColor" content="#05010a">
-    <link rel="manifest" href="manifest-v3.json?v=6.13">
+    <link rel="manifest" href="manifest-v3.json?v=6.15">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
@@ -97,7 +100,6 @@
         ::-webkit-scrollbar { display: none; width: 0; height: 0; }
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; scrollbar-width: none; -ms-overflow-style: none; }
         
-        /* Aggiunto font Arial come fallback solido */
         html, body { background-color: var(--bg-void); color: var(--text-main); font-family: 'Courier New', Courier, Arial, sans-serif; overflow: hidden; perspective: 1200px; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; }
 
         :focus-visible { outline: 2px dashed var(--laser-sec); outline-offset: 4px; border-radius: 4px; z-index: 999999; }
@@ -114,7 +116,6 @@
         .screen.active { opacity: 1; pointer-events: auto; z-index: 20; transform: scale(1) translateZ(0); }
         body.modal-open .screen.active, body.modal-open .system-bar { filter: blur(8px) brightness(0.4); transform: scale(0.95); pointer-events: none; }
 
-        /* === SISTEMA TOOLTIP NATIVO CSS BLINDATO E LEGGIBILE (V6.13) === */
         @media (hover: hover) and (pointer: fine) {
             .has-tooltip { position: relative; }
             .has-tooltip::after {
@@ -141,7 +142,6 @@
             .screen .has-tooltip::after { bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); text-align: center; }
         }
 
-        /* === BARRA DI SISTEMA === */
         .system-bar { 
             position: fixed; background: transparent; display: flex; z-index: 100000; 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; pointer-events: none; transform: translateZ(0); 
@@ -190,7 +190,7 @@
         .btn-back:hover { background: var(--laser-sec); color: var(--text-main); box-shadow: 0 0 15px var(--laser-sec); }
         .btn-exit-bar:hover { background: var(--laser-pri); color: var(--text-main); box-shadow: 0 0 15px var(--laser-pri); }
 
-        /* === BOOT (Moneta abbassata per UX Mobile) === */
+        /* === BOOT === */
         #screen-boot { background: var(--bg-void); z-index: 9000; cursor: default; }
         #boot-stage { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; font-family: 'VT323', monospace; transition: transform 0.3s ease; }
         .pyramid-wrap { position: absolute; top: 50dvh; left: 50%; width: 80px; height: 100px; margin-left: -40px; margin-top: -50px; transform: scale(var(--pyr-base-scale)); opacity: 0; animation: pyr-fade-in 1s ease-out forwards, pyr-move-up 1.5s 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
@@ -219,7 +219,6 @@
         .permanent-cursor.morph { animation: cursor-explode 0.4s ease-out forwards; }
         @keyframes cursor-explode { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(3); opacity: 0.5; filter: blur(5px); background-color: var(--laser-pri); box-shadow: 0 0 30px var(--laser-pri); } 100% { transform: scale(0); opacity: 0; display: none; } }
         
-        /* Modifica V6.13: Moneta più in basso a 68dvh */
         .coin-wrapper { position: absolute; top: 68dvh; left: 50%; transform: translate(-50%, -50%) scale(0); transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 100; width: 120px; height: 120px; display: none; }
         .coin-wrapper.show { transform: translate(-50%, -50%) scale(1); display: block; }
         .coin-draggable { position: absolute; inset: 0; cursor: grab; filter: drop-shadow(0 0 15px rgba(0,255,204,0.5)); touch-action: none; transform-style: preserve-3d; }
@@ -228,7 +227,6 @@
         .finger-guide { position: absolute; right: -30px; top: 30px; font-size: 2.5rem; pointer-events: none; z-index: 50; animation: swipeDown 2s infinite; opacity: 0; }
         @keyframes swipeDown { 0% { transform: translateY(0) rotate(-15deg); opacity: 0; } 20% { opacity: 1; } 80% { transform: translateY(120px) rotate(-15deg); opacity: 1; } 100% { transform: translateY(140px) rotate(-15deg); opacity: 0; } }
         
-        /* Modifica V6.13: Fessura abbassata a 86dvh proporzionalmente */
         .coin-slot-container { position: absolute; top: 86dvh; left: 50%; transform: translateX(-50%); width: 140px; height: 30px; display: none; justify-content: center; opacity: 0; transition: opacity 1s ease; z-index: 20;}
         .coin-slot-container.show { opacity: 1; display: flex; }
         .coin-slot-hole { position: absolute; bottom: 5px; width: 110px; height: 10px; background: #000; border-radius: 4px; z-index: 20; box-shadow: inset 0 0 15px rgba(255,0,85,0.8); }
@@ -329,7 +327,7 @@
             #lang-cycle-btn { min-width: 75px; font-size: 0.75rem; }
         }
 
-        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.13 === */
+        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.15 === */
         @media (orientation: landscape) and (max-height: 600px) {
             :root {
                 --pyr-base-scale: 0.35;   
@@ -346,7 +344,6 @@
             #screen-game { display: flex !important; overflow: hidden !important; padding-top: 0 !important; }
             
             .typewriter-area.move-up { top: 32vh; transform: translateX(-50%) scale(0.8); }
-            /* Moneta abbassata proporzionalmente in landscape */
             .coin-wrapper { top: 68vh !important; }
             .coin-wrapper.show { transform: translate(-50%, -50%) scale(0.45) !important; display: block; }
             .coin-slot-container { top: 88vh !important; transform: translateX(-50%) scale(0.6); }
@@ -381,7 +378,6 @@
                 <span class="btn-text" data-i18n="btn_back">◀ RIT.</span>
             </button>
             
-            <!-- Aggiunto aria-hidden="true" all'SVG per evitare confusione sugli screen reader -->
             <button class="sys-btn has-tooltip btn-exit-bar hover-snd click-snd no-rotate" id="btn-exit" onclick="exitGame()" data-i18n-tooltip="tt_exit" aria-label="Chiudi Gioco">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
             </button>
@@ -494,7 +490,7 @@
 
     <div id="help-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
         <div class="modal-box" style="border-color: var(--laser-sec);">
-            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.13</h2>
+            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.15</h2>
             <div class="overlay-text" style="text-align: left;">
                 <span data-i18n="help_p1" class="help-highlight">Cos'è TheOldSmokeArcade1984?</span><br>
                 <span data-i18n="help_p2">Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.</span>
@@ -509,7 +505,7 @@
     </div>
 
     <script>
-        console.log("%c/// MANIFESTO DI SISTEMA V6.13 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
+        console.log("%c/// MANIFESTO DI SISTEMA V6.15 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
 
         const langsList = ['it', 'en', 'es', 'de', 'fr', 'ja', 'zh'];
         
@@ -549,7 +545,7 @@
         ];
         
         const gamesItch = [
-            { genre: "WIDGET ITCH.IO", subtitle: "Arcade Collection", url: "https://itch.io/embed/4408114?bg_color=05010a&fg_color=ffffff&link_color=00ffcc&border_color=ff0055", overlay: { it: "Connessione al widget itch.io.\nScarica la versione standalone.", en: "Connection to itch.io widget.\nDownload standalone version.", es: "Conexión al widget de itch.io.\nDescarga la versión independiente.", de: "Verbindung zum itch.io-Widget.\nStandalone-Version herunterladen.", fr: "Connexion au widget itch.io.\nTélécharger la version autonome.", ja: "itch.ioウィジェットへの接続。\nスタンドアロン版をダウンロード。", zh: "连接到 itch.io 小部件。\n下载独立版本。" }, cardDesc: { it: "Widget ufficiale itch.io per supporto.", en: "Official itch.io support widget.", es: "Widget oficial de itch.io.", de: "Offizielles itch.io-Support-Widget.", fr: "Widget de support itch.io officiel.", ja: "公式itch.ioサポートウィジェット。", zh: "官方 itch.io 支持小部件。" } },
+            { genre: "WIDGET ITCH.IO", subtitle: "Arcade Collection", url: "https://itch.io/embed/4408114?bg_color=05010a&fg_color=ffffff&link_color=00ffcc&border_color=ff0055", overlay: { it: "Connessione al widget itch.io.\nScarica la versione standalone.", en: "Connection to itch.io widget.\nDownload standalone version.", es: "Conexión al widget de itch.io.\nDescarga la versione independiente.", de: "Verbindung zum itch.io-Widget.\nStandalone-Version herunterladen.", fr: "Connexion au widget itch.io.\nTélécharger la version autonome.", ja: "itch.ioウィジェットへの接続。\nスタンドアロン版をダウンロード。", zh: "连接到 itch.io 小部件。\n下载独立版本。" }, cardDesc: { it: "Widget ufficiale itch.io per supporto.", en: "Official itch.io support widget.", es: "Widget oficial de itch.io.", de: "Offizielles itch.io-Support-Widget.", fr: "Widget de support itch.io officiel.", ja: "公式itch.ioサポートウィジェット。", zh: "官方 itch.io 支持小部件。" } },
             { genre: "WIDGET ITCH.IO", subtitle: "Protocollo Zero", url: "https://itch.io/embed/4555569?bg_color=05010a&fg_color=ffffff&link_color=00ffcc&border_color=ff0055", overlay: { it: "Connessione al widget itch.io.\nAccesso al download del modulo.", en: "Connection to itch.io widget.\nAccess distribution files.", es: "Conexión al widget itch.io.\nAcceso a archivos de distribución.", de: "Verbindung zum itch.io-Widget.\nZugriff auf Verteilungsdateien.", fr: "Connexion au widget itch.io.\nAccès aux fichiers de distribution.", ja: "itch.ioウィジェットへの接続。\n配布ファイルへのアクセス。", zh: "连接到 itch.io 小部件。\n访问分发文件。" }, cardDesc: { it: "Widget ufficiale itch.io per supporto.", en: "Official itch.io support widget.", es: "Widget oficial de itch.io.", de: "Offizielles itch.io-Support-Widget.", fr: "Widget de support itch.io officiel.", ja: "公式itch.ioサポートウィジェット。", zh: "官方 itch.io 支持小部件。" } },
             { genre: "WIDGET ITCH.IO", subtitle: "Knight's Tour", url: "https://itch.io/embed/4482953?bg_color=05010a&fg_color=ffffff&link_color=00ffcc&border_color=ff0055", overlay: { it: "Connessione al widget itch.io.\nAccesso ai pacchetti indipendenti.", en: "Connection to itch.io widget.\nStandalone package access.", es: "Conexión al widget itch.io.\nAcceso a paquetes independientes.", de: "Verbindung zum itch.io-Widget.\nZugriff auf Standalone-Pakete.", fr: "Connexion au widget itch.io.\nAccès au package autonome.", ja: "itch.ioウィジェットへの接続。\nスタンドアロンパッケージへのアクセス。", zh: "连接到 itch.io 小部件。\n独立包访问。" }, cardDesc: { it: "Widget ufficiale itch.io per supporto.", en: "Official itch.io support widget.", es: "Widget oficial de itch.io.", de: "Offizielles itch.io-Support-Widget.", fr: "Widget de support itch.io officiel.", ja: "公式itch.ioサポートウィジェット。", zh: "官方 itch.io 支持小部件。" } },
             { genre: "WIDGET ITCH.IO", subtitle: "Neon Specter", url: "https://itch.io/embed/4470252?bg_color=05010a&fg_color=ffffff&link_color=00ffcc&border_color=ff0055", overlay: { it: "Connessione al widget itch.io.\nMirror ufficiale Neon Specter.", en: "Connection to itch.io widget.\nOfficial Neon Specter mirror.", es: "Conexión al widget itch.io.\nEspejo oficial de Neon Specter.", de: "Verbindung zum itch.io-Widget.\nOffizieller Neon Specter Spiegel.", fr: "Connexion au widget itch.io.\nMiroir officiel Neon Specter.", ja: "itch.ioウィジェットへの接続。\n公式Neon Specterミラー。", zh: "连接到 itch.io 小部件。\n官方 Neon Specter 镜像。" }, cardDesc: { it: "Widget ufficiale itch.io per supporto.", en: "Official itch.io support widget.", es: "Widget oficial de itch.io.", de: "Offizielles itch.io-Support-Widget.", fr: "Widget de support itch.io officiel.", ja: "公式itch.ioサポートウィジェット。", zh: "官方 itch.io 支持小部件。" } }
@@ -718,14 +714,14 @@
         
         function toggleFullScreen() { const btn = document.getElementById('fs-btn'); const doc = document.documentElement; if (!document.fullscreenElement) { if (doc.requestFullscreen) doc.requestFullscreen().then(() => btn.classList.add('active')).catch(()=>{}); } else { if (document.exitFullscreen) { document.exitFullscreen(); btn.classList.remove('active'); } } }
 
-        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.13 */
+        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.15 */
         let deferredPrompt; const installBtn = document.getElementById('pwa-install-btn'); window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'flex'; });
         installBtn.addEventListener('click', async () => { snd.playClick(); if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') installBtn.style.display = 'none'; deferredPrompt = null; } });
         
         if ('serviceWorker' in navigator) { 
             window.addEventListener('load', () => { 
-                navigator.serviceWorker.register('./sw.js?v=6.13').then(reg => { 
-                    console.log('SW v6.13 Registrato');
+                navigator.serviceWorker.register('./sw.js?v=6.15').then(reg => { 
+                    console.log('SW v6.15 Registrato');
                     reg.onupdatefound = () => {
                         const installingWorker = reg.installing;
                         installingWorker.onstatechange = () => {
