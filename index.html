@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TheOldSmokeArcade1984 - OS v6.10</title>
+    <title>TheOldSmokeArcade1984 - OS v6.13</title>
     
     <meta name="description" content="TheOldSmokeArcade1984 OS - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi in un'app e 4 titoli singoli (PWA). Privacy by design, accessibilità totale.">
     <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, theoldsmokearcade1984, HTML5 games, accessibilità, screen reader">
@@ -43,7 +43,7 @@
       "description": "Sistema Operativo virtuale HTML5 che funge da Hub per videogiochi indie retro-cyberpunk. Architettura basata su due nodi: 'Server Hub' (giochi nativi ospitati su GitHub Pages tramite Iframe) e 'Mirror Nodes' (moduli esterni integrati tramite widget Itch.io).",
       "applicationCategory": "GameApplication",
       "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
-      "softwareVersion": "6.10",
+      "softwareVersion": "6.13",
       "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie", "Logic Puzzle", "Tactical Stealth"],
       "accessibilityFeature": ["alternativeText", "ARIA", "keyboardNavigation", "screenReader", "dynamicTooltips"],
       "accessibilityControl": ["fullKeyboardControl", "fullMouseControl", "fullTouchControl"],
@@ -77,7 +77,7 @@
     <link rel="mask-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>" color="#05010a">
     <meta name="theme-color" content="#05010a">
     <meta name="msapplication-TileColor" content="#05010a">
-    <link rel="manifest" href="manifest-v3.json?v=6.10">
+    <link rel="manifest" href="manifest-v3.json?v=6.13">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
@@ -97,7 +97,8 @@
         ::-webkit-scrollbar { display: none; width: 0; height: 0; }
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; scrollbar-width: none; -ms-overflow-style: none; }
         
-        html, body { background-color: var(--bg-void); color: var(--text-main); font-family: 'Courier New', Courier, monospace; overflow: hidden; perspective: 1200px; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; }
+        /* Aggiunto font Arial come fallback solido */
+        html, body { background-color: var(--bg-void); color: var(--text-main); font-family: 'Courier New', Courier, Arial, sans-serif; overflow: hidden; perspective: 1200px; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; }
 
         :focus-visible { outline: 2px dashed var(--laser-sec); outline-offset: 4px; border-radius: 4px; z-index: 999999; }
 
@@ -113,19 +114,34 @@
         .screen.active { opacity: 1; pointer-events: auto; z-index: 20; transform: scale(1) translateZ(0); }
         body.modal-open .screen.active, body.modal-open .system-bar { filter: blur(8px) brightness(0.4); transform: scale(0.95); pointer-events: none; }
 
-        /* === SISTEMA TOOLTIP JS GLOBALE (V6.10) === */
-        #os-tooltip {
-            position: fixed; background: rgba(5, 1, 10, 0.97); color: #fff; font-size: 0.75rem; 
-            padding: 10px 14px; border-radius: 6px; border: 1px solid var(--laser-sec); 
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4); white-space: pre-wrap; word-break: break-word; 
-            width: max-content; min-width: 120px; max-width: 250px; text-align: center;
-            z-index: 9999999; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
-            font-family: 'Courier New', Courier, monospace; letter-spacing: 0; font-weight: normal; line-height: 1.4;
-            top: -1000px; left: -1000px; /* Nascosto di base */
-        }
-        #os-tooltip.show { opacity: 1; }
+        /* === SISTEMA TOOLTIP NATIVO CSS BLINDATO E LEGGIBILE (V6.13) === */
+        @media (hover: hover) and (pointer: fine) {
+            .has-tooltip { position: relative; }
+            .has-tooltip::after {
+                content: attr(data-tooltip); position: absolute;
+                background: rgba(5, 1, 10, 0.97); color: #fff; font-size: 0.75rem; padding: 10px 14px; border-radius: 6px;
+                border: 1px solid var(--laser-sec); box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+                white-space: pre-wrap; word-break: break-word; width: max-content; min-width: 120px; max-width: 250px;
+                z-index: 999999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+                font-family: 'Courier New', Courier, Arial, sans-serif; letter-spacing: 0; font-weight: normal; line-height: 1.4;
+            }
+            .has-tooltip:hover::after, .has-tooltip:focus-visible::after { opacity: 1; }
 
-        /* === BARRA DI SISTEMA DINAMICA (4-WAY DOCK) === */
+            .dock-top .has-tooltip::after { top: calc(100% + 12px); bottom: auto; left: 50%; transform: translateX(-50%); text-align: center; }
+            .dock-top .sys-group:first-child .has-tooltip::after { left: 0; transform: none; text-align: left; }
+            .dock-top .sys-group:last-child .has-tooltip::after { left: auto; right: 0; transform: none; text-align: right; }
+
+            .dock-bottom .has-tooltip::after { bottom: calc(100% + 12px); top: auto; left: 50%; transform: translateX(-50%); text-align: center; }
+            .dock-bottom .sys-group:first-child .has-tooltip::after { left: 0; transform: none; text-align: left; }
+            .dock-bottom .sys-group:last-child .has-tooltip::after { left: auto; right: 0; transform: none; text-align: right; }
+
+            .dock-left .has-tooltip::after { left: calc(100% + 12px); right: auto; top: 50%; bottom: auto; transform: translateY(-50%); text-align: left; }
+            .dock-right .has-tooltip::after { right: calc(100% + 12px); left: auto; top: 50%; bottom: auto; transform: translateY(-50%); text-align: right; }
+
+            .screen .has-tooltip::after { bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); text-align: center; }
+        }
+
+        /* === BARRA DI SISTEMA === */
         .system-bar { 
             position: fixed; background: transparent; display: flex; z-index: 100000; 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; pointer-events: none; transform: translateZ(0); 
@@ -136,10 +152,10 @@
 
         .sys-group { display: flex; gap: 8px; align-items: center; flex-wrap: nowrap; }
 
-        .dock-top { top: 0; left: 0; width: 100vw; height: 60px; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 15px; border-bottom: 1px solid transparent; }
-        .dock-bottom { bottom: 0; left: 0; width: 100vw; height: 60px; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 15px; border-top: 1px solid transparent; }
-        .dock-left { top: 0; left: 0; width: 60px; height: 100vh; flex-direction: column; justify-content: space-between; align-items: center; padding: 15px 0; border-right: 1px solid transparent; }
-        .dock-right { top: 0; right: 0; width: 60px; height: 100vh; flex-direction: column; justify-content: space-between; align-items: center; padding: 15px 0; border-left: 1px solid transparent; }
+        .dock-top { top: 0; left: 0; width: 100vw; height: 60px; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 15px; border-bottom: 1px solid transparent; overflow: visible !important; }
+        .dock-bottom { bottom: 0; left: 0; width: 100vw; height: 60px; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 15px; border-top: 1px solid transparent; overflow: visible !important; }
+        .dock-left { top: 0; left: 0; width: 60px; height: 100vh; flex-direction: column; justify-content: space-between; align-items: center; padding: 15px 0; border-right: 1px solid transparent; overflow: visible !important; }
+        .dock-right { top: 0; right: 0; width: 60px; height: 100vh; flex-direction: column; justify-content: space-between; align-items: center; padding: 15px 0; border-left: 1px solid transparent; overflow: visible !important; }
 
         .dock-top .sys-group, .dock-bottom .sys-group { flex-direction: row; }
         .dock-left .sys-group, .dock-right .sys-group { flex-direction: column; }
@@ -153,15 +169,17 @@
         .sys-btn:hover { color: var(--text-main); border-color: var(--text-main); background: rgba(255,255,255,0.1); }
         .sys-btn.active { color: var(--laser-sec); border-color: var(--laser-sec); text-shadow: 0 0 8px var(--laser-sec); }
         
-        .dock-left .sys-btn, .dock-right .sys-btn { writing-mode: vertical-rl; transform: none; padding: 10px 6px; }
-        .dock-left .sys-btn.no-rotate, .dock-right .sys-btn.no-rotate { writing-mode: horizontal-tb; transform: none; padding: 6px 10px;}
+        .dock-left .sys-btn, .dock-right .sys-btn { padding: 10px 6px; }
+
+        .btn-text { display: inline-block; transition: all 0.3s ease; }
+        .dock-left .btn-text { writing-mode: vertical-rl; transform: rotate(180deg); }
+        .dock-right .btn-text { writing-mode: vertical-rl; transform: none; }
 
         #lang-cycle-btn { min-width: 90px; }
         .dock-left #lang-cycle-btn, .dock-right #lang-cycle-btn { min-width: auto; min-height: 90px; }
         
         #pwa-install-btn { color: #fff; border-color: var(--laser-sec); background: rgba(0, 255, 204, 0.1); display: none; }
         
-        /* Bottoni a comparsa (Rit. & Exit) */
         .btn-back, .btn-exit-bar { display: none; }
         .btn-back { color: var(--laser-sec); border-color: var(--laser-sec); }
         .btn-exit-bar { color: var(--laser-pri); border-color: var(--laser-pri); }
@@ -172,7 +190,7 @@
         .btn-back:hover { background: var(--laser-sec); color: var(--text-main); box-shadow: 0 0 15px var(--laser-sec); }
         .btn-exit-bar:hover { background: var(--laser-pri); color: var(--text-main); box-shadow: 0 0 15px var(--laser-pri); }
 
-        /* === BOOT === */
+        /* === BOOT (Moneta abbassata per UX Mobile) === */
         #screen-boot { background: var(--bg-void); z-index: 9000; cursor: default; }
         #boot-stage { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; font-family: 'VT323', monospace; transition: transform 0.3s ease; }
         .pyramid-wrap { position: absolute; top: 50dvh; left: 50%; width: 80px; height: 100px; margin-left: -40px; margin-top: -50px; transform: scale(var(--pyr-base-scale)); opacity: 0; animation: pyr-fade-in 1s ease-out forwards, pyr-move-up 1.5s 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
@@ -200,14 +218,18 @@
         @keyframes cursor-reveal { to { opacity: 1; } } @keyframes blink { 50% { opacity: 0; } }
         .permanent-cursor.morph { animation: cursor-explode 0.4s ease-out forwards; }
         @keyframes cursor-explode { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(3); opacity: 0.5; filter: blur(5px); background-color: var(--laser-pri); box-shadow: 0 0 30px var(--laser-pri); } 100% { transform: scale(0); opacity: 0; display: none; } }
-        .coin-wrapper { position: absolute; top: 60dvh; left: 50%; transform: translate(-50%, -50%) scale(0); transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 100; width: 120px; height: 120px; display: none; }
+        
+        /* Modifica V6.13: Moneta più in basso a 68dvh */
+        .coin-wrapper { position: absolute; top: 68dvh; left: 50%; transform: translate(-50%, -50%) scale(0); transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 100; width: 120px; height: 120px; display: none; }
         .coin-wrapper.show { transform: translate(-50%, -50%) scale(1); display: block; }
         .coin-draggable { position: absolute; inset: 0; cursor: grab; filter: drop-shadow(0 0 15px rgba(0,255,204,0.5)); touch-action: none; transform-style: preserve-3d; }
         .coin-draggable:active { cursor: grabbing; filter: drop-shadow(0 0 25px var(--laser-sec)); }
         .coin-svg { width: 100%; height: 100%; pointer-events: none; }
         .finger-guide { position: absolute; right: -30px; top: 30px; font-size: 2.5rem; pointer-events: none; z-index: 50; animation: swipeDown 2s infinite; opacity: 0; }
         @keyframes swipeDown { 0% { transform: translateY(0) rotate(-15deg); opacity: 0; } 20% { opacity: 1; } 80% { transform: translateY(120px) rotate(-15deg); opacity: 1; } 100% { transform: translateY(140px) rotate(-15deg); opacity: 0; } }
-        .coin-slot-container { position: absolute; top: 82dvh; left: 50%; transform: translateX(-50%); width: 140px; height: 30px; display: none; justify-content: center; opacity: 0; transition: opacity 1s ease; z-index: 20;}
+        
+        /* Modifica V6.13: Fessura abbassata a 86dvh proporzionalmente */
+        .coin-slot-container { position: absolute; top: 86dvh; left: 50%; transform: translateX(-50%); width: 140px; height: 30px; display: none; justify-content: center; opacity: 0; transition: opacity 1s ease; z-index: 20;}
         .coin-slot-container.show { opacity: 1; display: flex; }
         .coin-slot-hole { position: absolute; bottom: 5px; width: 110px; height: 10px; background: #000; border-radius: 4px; z-index: 20; box-shadow: inset 0 0 15px rgba(255,0,85,0.8); }
         .coin-slot-front { position: absolute; bottom: 0; width: 120px; height: 8px; background: #110005; border: 2px solid var(--laser-pri); border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 5px 15px var(--laser-pri); z-index: 40; }
@@ -264,7 +286,7 @@
         @media (hover: hover) { .card-laser.active:hover { transform: translateZ(30px) rotateX(2deg) rotateY(-2deg); border-color: var(--laser-pri); box-shadow: 0 15px 40px rgba(255,0,85,0.4); } .card-plasma.active:hover { transform: translateZ(30px) rotateX(-2deg) rotateY(2deg); border-color: var(--plasma-pri); box-shadow: 0 15px 40px rgba(188, 19, 254, 0.4); } }
         .card-laser.active:active { transform: translateZ(30px) rotateX(2deg) rotateY(-2deg); border-color: var(--laser-pri); box-shadow: 0 15px 40px rgba(255,0,85,0.4); }
         .card-plasma.active:active { transform: translateZ(30px) rotateX(-2deg) rotateY(2deg); border-color: var(--plasma-pri); box-shadow: 0 15px 40px rgba(188, 19, 254, 0.4); }
-        .btn-game { padding: 15px 20px; text-align: center; font-weight: bold; text-transform: uppercase; transform: translateZ(30px); border: none; cursor: pointer; border-radius: 4px; transition: all 0.3s; position: relative; z-index: 2; font-size: 1.1rem; width: 100%; max-width: 250px; margin: 0 auto; }
+        .btn-game { padding: 15px 20px; text-align: center; font-weight: bold; text-transform: uppercase; transform: translateZ(30px); border: none; cursor: pointer; border-radius: 4px; transition: all 0.3s; position: relative; z-index: 2; font-size: 1.1rem; width: 100%; max-width: 250px; margin: 0 auto; font-family: 'Courier New', Courier, Arial, sans-serif; }
         .btn-laser { background: var(--laser-pri); color: #fff; } .card-laser:hover .btn-laser { background: var(--laser-sec); color: #000; box-shadow: 0 0 20px var(--laser-sec); }
         .btn-plasma { background: var(--plasma-pri); color: #fff; } .card-plasma:hover .btn-plasma { background: var(--plasma-sec); color: #000; box-shadow: 0 0 20px var(--plasma-sec); }
 
@@ -276,7 +298,7 @@
         .theme-laser .modal-box { border-color: var(--laser-sec); box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 20px rgba(0, 255, 204, 0.15); }
         .theme-plasma .modal-box { border-color: var(--plasma-sec); box-shadow: 0 0 50px rgba(0,0,0,0.9), inset 0 0 20px rgba(252, 238, 10, 0.15); }
         .overlay-title { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: 20px; color: #fff; text-shadow: 0 0 10px var(--laser-sec), 0 0 20px var(--laser-pri); word-break: break-word; }
-        .overlay-text { color: var(--laser-sec); font-size: 1rem; line-height: 1.6; margin-bottom: 35px; white-space: pre-line; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
+        .overlay-text { color: var(--laser-sec); font-size: 1rem; line-height: 1.6; margin-bottom: 35px; white-space: pre-line; text-shadow: 0 0 5px rgba(255,255,255,0.2); font-family: 'Courier New', Courier, Arial, sans-serif; }
         .theme-plasma .overlay-title { text-shadow: 0 0 10px var(--plasma-sec), 0 0 20px var(--plasma-pri); } .theme-plasma .overlay-text { color: var(--plasma-sec); }
         .overlay-controls { display: flex; gap: 15px; justify-content: center; flex-direction: column; width: 100%; margin: 0 auto; }
         .btn-close { background: transparent; border: 1px solid var(--text-dim); color: var(--text-dim); padding: 15px 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-family: inherit; transition: all 0.3s; border-radius: 4px; width: 100%; }
@@ -286,7 +308,7 @@
         #screen-game { background: #000; z-index: 90000; padding-top: 0 !important; display: flex; flex-direction: column; }
         #game-frame { flex: 1; width: 100vw; border: none; background: transparent; }
         
-        .itch-warning { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: var(--plasma-sec); font-size: 0.9rem; text-align: center; background: rgba(5,1,10,0.9); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--plasma-sec); box-shadow: 0 0 15px rgba(252, 238, 10, 0.3); z-index: 999999; display: none; backdrop-filter: blur(5px); width: 90%; max-width: 500px; }
+        .itch-warning { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: var(--plasma-sec); font-size: 0.9rem; text-align: center; background: rgba(5,1,10,0.9); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--plasma-sec); box-shadow: 0 0 15px rgba(252, 238, 10, 0.3); z-index: 999999; display: none; backdrop-filter: blur(5px); width: 90%; max-width: 500px; font-family: 'Courier New', Courier, Arial, sans-serif; }
         .itch-warning.visible { display: block; animation: fadeInItch 1s forwards; }
         @keyframes fadeInItch { from { opacity: 0; bottom: 0; } to { opacity: 1; bottom: 20px; } }
 
@@ -307,7 +329,7 @@
             #lang-cycle-btn { min-width: 75px; font-size: 0.75rem; }
         }
 
-        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE === */
+        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.13 === */
         @media (orientation: landscape) and (max-height: 600px) {
             :root {
                 --pyr-base-scale: 0.35;   
@@ -324,7 +346,8 @@
             #screen-game { display: flex !important; overflow: hidden !important; padding-top: 0 !important; }
             
             .typewriter-area.move-up { top: 32vh; transform: translateX(-50%) scale(0.8); }
-            .coin-wrapper { top: 62vh !important; }
+            /* Moneta abbassata proporzionalmente in landscape */
+            .coin-wrapper { top: 68vh !important; }
             .coin-wrapper.show { transform: translate(-50%, -50%) scale(0.45) !important; display: block; }
             .coin-slot-container { top: 88vh !important; transform: translateX(-50%) scale(0.6); }
 
@@ -341,7 +364,7 @@
             .help-list { font-size: 0.8rem; margin: 10px 0 10px 15px; }
         }
         
-        .help-list { text-align: left; margin: 15px 0 15px 25px; color: #fff; font-family: 'Courier New', Courier, monospace; }
+        .help-list { text-align: left; margin: 15px 0 15px 25px; color: #fff; font-family: 'Courier New', Courier, Arial, monospace; }
         .help-list li { margin-bottom: 8px; text-shadow: none; } .help-highlight { color: var(--laser-sec); font-weight: bold; }
     </style>
 </head>
@@ -351,24 +374,35 @@
 
     <nav class="system-bar dock-top" id="sys-bar" aria-label="System Menu" role="navigation">
         <div class="sys-group">
-            <button class="sys-btn has-tooltip home-btn hover-snd click-snd" id="btn-home" onclick="navHome()" data-i18n="btn_home" data-i18n-tooltip="tt_home">◀ HOME</button>
-            <button class="sys-btn has-tooltip btn-back hover-snd click-snd" id="btn-back" onclick="navTo('screen-gateway')" data-i18n="btn_back" data-i18n-tooltip="tt_back">◀ RIT.</button>
+            <button class="sys-btn has-tooltip home-btn hover-snd click-snd" id="btn-home" onclick="navHome()" data-i18n-tooltip="tt_home" aria-label="Home">
+                <span class="btn-text" data-i18n="btn_home">◀ HOME</span>
+            </button>
+            <button class="sys-btn has-tooltip btn-back hover-snd click-snd" id="btn-back" onclick="navTo('screen-gateway')" data-i18n-tooltip="tt_back" aria-label="Indietro">
+                <span class="btn-text" data-i18n="btn_back">◀ RIT.</span>
+            </button>
             
+            <!-- Aggiunto aria-hidden="true" all'SVG per evitare confusione sugli screen reader -->
             <button class="sys-btn has-tooltip btn-exit-bar hover-snd click-snd no-rotate" id="btn-exit" onclick="exitGame()" data-i18n-tooltip="tt_exit" aria-label="Chiudi Gioco">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
             </button>
 
-            <button class="sys-btn has-tooltip hover-snd click-snd" id="help-btn" onclick="openHelp()" style="color: var(--laser-sec); border-color: var(--laser-sec);" data-i18n-tooltip="tt_help">?</button>
+            <button class="sys-btn has-tooltip hover-snd click-snd" id="help-btn" onclick="openHelp()" style="color: var(--laser-sec); border-color: var(--laser-sec);" data-i18n-tooltip="tt_help" aria-label="Guida di Sistema">?</button>
         </div>
 
         <div class="sys-group">
-            <button class="sys-btn has-tooltip hover-snd click-snd no-rotate" id="dock-btn" onclick="cycleDock()" data-i18n-tooltip="tt_dock">
+            <button class="sys-btn has-tooltip hover-snd click-snd no-rotate" id="dock-btn" onclick="cycleDock()" data-i18n-tooltip="tt_dock" aria-label="Ruota Barra di Sistema">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
             </button>
-            <button class="sys-btn has-tooltip hover-snd click-snd" id="pwa-install-btn" data-i18n-tooltip="tt_install"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>&nbsp;APP</button>
-            <button class="sys-btn has-tooltip active hover-snd click-snd no-rotate" id="audio-btn" onclick="toggleAudio()" data-i18n-tooltip="tt_audio">🔊</button>
-            <button class="sys-btn has-tooltip hover-snd click-snd no-rotate" id="fs-btn" onclick="toggleFullScreen()" data-i18n-tooltip="tt_fs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg></button>
-            <button class="sys-btn has-tooltip active lang-btn hover-snd click-snd" id="lang-cycle-btn" onclick="cycleLang()" data-i18n-tooltip="tt_lang">LANG: IT</button>
+            <button class="sys-btn has-tooltip hover-snd click-snd" id="pwa-install-btn" data-i18n-tooltip="tt_install" aria-label="Installa App">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>&nbsp;<span class="btn-text">APP</span>
+            </button>
+            <button class="sys-btn has-tooltip active hover-snd click-snd no-rotate" id="audio-btn" onclick="toggleAudio()" data-i18n-tooltip="tt_audio" aria-label="Attiva/Disattiva Audio">🔊</button>
+            <button class="sys-btn has-tooltip hover-snd click-snd no-rotate" id="fs-btn" onclick="toggleFullScreen()" data-i18n-tooltip="tt_fs" aria-label="Attiva Schermo Intero">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+            </button>
+            <button class="sys-btn has-tooltip active lang-btn hover-snd click-snd" id="lang-cycle-btn" onclick="cycleLang()" data-i18n-tooltip="tt_lang" aria-label="Cambia Lingua">
+                <span class="btn-text" id="lang-text">LANG: IT</span>
+            </button>
         </div>
     </nav>
 
@@ -387,7 +421,7 @@
             <div class="coin-wrapper" id="coin-wrapper">
                 <div class="finger-guide" id="finger-guide">👆</div>
                 <div class="coin-draggable hover-snd" id="drag-coin" role="button" tabindex="0" aria-label="Drag Coin to Boot">
-                    <svg viewBox="0 0 100 100" class="coin-svg">
+                    <svg viewBox="0 0 100 100" class="coin-svg" aria-hidden="true">
                         <defs><path id="coinPathTop" d="M 15,50 a 35,35 0 1,1 70,0" /><path id="coinPathBot" d="M 85,50 a 35,35 0 1,1 -70,0" /></defs>
                         <circle cx="50" cy="50" r="45" fill="#0a0514" stroke="#00ffcc" stroke-width="2"/>
                         <text fill="#00ffcc" font-size="9" font-family="monospace" font-weight="bold" letter-spacing="2"><textPath href="#coinPathTop" startOffset="50%" text-anchor="middle">THE OLDSMOKE</textPath></text>
@@ -396,7 +430,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="coin-slot-container" id="coin-slot">
+            <div class="coin-slot-container" id="coin-slot" aria-hidden="true">
                 <div class="coin-slot-hole"></div><div class="coin-slot-front"></div>
             </div>
         </div>
@@ -424,9 +458,9 @@
         <h2 class="section-title laser-title" data-i18n="gate_git_title">/// Server Hub</h2>
         <div class="slider-section"><div class="slider-wrapper" id="wrap-github"></div>
             <div class="slider-bottom-controls">
-                <button class="nav-btn laser-btn prev-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_prev">[&lt;]</button>
+                <button class="nav-btn laser-btn prev-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_prev" aria-label="Precedente">[&lt;]</button>
                 <div class="slider-indicators" id="ind-github" role="tablist"></div>
-                <button class="nav-btn laser-btn next-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_next">[&gt;]</button>
+                <button class="nav-btn laser-btn next-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_next" aria-label="Successivo">[&gt;]</button>
             </div>
         </div>
     </div>
@@ -435,9 +469,9 @@
         <h2 class="section-title plasma-title" data-i18n="gate_itch_title">>_ Mirror Nodes</h2>
         <div class="slider-section"><div class="slider-wrapper" id="wrap-itch"></div>
             <div class="slider-bottom-controls">
-                <button class="nav-btn plasma-btn prev-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_prev">[&lt;]</button>
+                <button class="nav-btn plasma-btn prev-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_prev" aria-label="Precedente">[&lt;]</button>
                 <div class="slider-indicators" id="ind-itch" role="tablist"></div>
-                <button class="nav-btn plasma-btn next-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_next">[&gt;]</button>
+                <button class="nav-btn plasma-btn next-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_next" aria-label="Successivo">[&gt;]</button>
             </div>
         </div>
     </div>
@@ -460,7 +494,7 @@
 
     <div id="help-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
         <div class="modal-box" style="border-color: var(--laser-sec);">
-            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.10</h2>
+            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.13</h2>
             <div class="overlay-text" style="text-align: left;">
                 <span data-i18n="help_p1" class="help-highlight">Cos'è TheOldSmokeArcade1984?</span><br>
                 <span data-i18n="help_p2">Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.</span>
@@ -475,7 +509,7 @@
     </div>
 
     <script>
-        console.log("%c/// MANIFESTO DI SISTEMA V6.10 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
+        console.log("%c/// MANIFESTO DI SISTEMA V6.13 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
 
         const langsList = ['it', 'en', 'es', 'de', 'fr', 'ja', 'zh'];
         
@@ -534,11 +568,18 @@
         function cycleLang() { snd.playClick(); let nextIndex = (langsList.indexOf(currentLang) + 1) % langsList.length; setLang(langsList[nextIndex]); }
         
         function setLang(lang) { 
-            currentLang = lang; document.getElementById('lang-cycle-btn').innerText = 'LANG: ' + lang.toUpperCase();
-            document.querySelectorAll('[data-i18n]').forEach(el => { if (translations[lang][el.getAttribute('data-i18n')]) el.innerText = translations[lang][el.getAttribute('data-i18n')]; }); 
+            currentLang = lang; 
+            const langEl = document.getElementById('lang-text');
+            if(langEl) langEl.innerText = 'LANG: ' + lang.toUpperCase();
+
+            document.querySelectorAll('[data-i18n]').forEach(el => { 
+                if (translations[lang][el.getAttribute('data-i18n')]) {
+                    el.innerText = translations[lang][el.getAttribute('data-i18n')]; 
+                }
+            }); 
+            
             document.querySelectorAll('.game-link').forEach(link => { const index = parseInt(link.getAttribute('data-index')); const isPlasma = link.classList.contains('card-plasma'); const gameObj = isPlasma ? gamesItch[index] : gamesGithub[index]; const descP = link.querySelector('.dyn-desc'); if (descP) descP.innerText = gameObj.cardDesc[lang] || gameObj.cardDesc['en'] || gameObj.cardDesc['it']; });
             
-            // Applica la classe per il tooltip Javascript
             document.querySelectorAll('[data-i18n-tooltip]').forEach(el => { 
                 const ttText = translations[lang][el.getAttribute('data-i18n-tooltip')];
                 if(ttText && !el.classList.contains('card-base')) { 
@@ -549,61 +590,10 @@
             });
         }
 
-        /* === SISTEMA TOOLTIP JAVASCRIPT GLOBALE (V6.10) === */
-        const tooltipEl = document.createElement('div');
-        tooltipEl.id = 'os-tooltip';
-        document.body.appendChild(tooltipEl);
-
-        function showTooltip(btn) {
-            const text = btn.getAttribute('data-tooltip');
-            if (!text) return;
-            tooltipEl.innerText = text;
-            tooltipEl.classList.add('show');
-            
-            const rect = btn.getBoundingClientRect();
-            const bar = document.getElementById('sys-bar');
-            
-            let top = 0, left = 0;
-            
-            // Calcolo posizioni assolute sganciate dai CSS container
-            if (bar.classList.contains('dock-left') && bar.contains(btn)) {
-                left = rect.right + 12;
-                top = rect.top + (rect.height / 2) - (tooltipEl.offsetHeight / 2);
-            } else if (bar.classList.contains('dock-right') && bar.contains(btn)) {
-                left = rect.left - tooltipEl.offsetWidth - 12;
-                top = rect.top + (rect.height / 2) - (tooltipEl.offsetHeight / 2);
-            } else if (bar.classList.contains('dock-bottom') && bar.contains(btn)) {
-                left = rect.left + (rect.width / 2) - (tooltipEl.offsetWidth / 2);
-                top = rect.top - tooltipEl.offsetHeight - 12;
-            } else { // Top Dock o Schermata Centrale
-                left = rect.left + (rect.width / 2) - (tooltipEl.offsetWidth / 2);
-                top = bar.contains(btn) ? rect.bottom + 12 : rect.top - tooltipEl.offsetHeight - 12;
-            }
-            
-            // Previene sbordamenti dello schermo
-            if (left < 10) left = 10;
-            if (left + tooltipEl.offsetWidth > window.innerWidth - 10) left = window.innerWidth - tooltipEl.offsetWidth - 10;
-            if (top < 10) top = 10;
-            if (top + tooltipEl.offsetHeight > window.innerHeight - 10) top = window.innerHeight - tooltipEl.offsetHeight - 10;
-            
-            tooltipEl.style.left = left + 'px';
-            tooltipEl.style.top = top + 'px';
-        }
-
-        function hideTooltip() { tooltipEl.classList.remove('show'); }
-
-        document.addEventListener('mouseover', (e) => { const btn = e.target.closest('.has-tooltip'); if (btn) showTooltip(btn); });
-        document.addEventListener('mouseout', (e) => { if (e.target.closest('.has-tooltip')) hideTooltip(); });
-        document.addEventListener('focusin', (e) => { const btn = e.target.closest('.has-tooltip'); if (btn) showTooltip(btn); });
-        document.addEventListener('focusout', (e) => { if (e.target.closest('.has-tooltip')) hideTooltip(); });
-
-
-        /* === LOGICA DOCK === */
         const dockPositions = ['dock-top', 'dock-right', 'dock-bottom', 'dock-left'];
         let currentDockIndex = 0;
         function cycleDock() {
             snd.playClick();
-            hideTooltip();
             const bar = document.getElementById('sys-bar');
             bar.classList.remove(dockPositions[currentDockIndex]);
             currentDockIndex = (currentDockIndex + 1) % dockPositions.length;
@@ -728,14 +718,14 @@
         
         function toggleFullScreen() { const btn = document.getElementById('fs-btn'); const doc = document.documentElement; if (!document.fullscreenElement) { if (doc.requestFullscreen) doc.requestFullscreen().then(() => btn.classList.add('active')).catch(()=>{}); } else { if (document.exitFullscreen) { document.exitFullscreen(); btn.classList.remove('active'); } } }
 
-        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.10 */
+        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.13 */
         let deferredPrompt; const installBtn = document.getElementById('pwa-install-btn'); window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'flex'; });
         installBtn.addEventListener('click', async () => { snd.playClick(); if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') installBtn.style.display = 'none'; deferredPrompt = null; } });
         
         if ('serviceWorker' in navigator) { 
             window.addEventListener('load', () => { 
-                navigator.serviceWorker.register('./sw.js?v=6.10').then(reg => { 
-                    console.log('SW v6.10 Registrato');
+                navigator.serviceWorker.register('./sw.js?v=6.13').then(reg => { 
+                    console.log('SW v6.13 Registrato');
                     reg.onupdatefound = () => {
                         const installingWorker = reg.installing;
                         installingWorker.onstatechange = () => {
