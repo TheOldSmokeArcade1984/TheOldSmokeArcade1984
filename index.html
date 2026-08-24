@@ -655,7 +655,7 @@
         function skipBoot() { if(!isBooting) return; clearTimeout(bootInterval); try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (err) {} completeBoot(); }
 
         // --- INIZIO BYPASS BOT E IA ---
-        const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|yandex|duckduckbot|slurp|baiduspider|gptbot|chatgpt-user|anthropic-ai|claudebot|applebot/i.test(navigator.userAgent);
+        const isBot = /bot|crawler|spider|crawling|googlebot|google-inspectiontool|chrome-lighthouse|bingbot|yandex|duckduckbot|slurp|baiduspider|gptbot|chatgpt-user|anthropic-ai|claudebot|applebot/i.test(navigator.userAgent);
 
         if (isBot) {
             console.log('[OS] Crawler o IA rilevato: Bypass boot sequence.');
