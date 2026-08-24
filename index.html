@@ -654,10 +654,35 @@
         function completeBoot() { document.getElementById('screen-boot').setAttribute('aria-hidden', 'true'); document.getElementById('screen-gateway').setAttribute('aria-hidden', 'false'); isBooting = false; snd.playBoot(); navTo('screen-gateway'); setTimeout(() => document.getElementById('sys-bar').classList.add('visible'), 800); }
         function skipBoot() { if(!isBooting) return; clearTimeout(bootInterval); try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (err) {} completeBoot(); }
 
-        startBootSequence();
+        // --- INIZIO BYPASS BOT E IA ---
+        const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|yandex|duckduckbot|slurp|baiduspider|gptbot|chatgpt-user|anthropic-ai|claudebot|applebot/i.test(navigator.userAgent);
+
+        if (isBot) {
+            console.log('[OS] Crawler o IA rilevato: Bypass boot sequence.');
+            isBooting = false;
+            
+            // Nasconde forzatamente la schermata di boot
+            const bootScreen = document.getElementById('screen-boot');
+            bootScreen.setAttribute('aria-hidden', 'true');
+            bootScreen.classList.remove('active');
+            bootScreen.style.display = 'none'; 
+            
+            // Mostra immediatamente il Gateway (il menu principale)
+            const gateway = document.getElementById('screen-gateway');
+            gateway.style.visibility = 'visible';
+            gateway.classList.add('active');
+            gateway.setAttribute('aria-hidden', 'false');
+            
+            // Mostra la barra di sistema 
+            document.getElementById('sys-bar').classList.add('visible');
+        } else {
+            // Esecuzione standard per utenti umani
+            startBootSequence();
+        }
+        // --- FINE BYPASS BOT E IA ---
+
         document.body.addEventListener('click', () => { try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (e) {} }, { once: true });
         document.addEventListener('keydown', e => { if((e.key === 'Enter' || e.key === ' ') && e.target.getAttribute('role') === 'button') { e.preventDefault(); e.target.click(); } });
-
         function navTo(screenId) {
             document.querySelectorAll('.screen').forEach(s => { s.classList.remove('active'); s.setAttribute('aria-hidden', 'true'); setTimeout(() => { if(!s.classList.contains('active')) s.style.visibility = 'hidden'; }, 800); });
             const targetScreen = document.getElementById(screenId); targetScreen.style.visibility = 'visible'; targetScreen.classList.add('active'); targetScreen.setAttribute('aria-hidden', 'false');
