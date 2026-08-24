@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TheOldSmokeArcade1984 - OS v6.15</title>
+    <title>TheOldSmokeArcade1984 - OS v6.16</title>
     
     <meta name="description" content="TheOldSmokeArcade1984 OS - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi in un'app e 4 titoli singoli (PWA). Privacy by design, accessibilità totale.">
     <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, theoldsmokearcade1984, HTML5 games, accessibilità, screen reader">
@@ -43,7 +43,7 @@
       "description": "Sistema Operativo virtuale HTML5 che funge da Hub per videogiochi indie retro-cyberpunk. Architettura basata su due nodi: 'Server Hub' (giochi nativi ospitati su GitHub Pages tramite Iframe) e 'Mirror Nodes' (moduli esterni integrati tramite widget Itch.io).",
       "applicationCategory": "GameApplication",
       "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
-      "softwareVersion": "6.15",
+      "softwareVersion": "6.16",
       "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie", "Logic Puzzle", "Tactical Stealth"],
       "accessibilityFeature": ["alternativeText", "ARIA", "keyboardNavigation", "screenReader", "dynamicTooltips"],
       "accessibilityControl": ["fullKeyboardControl", "fullMouseControl", "fullTouchControl"],
@@ -80,7 +80,7 @@
     <link rel="mask-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>" color="#05010a">
     <meta name="theme-color" content="#05010a">
     <meta name="msapplication-TileColor" content="#05010a">
-    <link rel="manifest" href="manifest-v3.json?v=6.15">
+    <link rel="manifest" href="manifest-v3.json?v=6.16">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
@@ -327,7 +327,7 @@
             #lang-cycle-btn { min-width: 75px; font-size: 0.75rem; }
         }
 
-        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.15 === */
+        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.16 === */
         @media (orientation: landscape) and (max-height: 600px) {
             :root {
                 --pyr-base-scale: 0.35;   
@@ -490,7 +490,7 @@
 
     <div id="help-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
         <div class="modal-box" style="border-color: var(--laser-sec);">
-            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.15</h2>
+            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.16</h2>
             <div class="overlay-text" style="text-align: left;">
                 <span data-i18n="help_p1" class="help-highlight">Cos'è TheOldSmokeArcade1984?</span><br>
                 <span data-i18n="help_p2">Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.</span>
@@ -505,7 +505,7 @@
     </div>
 
     <script>
-        console.log("%c/// MANIFESTO DI SISTEMA V6.15 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
+        console.log("%c/// MANIFESTO DI SISTEMA V6.16 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
 
         const langsList = ['it', 'en', 'es', 'de', 'fr', 'ja', 'zh'];
         
@@ -739,14 +739,14 @@
         
         function toggleFullScreen() { const btn = document.getElementById('fs-btn'); const doc = document.documentElement; if (!document.fullscreenElement) { if (doc.requestFullscreen) doc.requestFullscreen().then(() => btn.classList.add('active')).catch(()=>{}); } else { if (document.exitFullscreen) { document.exitFullscreen(); btn.classList.remove('active'); } } }
 
-        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.15 */
+        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.16 */
         let deferredPrompt; const installBtn = document.getElementById('pwa-install-btn'); window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'flex'; });
         installBtn.addEventListener('click', async () => { snd.playClick(); if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') installBtn.style.display = 'none'; deferredPrompt = null; } });
         
         if ('serviceWorker' in navigator) { 
             window.addEventListener('load', () => { 
-                navigator.serviceWorker.register('./sw.js?v=6.15').then(reg => { 
-                    console.log('SW v6.15 Registrato');
+                navigator.serviceWorker.register('./sw.js?v=6.16').then(reg => { 
+                    console.log('SW v6.16 Registrato');
                     reg.onupdatefound = () => {
                         const installingWorker = reg.installing;
                         installingWorker.onstatechange = () => {
