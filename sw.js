@@ -1,4 +1,4 @@
-const CACHE_NAME = 'oldsmoke-os-v6.15';
+const CACHE_NAME = 'oldsmoke-os-v6.16';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -20,14 +20,14 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Pulizia cache vecchie (rimuoverà in automatico v6.14 e precedenti)
+// Pulizia cache vecchie (rimuoverà in automatico v6.15 e precedenti)
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cache) => {
                     if (cache !== CACHE_NAME) {
-                        console.log('[SW v6.15] Eliminazione vecchia cache:', cache);
+                        console.log('[SW v6.16] Eliminazione vecchia cache:', cache);
                         return caches.delete(cache);
                     }
                 })
