@@ -2,8 +2,8 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TheOldSmokeArcade1984 - OS v6.16</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>TheOldSmokeArcade1984 - OS v6.20</title>
     
     <meta name="description" content="TheOldSmokeArcade1984 OS - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi in un'app e 4 titoli singoli (PWA). Privacy by design, accessibilità totale.">
     <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, theoldsmokearcade1984, HTML5 games, accessibilità, screen reader">
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://theoldsmokearcade1984.github.io/">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="TheOldSmokeArcade1984 - OS">
+    <meta property="og:title" content="TheOldSmokeArcade1984 - OS v6.20">
     <meta property="og:description" content="Entra nel terminale. Collezione indie: 1 app da 12 giochi + 4 titoli singoli. PWA accessibile, navigazione da tastiera, zero tracciamento.">
     <meta property="og:url" content="https://theoldsmokearcade1984.github.io/">
     <meta property="og:site_name" content="TheOldSmokeArcade1984">
@@ -43,7 +43,7 @@
       "description": "Sistema Operativo virtuale HTML5 che funge da Hub per videogiochi indie retro-cyberpunk. Architettura basata su due nodi: 'Server Hub' (giochi nativi ospitati su GitHub Pages tramite Iframe) e 'Mirror Nodes' (moduli esterni integrati tramite widget Itch.io).",
       "applicationCategory": "GameApplication",
       "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
-      "softwareVersion": "6.16",
+      "softwareVersion": "6.20",
       "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie", "Logic Puzzle", "Tactical Stealth"],
       "accessibilityFeature": ["alternativeText", "ARIA", "keyboardNavigation", "screenReader", "dynamicTooltips"],
       "accessibilityControl": ["fullKeyboardControl", "fullMouseControl", "fullTouchControl"],
@@ -72,7 +72,6 @@
     <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
     
-    <!-- Meta tag corretti e modernizzati per le Web App -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OldSmoke OS">
@@ -80,10 +79,16 @@
     <link rel="mask-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>" color="#05010a">
     <meta name="theme-color" content="#05010a">
     <meta name="msapplication-TileColor" content="#05010a">
-    <link rel="manifest" href="manifest-v3.json?v=6.16">
+    <link rel="manifest" href="manifest-v3.json?v=6.20">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        @font-face {
+            font-family: 'VT323';
+            src: url('./VT323-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
         :root {
             --bg-void: #05010a; --bg-panel: #0a0514;
@@ -110,6 +115,16 @@
             .global-crt::after { content: " "; display: block; position: absolute; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03)); z-index: 2; background-size: 100% 3px, 3px 100%; pointer-events: none; }
         }
         @keyframes crtFlicker { 0% { opacity: 0.97; } 50% { opacity: 1; } 100% { opacity: 0.97; } }
+
+        /* Gestione Accessibilità: Riduzione del Movimento */
+        @media (prefers-reduced-motion: reduce) {
+            .global-crt { animation: none !important; }
+            .finger-guide { animation: none !important; opacity: 1 !important; transform: translateY(60px) rotate(-15deg) !important; }
+            .cube { animation: none !important; }
+            .pyramid { animation: none !important; }
+            .card-base.active { animation: none !important; transform: translateZ(0) !important; }
+            .card-laser::before, .card-plasma::before { animation: none !important; }
+        }
 
         .screen { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; z-index: 10; transform: scale(1.05) translateZ(-100px); padding-top: 60px; transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease; }
         #screen-boot { padding-top: 0; } 
@@ -190,6 +205,10 @@
         .btn-back:hover { background: var(--laser-sec); color: var(--text-main); box-shadow: 0 0 15px var(--laser-sec); }
         .btn-exit-bar:hover { background: var(--laser-pri); color: var(--text-main); box-shadow: 0 0 15px var(--laser-pri); }
 
+        #update-btn { display: none; color: #fff; border-color: var(--plasma-sec); background: rgba(252, 238, 10, 0.1); }
+        #update-btn.visible { display: flex; animation: pulseUpdate 2s infinite; }
+        @keyframes pulseUpdate { 0% { box-shadow: 0 0 0 0 rgba(252, 238, 10, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(252, 238, 10, 0); } 100% { box-shadow: 0 0 0 0 rgba(252, 238, 10, 0); } }
+
         /* === BOOT === */
         #screen-boot { background: var(--bg-void); z-index: 9000; cursor: default; }
         #boot-stage { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; font-family: 'VT323', monospace; transition: transform 0.3s ease; }
@@ -245,7 +264,8 @@
         .gateway-plasma { background: rgba(188, 19, 254, 0.05); border: 2px solid var(--plasma-pri); color: var(--plasma-pri); box-shadow: inset 0 0 20px rgba(188, 19, 254, 0.2), 0 0 20px rgba(188, 19, 254, 0.1); }
         .gateway-plasma:hover { background: rgba(188, 19, 254, 0.15); box-shadow: inset 0 0 40px rgba(188, 19, 254, 0.4), 0 0 40px rgba(188, 19, 254, 0.4); transform: translateY(-5px) scale(1.05); }
         .gateway-desc { font-size: 0.8rem; color: var(--text-dim); font-weight: normal; }
-        .privacy-note { font-size: 0.8rem; color: #555; margin-top: 40px; text-align: center; text-transform: uppercase; letter-spacing: 1px; width: 100%; }
+        
+        .privacy-note { font-size: 0.8rem; color: var(--text-dim); margin-top: 40px; text-align: center; text-transform: uppercase; letter-spacing: 1px; width: 100%; }
 
         /* === SLIDERS E CARDS === */
         .section-title { font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; text-align: center; width: 100%; }
@@ -260,6 +280,8 @@
         .plasma-btn { color: var(--plasma-pri); text-shadow: 0 0 15px rgba(188, 19, 254, 0.8); } .plasma-btn:hover { text-shadow: 0 0 25px var(--plasma-pri); }
         .slider-indicators { display: flex; justify-content: center; align-items: center; gap: 12px; }
         .dot { width: 12px; height: 12px; background: #333; border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        
+        .dot:focus-visible { outline: 2px solid var(--text-main); outline-offset: 2px; }
         .laser-zone .dot.active { background: var(--laser-sec); box-shadow: 0 0 15px var(--laser-sec); transform: scale(1.3); }
         .plasma-zone .dot.active { background: var(--plasma-sec); box-shadow: 0 0 15px var(--plasma-sec); transform: scale(1.3); }
         
@@ -327,7 +349,7 @@
             #lang-cycle-btn { min-width: 75px; font-size: 0.75rem; }
         }
 
-        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.16 === */
+        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.20 === */
         @media (orientation: landscape) and (max-height: 600px) {
             :root {
                 --pyr-base-scale: 0.35;   
@@ -363,6 +385,18 @@
         
         .help-list { text-align: left; margin: 15px 0 15px 25px; color: #fff; font-family: 'Courier New', Courier, Arial, monospace; }
         .help-list li { margin-bottom: 8px; text-shadow: none; } .help-highlight { color: var(--laser-sec); font-weight: bold; }
+        
+        /* Directory visibile a pulsante */
+        #directory-overlay .modal-box { text-align: left; }
+        .dir-list { list-style: none; margin: 0; padding: 0; }
+        .dir-list li { margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
+        .dir-list a { color: var(--laser-sec); text-decoration: none; font-family: 'Courier New', monospace; font-size: 1.1rem; transition: text-shadow 0.3s; }
+        .dir-list a:hover, .dir-list a:focus { text-shadow: 0 0 10px var(--laser-sec); outline: none; }
+        .dir-list .itch-link { color: var(--plasma-sec); }
+        .dir-list .itch-link:hover, .dir-list .itch-link:focus { text-shadow: 0 0 10px var(--plasma-sec); }
+        .dir-badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-right: 10px; vertical-align: middle; }
+        .dir-badge-git { background: rgba(0, 255, 204, 0.1); border: 1px solid var(--laser-sec); color: var(--laser-sec); }
+        .dir-badge-itch { background: rgba(252, 238, 10, 0.1); border: 1px solid var(--plasma-sec); color: var(--plasma-sec); }
     </style>
 </head>
 <body>
@@ -383,9 +417,15 @@
             </button>
 
             <button class="sys-btn has-tooltip hover-snd click-snd" id="help-btn" onclick="openHelp()" style="color: var(--laser-sec); border-color: var(--laser-sec);" data-i18n-tooltip="tt_help" aria-label="Guida di Sistema">?</button>
+            <button class="sys-btn has-tooltip hover-snd click-snd" id="dir-btn" onclick="openDirectory()" data-i18n-tooltip="tt_dir" aria-label="Directory Sistema">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            </button>
         </div>
 
         <div class="sys-group">
+            <button class="sys-btn has-tooltip hover-snd click-snd no-rotate" id="update-btn" onclick="applyUpdate()" data-i18n-tooltip="tt_update" aria-label="Aggiorna OS">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.21l5.67-5.67"/></svg>&nbsp;<span class="btn-text">UPDATE</span>
+            </button>
             <button class="sys-btn has-tooltip hover-snd click-snd no-rotate" id="dock-btn" onclick="cycleDock()" data-i18n-tooltip="tt_dock" aria-label="Ruota Barra di Sistema">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
             </button>
@@ -399,6 +439,7 @@
             <button class="sys-btn has-tooltip active lang-btn hover-snd click-snd" id="lang-cycle-btn" onclick="cycleLang()" data-i18n-tooltip="tt_lang" aria-label="Cambia Lingua">
                 <span class="btn-text" id="lang-text">LANG: IT</span>
             </button>
+            <div class="sys-btn no-rotate" id="os-clock" style="cursor:default; border-color:transparent; background:transparent; font-family: 'VT323', monospace; font-size: 1.3rem; color: var(--laser-sec); text-shadow: 0 0 5px var(--laser-sec); padding: 0 5px;" aria-hidden="true">00:00</div>
         </div>
     </nav>
 
@@ -440,11 +481,11 @@
         <div class="gateway-controls" role="group" aria-label="Main Navigation">
             <div class="gateway-btn gateway-laser has-tooltip hover-snd click-snd focus-pad-target" id="gate-git-btn" onclick="navTo('screen-github')" role="button" tabindex="0" data-i18n-tooltip="tt_gate_git">
                 <span data-i18n="gate_git">/// Server Hub [GitHub]</span>
-                <span class="gateway-desc" data-i18n="gate_git_desc">12-in-1 App + 4 Singoli</span>
+                <span class="gateway-desc" data-i18n="gate_git_desc">Gioca subito nel browser</span>
             </div>
             <div class="gateway-btn gateway-plasma has-tooltip hover-snd click-snd focus-pad-target" id="gate-itch-btn" onclick="navTo('screen-itch')" role="button" tabindex="0" data-i18n-tooltip="tt_gate_itch">
                 <span data-i18n="gate_itch">>_ Mirror Nodes [itch.io]</span>
-                <span class="gateway-desc" data-i18n="gate_itch_desc">Standalone & Support</span>
+                <span class="gateway-desc" data-i18n="gate_itch_desc">Download standalone e supporto</span>
             </div>
         </div>
         <div class="privacy-note" data-i18n="privacy_text">Privacy by Design: Nessun tracciamento. Salvataggi in locale.</div>
@@ -490,13 +531,13 @@
 
     <div id="help-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
         <div class="modal-box" style="border-color: var(--laser-sec);">
-            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.16</h2>
+            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.20</h2>
             <div class="overlay-text" style="text-align: left;">
                 <span data-i18n="help_p1" class="help-highlight">Cos'è TheOldSmokeArcade1984?</span><br>
                 <span data-i18n="help_p2">Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.</span>
                 <ul class="help-list">
                     <li data-i18n="help_l1">🎮 Giochi completi in-browser</li>
-                    <li data-i18n="help_l2">🖥️ Zero-Assets (Tutto codice, zero PNG/MP3 esterni)</li>
+                    <li data-i18n="help_l2">🖥️ Zero-Assets (Tutto codice, zero dipendenze esterne)</li>
                     <li data-i18n="help_l3">🔒 Privacy assoluta: no server, no tracking</li>
                 </ul>
             </div>
@@ -504,8 +545,31 @@
         </div>
     </div>
 
+    <!-- Directory di Sistema Reale e Accessibile -->
+    <div id="directory-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dir-title">
+        <div class="modal-box" style="border-color: var(--laser-sec);">
+            <h2 id="dir-title" class="overlay-title">/DIR_OS/PROGETTI</h2>
+            <div class="overlay-text" style="text-align: left;">
+                <ul class="dir-list">
+                    <li><span class="dir-badge dir-badge-git">HUB</span> <a href="https://theoldsmokearcade1984.github.io/TheTwelveClassicGameTheOldSmokeArcade1984/" target="_blank" rel="noopener">Arcade Collection (12-in-1)</a></li>
+                    <li><span class="dir-badge dir-badge-git">HUB</span> <a href="https://theoldsmokearcade1984.github.io/OCTACORE-NULL_SECTOR-Advanced/" target="_blank" rel="noopener">Octacore: Null Sector</a></li>
+                    <li><span class="dir-badge dir-badge-git">HUB</span> <a href="https://theoldsmokearcade1984.github.io/Octacore-Multicore-Battle-AI/" target="_blank" rel="noopener">Octacore Battle AI</a></li>
+                    <li><span class="dir-badge dir-badge-git">HUB</span> <a href="https://theoldsmokearcade1984.github.io/Knight_Tours_GreenEdition/" target="_blank" rel="noopener">Knight's Tour (Green Edition)</a></li>
+                    <li><span class="dir-badge dir-badge-git">HUB</span> <a href="https://theoldsmokearcade1984.github.io/Knigth-s_Tour/" target="_blank" rel="noopener">Knight's Tour (Standard)</a></li>
+                    <li><span class="dir-badge dir-badge-git">HUB</span> <a href="https://theoldsmokearcade1984.github.io/Neon_Specter/" target="_blank" rel="noopener">Neon Specter</a></li>
+                    
+                    <li><span class="dir-badge dir-badge-itch">MIRROR</span> <a href="https://theoldsmokearcade1984.itch.io/theoldsmokearcade1984" target="_blank" rel="noopener" class="itch-link">Arcade Collection (itch.io)</a></li>
+                    <li><span class="dir-badge dir-badge-itch">MIRROR</span> <a href="https://theoldsmokearcade1984.itch.io/protocollo-zero-null-sector" target="_blank" rel="noopener" class="itch-link">Protocollo Zero (itch.io)</a></li>
+                    <li><span class="dir-badge dir-badge-itch">MIRROR</span> <a href="https://theoldsmokearcade1984.itch.io/knight-tour" target="_blank" rel="noopener" class="itch-link">Knight's Tour (itch.io)</a></li>
+                    <li><span class="dir-badge dir-badge-itch">MIRROR</span> <a href="https://theoldsmokearcade1984.itch.io/neon-specter" target="_blank" rel="noopener" class="itch-link">Neon Specter (itch.io)</a></li>
+                </ul>
+            </div>
+            <div class="overlay-controls"><button class="btn-close has-tooltip hover-snd click-snd focus-pad-target" onclick="closeOverlay('directory-overlay')" data-i18n-tooltip="tt_close">[ CHIUDI ]</button></div>
+        </div>
+    </div>
+
     <script>
-        console.log("%c/// MANIFESTO DI SISTEMA V6.16 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
+        console.log("%c/// MANIFESTO DI SISTEMA V6.20 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
 
         const langsList = ['it', 'en', 'es', 'de', 'fr', 'ja', 'zh'];
         
@@ -517,22 +581,23 @@
         let currentLang = detectSystemLanguage();
         let audioEnabled = true;
         let bootInterval, isBooting = true;
+        let pwaUpdateWorker = null;
 
         const translations = {
-            it: { subtitle: "Tutti i progetti", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12-in-1 App + 4 Singoli", gate_itch_desc: "Standalone & Support", btn_init: "Inizializza", btn_cancel: "Annulla", btn_boot: "Avvia Sistema", btn_back: "◀ RIT.", privacy_text: "Privacy by Design: Nessun tracciamento. Salvataggi in locale.", help_p1: "Cos'è TheOldSmokeArcade1984?", help_p2: "Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.", help_l1: "🎮 Giochi completi in-browser", help_l2: "🖥️ Zero-Assets (Tutto codice, zero PNG/MP3 esterni)", help_l3: "🔒 Privacy assoluta: no server, no tracking", skip_hint: "Tocca per Saltare", btn_home: "◀ HOME", itch_warning: "Nota: Chiudi la finestra di Itch.io per tornare al menu principale.",
-                tt_home: "Torna alla Home / Chiudi Gioco", tt_back: "Torna alla schermata precedente", tt_help: "Informazioni sul Sistema", tt_install: "Installa come Web App nativa (PWA)", tt_audio: "Attiva/Disattiva effetti sonori", tt_fs: "Attiva/Disattiva schermo intero", tt_lang: "Cambia la lingua del sistema", tt_gate_git: "Accedi al server principale (HTML5)", tt_gate_itch: "Accedi ai moduli esterni (Iframe)", tt_prev: "Titolo precedente", tt_next: "Titolo successivo", tt_exit: "Termina l'esecuzione e chiudi", tt_boot: "Inizializza ed avvia questo modulo", tt_cancel: "Annulla e chiudi questa finestra", tt_close: "Chiudi", tt_dock: "Sposta la barra di sistema ai lati dello schermo" },
-            en: { subtitle: "All Projects", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12-in-1 App + 4 Singles", gate_itch_desc: "Standalone & Support", btn_init: "Initialize", btn_cancel: "Cancel", btn_boot: "Boot System", btn_back: "◀ BACK", privacy_text: "Privacy by Design: No tracking. Local saves only.", help_p1: "What is TheOldSmokeArcade1984?", help_p2: "Not just a website. It's a virtual OS acting as a Hub for my indie game collection.", help_l1: "🎮 Full in-browser games", help_l2: "🖥️ Zero-Assets (Pure code, no external PNG/MP3)", help_l3: "🔒 Absolute privacy: no servers, no tracking", skip_hint: "Tap to Skip", btn_home: "◀ HOME", itch_warning: "Note: Close the Itch.io window to return to the main menu.",
-                tt_home: "Return to Home / Close Game", tt_back: "Return to previous screen", tt_help: "System Information", tt_install: "Install as native Web App (PWA)", tt_audio: "Toggle sound effects", tt_fs: "Toggle fullscreen mode", tt_lang: "Change system language", tt_gate_git: "Access main server (HTML5)", tt_gate_itch: "Access external modules (Iframe)", tt_prev: "Previous title", tt_next: "Next title", tt_exit: "Terminate execution and close", tt_boot: "Initialize and boot this module", tt_cancel: "Cancel and close this window", tt_close: "Close", tt_dock: "Move system bar to screen edges" },
-            es: { subtitle: "Todos los proyectos", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "App 12-en-1 + 4 Singles", gate_itch_desc: "Independiente y Soporte", btn_init: "Inicializar", btn_cancel: "Cancelar", btn_boot: "Iniciar Sistema", btn_back: "◀ VOLVER", privacy_text: "Privacy by Design: Sin rastreo. Guardado local.", help_p1: "¿Qué es TheOldSmokeArcade1984?", help_p2: "No es solo un sitio web. Es un SO virtual que actúa como Hub para mi colección indie.", help_l1: "🎮 Juegos completos en navegador", help_l2: "🖥️ Zero-Assets (Puro código, sin PNG/MP3)", help_l3: "🔒 Privacidad absoluta: sin servidores", skip_hint: "Toca para Saltar", btn_home: "◀ INICIO", itch_warning: "Nota: Cierra la ventana de Itch.io para volver al menú principal.",
-                tt_home: "Volver a Inicio / Cerrar juego", tt_back: "Volver a la pantalla anterior", tt_help: "Información del sistema", tt_install: "Instalar como Web App nativa (PWA)", tt_audio: "Activar/Desactivar sonido", tt_fs: "Alternar pantalla completa", tt_lang: "Cambiar idioma del sistema", tt_gate_git: "Acceder al servidor principal (HTML5)", tt_gate_itch: "Acceder a módulos externos (Iframe)", tt_prev: "Título anterior", tt_next: "Título siguiente", tt_exit: "Terminar ejecución y cerrar", tt_boot: "Inicializar y arrancar este módulo", tt_cancel: "Cancelar y cerrar esta ventana", tt_close: "Cerrar", tt_dock: "Mover la barra del sistema a los bordes" },
-            de: { subtitle: "Alle Projekte", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12-in-1 App + 4 Einzelspiele", gate_itch_desc: "Standalone & Support", btn_init: "Initialisieren", btn_cancel: "Abbrechen", btn_boot: "System Starten", btn_back: "◀ ZURÜCK", privacy_text: "Privacy by Design: Kein Tracking. Nur lokales Speichern.", help_p1: "Was ist TheOldSmokeArcade1984?", help_p2: "Nicht nur eine Website. Ein virtuelles OS als Hub für meine Indie-Sammlung.", help_l1: "🎮 Komplette Browser-Spiele", help_l2: "🖥️ Zero-Assets (Nur Code, keine PNG/MP3)", help_l3: "🔒 Absolute Privatsphäre: keine Server", skip_hint: "Tippen zum Überspringen", btn_home: "◀ START", itch_warning: "Hinweis: Schließen Sie das Itch.io-Fenster, um zum Hauptmenü zurückzukehren.",
-                tt_home: "Zurück zur Startseite / Spiel schließen", tt_back: "Zurück zum vorherigen Bildschirm", tt_help: "Systeminformationen", tt_install: "Als native Web App (PWA) installieren", tt_audio: "Töne ein-/ausschalten", tt_fs: "Vollbild umschalten", tt_lang: "Systemsprache ändern", tt_gate_git: "Hauptserver aufrufen (HTML5)", tt_gate_itch: "Externe Module aufrufen (Iframe)", tt_prev: "Vorheriger Titel", tt_next: "Nächster Titel", tt_exit: "Ausführung beenden und schließen", tt_boot: "Modul initialisieren und starten", tt_cancel: "Abbrechen und Fenster schließen", tt_close: "Schließen", tt_dock: "Systemleiste verschieben" },
-            fr: { subtitle: "Tous les projets", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "App 12-en-1 + 4 Jeux", gate_itch_desc: "Autonome & Support", btn_init: "Initialiser", btn_cancel: "Annuler", btn_boot: "Démarrer Système", btn_back: "◀ RETOUR", privacy_text: "Privacy by Design: Aucun suivi. Sauvegarde locale.", help_p1: "Qu'est-ce que TheOldSmokeArcade1984?", help_p2: "Pas juste un site web. C'est un OS virtuel servant de Hub pour ma collection indé.", help_l1: "🎮 Jeux complets sur navigateur", help_l2: "🖥️ Zero-Assets (Code pur, sans PNG/MP3)", help_l3: "🔒 Confidentialité absolue : sans serveurs", skip_hint: "Appuyez pour Passer", btn_home: "◀ ACCUEIL", itch_warning: "Note : Fermez la fenêtre Itch.io pour retourner au menu principal.",
-                tt_home: "Retour à l'accueil / Fermer le jeu", tt_back: "Retour à l'écran précédent", tt_help: "Informations système", tt_install: "Installer comme Web App native (PWA)", tt_audio: "Activer/Désactiver le son", tt_fs: "Basculer en plein écran", tt_lang: "Changer la langue du système", tt_gate_git: "Accéder au serveur principal (HTML5)", tt_gate_itch: "Accéder aux modules externes (Iframe)", tt_prev: "Titre précédent", tt_next: "Titre suivant", tt_exit: "Terminer l'exécution et fermer", tt_boot: "Initialiser et démarrer ce module", tt_cancel: "Annuler et fermer cette fenêtre", tt_close: "Fermer", tt_dock: "Déplacer la barre système" },
-            ja: { subtitle: "すべてのプロジェクト", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12-in-1アプリ+4シングル", gate_itch_desc: "スタンドアロン＆サポート", btn_init: "初期化", btn_cancel: "キャンセル", btn_boot: "システム起動", btn_back: "◀ 戻る", privacy_text: "Privacy by Design: 追跡なし。ローカル保存のみ。", help_p1: "TheOldSmokeArcade1984とは？", help_p2: "インディーゲームコレクションのハブとなる仮想OSです。", help_l1: "🎮 完全なブラウザゲーム", help_l2: "🖥️ ゼロアセット（純粋なコード）", help_l3: "🔒 完全なプライバシー：サーバーなし", skip_hint: "タップしてスキップ", btn_home: "◀ ホーム", itch_warning: "注：メインメニューに戻るには、Itch.ioのウィンドウを閉じてください。",
-                tt_home: "ホームに戻る / ゲームを閉じる", tt_back: "前の画面に戻る", tt_help: "システム情報", tt_install: "ネイティブWebアプリ（PWA）としてインストール", tt_audio: "効果音のオン/オフ", tt_fs: "全画面表示の切り替え", tt_lang: "システム言語の変更", tt_gate_git: "メインサーバーにアクセス (HTML5)", tt_gate_itch: "外部モジュールにアクセス (Iframe)", tt_prev: "前のタイトル", tt_next: "次のタイトル", tt_exit: "実行を終了して閉じる", tt_boot: "このモジュールを初期化して起動", tt_cancel: "キャンセルしてこのウィンドウを閉じる", tt_close: "閉じる", tt_dock: "システムバーを移動する" },
-            zh: { subtitle: "所有项目", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "12合1应用+4单机", gate_itch_desc: "独立与支持", btn_init: "初始化", btn_cancel: "取消", btn_boot: "启动系统", btn_back: "◀ 返回", privacy_text: "Privacy by Design: 无追踪。仅本地保存。", help_p1: "TheOldSmokeArcade1984 是什么？", help_p2: "它是一个虚拟操作系统，作为我独立游戏收藏的中心。", help_l1: "🎮 完整的浏览器游戏", help_l2: "🖥️ 零资产（纯代码，无PNG/MP3）", help_l3: "🔒 绝对隐私：无服务器", skip_hint: "点击跳过", btn_home: "◀ 首页", itch_warning: "注：关闭 Itch.io 窗口即可返回主菜单。",
-                tt_home: "返回首页 / 关闭游戏", tt_back: "返回上一屏幕", tt_help: "系统信息", tt_install: "安装为原生Web应用 (PWA)", tt_audio: "切换音效", tt_fs: "切换全屏", tt_lang: "更改系统语言", tt_gate_git: "访问主服务器 (HTML5)", tt_gate_itch: "访问外部模块 (Iframe)", tt_prev: "上一个标题", tt_next: "下一个标题", tt_exit: "终止执行并关闭", tt_boot: "初始化并启动此模块", tt_cancel: "取消并关闭此窗口", tt_close: "关闭", tt_dock: "移动系统栏" }
+            it: { subtitle: "Tutti i progetti", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "Gioca subito nel browser", gate_itch_desc: "Download standalone e supporto", btn_init: "Inizializza", btn_cancel: "Annulla", btn_boot: "Avvia Sistema", btn_back: "◀ RIT.", privacy_text: "Privacy by Design: Nessun tracciamento. Salvataggi in locale.", help_p1: "Cos'è TheOldSmokeArcade1984?", help_p2: "Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.", help_l1: "🎮 Giochi completi in-browser", help_l2: "🖥️ Zero-Assets (Tutto codice, zero dipendenze esterne)", help_l3: "🔒 Privacy assoluta: no server, no tracking", skip_hint: "Tocca per Saltare", btn_home: "◀ HOME", itch_warning: "Accesso al nodo esterno Itch.io. Valgono le policy della piattaforma ospitante.",
+                tt_home: "Torna alla Home / Chiudi Gioco", tt_back: "Torna alla schermata precedente", tt_help: "Informazioni sul Sistema", tt_dir: "Directory Progetti SEO", tt_install: "Installa come Web App nativa (PWA)", tt_update: "Installa l'aggiornamento OS disponibile", tt_audio: "Attiva/Disattiva effetti sonori", tt_fs: "Attiva/Disattiva schermo intero", tt_lang: "Cambia la lingua del sistema", tt_gate_git: "Accedi al server principale (HTML5)", tt_gate_itch: "Accedi ai moduli esterni (Iframe)", tt_prev: "Titolo precedente", tt_next: "Titolo successivo", tt_exit: "Termina l'esecuzione e chiudi", tt_boot: "Inizializza ed avvia questo modulo", tt_cancel: "Annulla e chiudi questa finestra", tt_close: "Chiudi", tt_dock: "Sposta la barra di sistema ai lati dello schermo" },
+            en: { subtitle: "All Projects", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "Play instantly in browser", gate_itch_desc: "Standalone downloads & support", btn_init: "Initialize", btn_cancel: "Cancel", btn_boot: "Boot System", btn_back: "◀ BACK", privacy_text: "Privacy by Design: No tracking. Local saves only.", help_p1: "What is TheOldSmokeArcade1984?", help_p2: "Not just a website. It's a virtual OS acting as a Hub for my indie game collection.", help_l1: "🎮 Full in-browser games", help_l2: "🖥️ Zero-Assets (Pure code, no external dependencies)", help_l3: "🔒 Absolute privacy: no servers, no tracking", skip_hint: "Tap to Skip", btn_home: "◀ HOME", itch_warning: "Accessing external node Itch.io. Host platform policies apply.",
+                tt_home: "Return to Home / Close Game", tt_back: "Return to previous screen", tt_help: "System Information", tt_dir: "SEO Project Directory", tt_install: "Install as native Web App (PWA)", tt_update: "Install available OS update", tt_audio: "Toggle sound effects", tt_fs: "Toggle fullscreen mode", tt_lang: "Change system language", tt_gate_git: "Access main server (HTML5)", tt_gate_itch: "Access external modules (Iframe)", tt_prev: "Previous title", tt_next: "Next title", tt_exit: "Terminate execution and close", tt_boot: "Initialize and boot this module", tt_cancel: "Cancel and close this window", tt_close: "Close", tt_dock: "Move system bar to screen edges" },
+            es: { subtitle: "Todos los proyectos", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "Juega al instante en el navegador", gate_itch_desc: "Descargas independientes y soporte", btn_init: "Inicializar", btn_cancel: "Cancelar", btn_boot: "Iniciar Sistema", btn_back: "◀ VOLVER", privacy_text: "Privacy by Design: Sin rastreo. Guardado local.", help_p1: "¿Qué es TheOldSmokeArcade1984?", help_p2: "No es solo un sitio web. Es un SO virtual que actúa como Hub para mi colección indie.", help_l1: "🎮 Juegos completos en navegador", help_l2: "🖥️ Zero-Assets (Puro código, sin dependencias)", help_l3: "🔒 Privacidad absoluta: sin servidores", skip_hint: "Toca para Saltar", btn_home: "◀ INICIO", itch_warning: "Accediendo al nodo externo Itch.io. Se aplican las políticas del anfitrión.",
+                tt_home: "Volver a Inicio / Cerrar juego", tt_back: "Volver a la pantalla anterior", tt_help: "Información del sistema", tt_dir: "Directorio de Proyectos SEO", tt_install: "Instalar como Web App nativa (PWA)", tt_update: "Instalar actualización disponible", tt_audio: "Activar/Desactivar sonido", tt_fs: "Alternar pantalla completa", tt_lang: "Cambiar idioma del sistema", tt_gate_git: "Acceder al servidor principal (HTML5)", tt_gate_itch: "Acceder a módulos externos (Iframe)", tt_prev: "Título anterior", tt_next: "Título siguiente", tt_exit: "Terminar ejecución y cerrar", tt_boot: "Inicializar y arrancar este módulo", tt_cancel: "Cancelar y cerrar esta ventana", tt_close: "Cerrar", tt_dock: "Mover la barra del sistema a los bordes" },
+            de: { subtitle: "Alle Projekte", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "Sofort im Browser spielen", gate_itch_desc: "Standalone-Downloads & Support", btn_init: "Initialisieren", btn_cancel: "Abbrechen", btn_boot: "System Starten", btn_back: "◀ ZURÜCK", privacy_text: "Privacy by Design: Kein Tracking. Nur lokales Speichern.", help_p1: "Was ist TheOldSmokeArcade1984?", help_p2: "Nicht nur eine Website. Ein virtuelles OS als Hub für meine Indie-Sammlung.", help_l1: "🎮 Komplette Browser-Spiele", help_l2: "🖥️ Zero-Assets (Nur Code, keine Abhängigkeiten)", help_l3: "🔒 Absolute Privatsphäre: keine Server", skip_hint: "Tippen zum Überspringen", btn_home: "◀ START", itch_warning: "Zugriff auf externen Knoten Itch.io. Es gelten die Richtlinien des Hosts.",
+                tt_home: "Zurück zur Startseite / Spiel schließen", tt_back: "Zurück zum vorherigen Bildschirm", tt_help: "Systeminformationen", tt_dir: "SEO Projektverzeichnis", tt_install: "Als native Web App (PWA) installieren", tt_update: "Verfügbares OS-Update installieren", tt_audio: "Töne ein-/ausschalten", tt_fs: "Vollbild umschalten", tt_lang: "Systemsprache ändern", tt_gate_git: "Hauptserver aufrufen (HTML5)", tt_gate_itch: "Externe Module aufrufen (Iframe)", tt_prev: "Vorheriger Titel", tt_next: "Nächster Titel", tt_exit: "Ausführung beenden und schließen", tt_boot: "Modul initialisieren und starten", tt_cancel: "Abbrechen und Fenster schließen", tt_close: "Schließen", tt_dock: "Systemleiste verschieben" },
+            fr: { subtitle: "Tous les projets", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "Jouez instantanément dans le navigateur", gate_itch_desc: "Téléchargements autonomes & support", btn_init: "Initialiser", btn_cancel: "Annuler", btn_boot: "Démarrer Système", btn_back: "◀ RETOUR", privacy_text: "Privacy by Design: Aucun suivi. Sauvegarde locale.", help_p1: "Qu'est-ce que TheOldSmokeArcade1984?", help_p2: "Pas juste un site web. C'est un OS virtuel servant de Hub pour ma collection indé.", help_l1: "🎮 Jeux complets sur navigateur", help_l2: "🖥️ Zero-Assets (Code pur, sans dépendances)", help_l3: "🔒 Confidentialité absolue : sans serveurs", skip_hint: "Appuyez pour Passer", btn_home: "◀ ACCUEIL", itch_warning: "Accès au nœud externe Itch.io. Les politiques de l'hôte s'appliquent.",
+                tt_home: "Retour à l'accueil / Fermer le jeu", tt_back: "Retour à l'écran précédent", tt_help: "Informations système", tt_dir: "Répertoire de Projets SEO", tt_install: "Installer comme Web App native (PWA)", tt_update: "Installer la mise à jour disponible", tt_audio: "Activer/Désactiver le son", tt_fs: "Basculer en plein écran", tt_lang: "Changer la langue du système", tt_gate_git: "Accéder au serveur principal (HTML5)", tt_gate_itch: "Accéder aux modules externes (Iframe)", tt_prev: "Titre précédent", tt_next: "Titre suivant", tt_exit: "Terminer l'exécution et fermer", tt_boot: "Initialiser et démarrer ce module", tt_cancel: "Annuler et fermer cette fenêtre", tt_close: "Fermer", tt_dock: "Déplacer la barre système" },
+            ja: { subtitle: "すべてのプロジェクト", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "ブラウザで今すぐプレイ", gate_itch_desc: "スタンドアロンダウンロードとサポート", btn_init: "初期化", btn_cancel: "キャンセル", btn_boot: "システム起動", btn_back: "◀ 戻る", privacy_text: "Privacy by Design: 追跡なし。ローカル保存のみ。", help_p1: "TheOldSmokeArcade1984とは？", help_p2: "インディーゲームコレクションのハブとなる仮想OSです。", help_l1: "🎮 完全なブラウザゲーム", help_l2: "🖥️ ゼロアセット（純粋なコード、依存関係なし）", help_l3: "🔒 完全なプライバシー：サーバーなし", skip_hint: "タップしてスキップ", btn_home: "◀ ホーム", itch_warning: "外部ノードItch.ioにアクセス中。ホストプラットフォームのポリシーが適用されます。",
+                tt_home: "ホームに戻る / ゲームを閉じる", tt_back: "前の画面に戻る", tt_help: "システム情報", tt_dir: "SEOプロジェクトディレクトリ", tt_install: "ネイティブWebアプリ（PWA）としてインストール", tt_update: "利用可能なOSアップデートをインストール", tt_audio: "効果音のオン/オフ", tt_fs: "全画面表示の切り替え", tt_lang: "システム言語の変更", tt_gate_git: "メインサーバーにアクセス (HTML5)", tt_gate_itch: "外部モジュールにアクセス (Iframe)", tt_prev: "前のタイトル", tt_next: "次のタイトル", tt_exit: "実行を終了して閉じる", tt_boot: "このモジュールを初期化して起動", tt_cancel: "キャンセルしてこのウィンドウを閉じる", tt_close: "閉じる", tt_dock: "システムバーを移動する" },
+            zh: { subtitle: "所有项目", gate_git: "/// Server Hub [GitHub]", gate_itch: ">_ Mirror Nodes [itch.io]", gate_git_title: "/// Server Hub", gate_itch_title: ">_ Mirror Nodes", gate_git_desc: "在浏览器中即时游玩", gate_itch_desc: "独立下载与支持", btn_init: "初始化", btn_cancel: "取消", btn_boot: "启动系统", btn_back: "◀ 返回", privacy_text: "Privacy by Design: 无追踪。仅本地保存。", help_p1: "TheOldSmokeArcade1984 是什么？", help_p2: "它是一个虚拟操作系统，作为我独立游戏收藏的中心。", help_l1: "🎮 完整的浏览器游戏", help_l2: "🖥️ 零资产（纯代码，无外部依赖）", help_l3: "🔒 绝对隐私：无服务器", skip_hint: "点击跳过", btn_home: "◀ 首页", itch_warning: "访问外部节点 Itch.io。适用主机平台政策。",
+                tt_home: "返回首页 / 关闭游戏", tt_back: "返回上一屏幕", tt_help: "系统信息", tt_dir: "SEO项目目录", tt_install: "安装为原生Web应用 (PWA)", tt_update: "安装可用的OS更新", tt_audio: "切换音效", tt_fs: "切换全屏", tt_lang: "更改系统语言", tt_gate_git: "访问主服务器 (HTML5)", tt_gate_itch: "访问外部模块 (Iframe)", tt_prev: "上一个标题", tt_next: "下一个标题", tt_exit: "终止执行并关闭", tt_boot: "初始化并启动此模块", tt_cancel: "取消并关闭此窗口", tt_close: "关闭", tt_dock: "移动系统栏" }
         };
 
         const gamesGithub = [
@@ -540,7 +605,7 @@
             { genre: "TACTICAL STEALTH", subtitle: "Octacore: Null Sector", url: "https://theoldsmokearcade1984.github.io/OCTACORE-NULL_SECTOR-Advanced/", overlay: { it: "Infiltrazione tattica richiesta.\nModulo Advanced attivato.", en: "Tactical infiltration required.\nAdvanced Edition module activated.", es: "Infiltración táctica requerida.\nMódulo Advanced activado.", de: "Taktische Infiltration erforderlich.\nAdvanced-Modul aktiviert.", fr: "Infiltration tactique requise.\nModule Advanced activé.", ja: "戦術的潜入が必要です。\nアドバンスドモジュールがアクティブになりました。", zh: "需要战术潜入。\n高级模块已激活。" }, cardDesc: { it: "Sistema di infiltrazione tattica attivato.", en: "Tactical infiltration system activated.", es: "Sistema de infiltración táctico.", de: "Taktisches Infiltrationssystem.", fr: "Système d'infiltration tactique.", ja: "戦術的潜入システム。", zh: "战术潜入システム。" } },
             { genre: "STRATEGY AI", subtitle: "Octacore Battle AI", url: "https://theoldsmokearcade1984.github.io/Octacore-Multicore-Battle-AI/", overlay: { it: "Simulazione tattica multicore.\nSconfiggi l'IA in un duello.", en: "Multicore tactical simulation.\nDefeat the AI in a duel.", es: "Simulación táctica multicore.\nDerrota a la IA.", de: "Taktische Multicore-Simulation.\nBesiege die KI.", fr: "Simulation tactique multicœur.\nBattez l'IA.", ja: "マルチコア戦術シミュレーション。\nAIを倒してください。", zh: "多核战术模拟。\n击败AI。" }, cardDesc: { it: "Affronta l'intelligenza artificiale.", en: "Face the AI in this simulation.", es: "Enfréntate a la IA.", de: "Stelle dich der KI.", fr: "Affrontez l'intelligence artificielle.", ja: "AIに立ち向かえ。", zh: "对抗人工智能。" } },
             { genre: "LOGIC PUZZLE", subtitle: "Knight's Tour (Green)", url: "https://theoldsmokearcade1984.github.io/Knight_Tours_GreenEdition/", overlay: { it: "Terminale a fosfori verdi.\nRisolvi il percorso logico del cavallo.", en: "Green phosphor terminal.\nSolve the knight's logic path.", es: "Terminal de fósforo verde.\nResuelve la ruta del caballo.", de: "Grünes Phosphor-Terminal.\nLöse den Pfad des Springers.", fr: "Terminal au phosphore vert.\nRésolvez le chemin du cavalier.", ja: "グリーン蛍光体端末。\nナイトの論理パスを解決します。", zh: "绿色荧光终端。\n解决骑士的逻辑路径。" }, cardDesc: { it: "Edizione classica a fosfori verdi.", en: "Classic green phosphor edition.", es: "Edición de fósforo verde clásico.", de: "Klassische grüne Phosphor-Edition.", fr: "Édition classique au phosphore vert.", ja: "クラシックグリーン蛍光体エディション。", zh: "经典绿色荧光版。" } },
-            { genre: "LOGIC PUZZLE", subtitle: "Knight's Tour", url: "https://theoldsmokearcade1984.github.io/Knigth-s_Tour/", overlay: { it: "Algoritmo logico caricato.\nMuovi il cavallo toccando le caselle.", en: "Logic algorithm loaded.\nMove the knight touching squares.", es: "Algoritmo lógico cargado.\nMueve el caballo por las casillas.", de: "Logik-Algorithmus geladen.\nBewege den Springer.", fr: "Algorithme logique chargé.\nDéplacez le cavalier.", ja: "論理アルゴリズムがロードされました。\nナイトを動かします。", zh: "逻辑算法已加载。\n移动骑士。" }, cardDesc: { it: "Risolvi il classico enigma scacchistico.", en: "Solve the classic chess enigma.", es: "Resuelve el enigma clásico de ajedrez.", de: "Löse das klassische Schachrätsel.", fr: "Résolvez l'énigme d'échecs.", ja: "古典的なチェスの謎を解きます。", zh: "解决经典的国际象棋谜题。" } },
+            { genre: "LOGIC PUZZLE", subtitle: "Knight's Tour", url: "https://theoldsmokearcade1984.github.io/Knigth-s_Tour/", overlay: { it: "Algoritmo logico caricato.\nMuovi il cavallo toccando le caselle.", en: "Logic algorithm loaded.\nMove the knight touching squares.", es: "Algoritmo lógico cargado.\nMueve el caballo por las casillas.", de: "Logik-Algorithmus geladen.\nBewege den Springer.", fr: "Algorithme logique chargé.\nDéplacez le cavalier.", ja: "論理アルゴリズムがロードされました。\nナイトを動かします。", zh: "逻辑算法已加载。\n移動骑士。" }, cardDesc: { it: "Risolvi il classico enigma scacchistico.", en: "Solve the classic chess enigma.", es: "Resuelve el enigma clásico de ajedrez.", de: "Löse das klassische Schachrätsel.", fr: "Résolvez l'énigme d'échecs.", ja: "古典的なチェスの謎を解きます。", zh: "解决经典的国际象棋谜题。" } },
             { genre: "ARCADE ACTION", subtitle: "Neon Specter", url: "https://theoldsmokearcade1984.github.io/Neon_Specter/", overlay: { it: "Azione arcade frenetica.\nObiettivo: Sfuggi al sistema.", en: "Frantic arcade action.\nObjective: Escape the system.", es: "Acción arcade frenética.\nObjetivo: Escapa del sistema.", de: "Rasante Arcade-Action.\nZiel: Entkomme dem System.", fr: "Action d'arcade frénétique.\nObjectif : Échapper au système.", ja: "熱狂的なアーケードアクション。\n目的：システムから脱出する。", zh: "疯狂的街机动作。\n目标：逃离系统。" }, cardDesc: { it: "Sfuggi ai sistemi di sicurezza.", en: "Escape security systems.", es: "Escapa de los sistemas de seguridad.", de: "Entkomme den Sicherheitssystemen.", fr: "Échappez aux systèmes de sécurité.", ja: "セキュリティシステムから逃れます。", zh: "逃离安全系统。" } }
         ];
         
@@ -560,11 +625,28 @@
             startDrone() { this.droneOsc = this.ctx.createOscillator(); this.droneOsc.type = 'sawtooth'; this.droneOsc.frequency.value = 55; const filter = this.ctx.createBiquadFilter(); filter.type = 'lowpass'; filter.Q.value = 5; this.droneLfo = this.ctx.createOscillator(); this.droneLfo.type = 'sine'; this.droneLfo.frequency.value = 0.5; const lfoGain = this.ctx.createGain(); lfoGain.gain.value = 400; this.droneLfo.connect(lfoGain); lfoGain.connect(filter.frequency); const g = this.ctx.createGain(); g.gain.value = 0.05; this.droneOsc.connect(filter); filter.connect(g); g.connect(this.masterGain); this.droneOsc.start(); this.droneLfo.start(); filter.frequency.setValueAtTime(200, this.ctx.currentTime); }
         };
 
-        function toggleAudio() { audioEnabled = !audioEnabled; const btn = document.getElementById('audio-btn'); if (audioEnabled) { btn.classList.add('active'); btn.innerText = '🔊'; if (snd.masterGain && snd.ctx) snd.masterGain.gain.setTargetAtTime(0.5, snd.ctx.currentTime, 0.1); } else { btn.classList.remove('active'); btn.innerText = '🔇'; if (snd.masterGain && snd.ctx) snd.masterGain.gain.setTargetAtTime(0, snd.ctx.currentTime, 0.1); } }
+        function toggleAudio() { 
+            audioEnabled = !audioEnabled; 
+            const btn = document.getElementById('audio-btn'); 
+            if (audioEnabled) { 
+                btn.classList.add('active'); btn.innerText = '🔊'; 
+                if (snd.masterGain && snd.ctx) snd.masterGain.gain.setTargetAtTime(0.5, snd.ctx.currentTime, 0.1); 
+            } else { 
+                btn.classList.remove('active'); btn.innerText = '🔇'; 
+                if (snd.masterGain && snd.ctx) snd.masterGain.gain.setTargetAtTime(0, snd.ctx.currentTime, 0.1); 
+            } 
+            const gameIframe = document.getElementById('game-frame');
+            if (gameIframe && gameIframe.contentWindow) {
+                gameIframe.contentWindow.postMessage({ type: 'OS_AUDIO_CHANGE', enabled: audioEnabled }, '*');
+            }
+        }
+        
         function cycleLang() { snd.playClick(); let nextIndex = (langsList.indexOf(currentLang) + 1) % langsList.length; setLang(langsList[nextIndex]); }
         
         function setLang(lang) { 
             currentLang = lang; 
+            document.documentElement.lang = lang;
+
             const langEl = document.getElementById('lang-text');
             if(langEl) langEl.innerText = 'LANG: ' + lang.toUpperCase();
 
@@ -584,6 +666,11 @@
                     el.setAttribute('aria-label', ttText); 
                 }
             });
+
+            const gameIframe = document.getElementById('game-frame');
+            if (gameIframe && gameIframe.contentWindow) {
+                gameIframe.contentWindow.postMessage({ type: 'OS_LANG_CHANGE', lang: currentLang }, '*');
+            }
         }
 
         const dockPositions = ['dock-top', 'dock-right', 'dock-bottom', 'dock-left'];
@@ -596,15 +683,47 @@
             bar.classList.add(dockPositions[currentDockIndex]);
         }
 
+        // Funzione per l'orologio di sistema (Nuova Feature v6.20)
+        function updateOSClock() {
+            const clockEl = document.getElementById('os-clock');
+            if (clockEl) {
+                const now = new Date();
+                clockEl.innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            }
+        }
+        setInterval(updateOSClock, 1000);
+        updateOSClock();
+
         function startBootSequence() {
+            const hasBootedBefore = localStorage.getItem('os_booted');
+            const isBot = /bot|crawler|spider|crawling|googlebot|google-inspectiontool|chrome-lighthouse|bingbot|yandex|duckduckbot|slurp|baiduspider|gptbot|chatgpt-user|anthropic-ai|claudebot|applebot/i.test(navigator.userAgent);
+
+            if (isBot || hasBootedBefore === 'true') {
+                console.log('[OS] Boot sequence saltata (Visita di ritorno o Bot).');
+                isBooting = false;
+                
+                const bootScreen = document.getElementById('screen-boot');
+                bootScreen.setAttribute('aria-hidden', 'true');
+                bootScreen.classList.remove('active');
+                bootScreen.style.display = 'none'; 
+                
+                const gateway = document.getElementById('screen-gateway');
+                gateway.style.visibility = 'visible';
+                gateway.classList.add('active');
+                gateway.setAttribute('aria-hidden', 'false');
+                
+                document.getElementById('sys-bar').classList.add('visible');
+                return;
+            }
+
             const manifestos = {
-                it: "Il Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.\n",
-                en: "The System watches but does not record.\nPrivacy is local, presence is global.\nFreedom is in code that depends on nothing.\n",
-                es: "El Sistema observa pero no registra.\nLa privacidad es local, la presencia es global.\nLa libertad está en el código que no depende de nada.\n",
-                de: "Das System beobachtet, zeichnet aber nicht auf.\nPrivatsphäre ist lokal, Präsenz ist global.\nFreiheit liegt in Code, der von nichts abhängt.\n",
-                fr: "Le Système observe mais n'enregistre pas.\nLa confidentialité est locale, la présence est globale.\nLa liberté est dans le code qui ne dépend de rien.\n",
-                ja: "システムは監視するが、記録はしない。\nプライバシーはローカルに、存在はグローバルに。\n自由は何にも依存しないコードの中にある。\n",
-                zh: "系统监视但不记录。\n隐私是本地的，存在是全球的。\n自由在于不依赖任何东西的代码中。\n"
+                it: "Il Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non ha dipendenze esterne.\n",
+                en: "The System watches but does not record.\nPrivacy is local, presence is global.\nFreedom is in code with zero external dependencies.\n",
+                es: "El Sistema observa pero no registra.\nLa privacidad es local, la presencia es global.\nLa libertad está en el código sin dependencias externas.\n",
+                de: "Das System beobachtet, zeichnet aber nicht auf.\nPrivatsphäre ist lokal, Präsenz ist global.\nFreiheit liegt in Code ohne externe Abhängigkeiten.\n",
+                fr: "Le Système observe mais n'enregistre pas.\nLa confidentialité est locale, la présence est globale.\nLa liberté est dans le code sans dépendances externes.\n",
+                ja: "システムは監視するが、記録はしない。\nプライバシーはローカルに、存在はグローバルに。\n自由は外部依存のないコードの中にある。\n",
+                zh: "系统监视但不记录。\n隐私是本地的，存在是全球的。\n自由在于没有外部依赖的代码中。\n"
             };
             const manifesto = manifestos[currentLang] || manifestos['en'];
             const textElement = document.getElementById('typed-text');
@@ -651,38 +770,17 @@
         }
         coin.addEventListener('pointerdown', startDrag); window.addEventListener('pointermove', moveDrag, {passive: false}); window.addEventListener('pointerup', endDrag); window.addEventListener('pointercancel', endDrag);
 
-        function completeBoot() { document.getElementById('screen-boot').setAttribute('aria-hidden', 'true'); document.getElementById('screen-gateway').setAttribute('aria-hidden', 'false'); isBooting = false; snd.playBoot(); navTo('screen-gateway'); setTimeout(() => document.getElementById('sys-bar').classList.add('visible'), 800); }
+        function completeBoot() { 
+            localStorage.setItem('os_booted', 'true');
+            document.getElementById('screen-boot').setAttribute('aria-hidden', 'true'); document.getElementById('screen-gateway').setAttribute('aria-hidden', 'false'); isBooting = false; snd.playBoot(); navTo('screen-gateway'); setTimeout(() => document.getElementById('sys-bar').classList.add('visible'), 800); 
+        }
         function skipBoot() { if(!isBooting) return; clearTimeout(bootInterval); try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (err) {} completeBoot(); }
 
-        // --- INIZIO BYPASS BOT E IA ---
-        const isBot = /bot|crawler|spider|crawling|googlebot|google-inspectiontool|chrome-lighthouse|bingbot|yandex|duckduckbot|slurp|baiduspider|gptbot|chatgpt-user|anthropic-ai|claudebot|applebot/i.test(navigator.userAgent);
-
-        if (isBot) {
-            console.log('[OS] Crawler o IA rilevato: Bypass boot sequence.');
-            isBooting = false;
-            
-            // Nasconde forzatamente la schermata di boot
-            const bootScreen = document.getElementById('screen-boot');
-            bootScreen.setAttribute('aria-hidden', 'true');
-            bootScreen.classList.remove('active');
-            bootScreen.style.display = 'none'; 
-            
-            // Mostra immediatamente il Gateway (il menu principale)
-            const gateway = document.getElementById('screen-gateway');
-            gateway.style.visibility = 'visible';
-            gateway.classList.add('active');
-            gateway.setAttribute('aria-hidden', 'false');
-            
-            // Mostra la barra di sistema 
-            document.getElementById('sys-bar').classList.add('visible');
-        } else {
-            // Esecuzione standard per utenti umani
-            startBootSequence();
-        }
-        // --- FINE BYPASS BOT E IA ---
+        startBootSequence();
 
         document.body.addEventListener('click', () => { try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (e) {} }, { once: true });
         document.addEventListener('keydown', e => { if((e.key === 'Enter' || e.key === ' ') && e.target.getAttribute('role') === 'button') { e.preventDefault(); e.target.click(); } });
+        
         function navTo(screenId) {
             document.querySelectorAll('.screen').forEach(s => { s.classList.remove('active'); s.setAttribute('aria-hidden', 'true'); setTimeout(() => { if(!s.classList.contains('active')) s.style.visibility = 'hidden'; }, 800); });
             const targetScreen = document.getElementById(screenId); targetScreen.style.visibility = 'visible'; targetScreen.classList.add('active'); targetScreen.setAttribute('aria-hidden', 'false');
@@ -707,8 +805,29 @@
         let globalIsSwiping = false;
         function setupSliderLogic(sectionId, indId) {
             const section = document.getElementById(sectionId); const cards = section.querySelectorAll('.card-base'); const prevBtn = section.querySelector('.prev-btn'); const nextBtn = section.querySelector('.next-btn'); const dotsContainer = document.getElementById(indId); let currentIndex = 0;
-            cards.forEach((_, i) => { const dot = document.createElement('div'); dot.className = 'dot hover-snd' + (i === 0 ? ' active' : ''); dot.setAttribute('role', 'tab'); dot.setAttribute('aria-label', `Slide ${i+1}`); dot.addEventListener('click', () => { snd.playClick(); goToSlide(i); }); dotsContainer.appendChild(dot); }); const dots = dotsContainer.querySelectorAll('.dot');
-            function goToSlide(index) { cards[currentIndex].classList.remove('active'); dots[currentIndex].classList.remove('active'); currentIndex = index; cards[currentIndex].classList.add('active'); dots[currentIndex].classList.add('active'); }
+            cards.forEach((_, i) => { 
+                const dot = document.createElement('div'); 
+                dot.className = 'dot hover-snd' + (i === 0 ? ' active' : ''); 
+                dot.setAttribute('role', 'tab'); 
+                dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+                dot.setAttribute('tabindex', '0');
+                dot.setAttribute('aria-label', `Slide ${i+1}`); 
+                dot.addEventListener('click', () => { snd.playClick(); goToSlide(i); }); 
+                dotsContainer.appendChild(dot); 
+            }); 
+            const dots = dotsContainer.querySelectorAll('.dot');
+            function goToSlide(index) { 
+                cards[currentIndex].classList.remove('active'); 
+                dots[currentIndex].classList.remove('active'); 
+                dots[currentIndex].setAttribute('aria-selected', 'false'); 
+                
+                currentIndex = index; 
+                
+                cards[currentIndex].classList.add('active'); 
+                dots[currentIndex].classList.add('active'); 
+                dots[currentIndex].setAttribute('aria-selected', 'true'); 
+                cards[currentIndex].focus();
+            }
             prevBtn.addEventListener('click', () => { snd.playClick(); goToSlide(currentIndex === 0 ? cards.length - 1 : currentIndex - 1); }); nextBtn.addEventListener('click', () => { snd.playClick(); goToSlide(currentIndex === cards.length - 1 ? 0 : currentIndex + 1); });
             let startX = 0, startY = 0; const track = section.querySelector('.slider-wrapper');
             track.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; startY = e.changedTouches[0].screenY; globalIsSwiping = false; }, { passive: true }); track.addEventListener('touchmove', () => { globalIsSwiping = true; }, { passive: true });
@@ -726,9 +845,28 @@
             btnBoot.innerText = isPlasma ? (currentLang === 'it' ? 'CONNETTI' : (currentLang === 'es' ? 'CONECTAR' : (currentLang === 'de' ? 'VERBINDEN' : (currentLang === 'fr' ? 'CONNECTER' : (currentLang === 'ja' ? '接続する' : (currentLang === 'zh' ? '连接' : 'CONNECT')))))) : (currentLang === 'it' ? 'AVVIA SISTEMA' : (currentLang === 'es' ? 'INICIAR SISTEMA' : (currentLang === 'de' ? 'SYSTEM STARTEN' : (currentLang === 'fr' ? 'DÉMARRER LE SYSTÈME' : (currentLang === 'ja' ? 'システム起動' : (currentLang === 'zh' ? '启动系统' : 'BOOT SYSTEM'))))));
             btnBoot.setAttribute('data-target-url', url); btnBoot.setAttribute('data-is-itch', isPlasma);
             document.getElementById('overlay-title').textContent = link.querySelector('h2').textContent; document.getElementById('overlay-text').textContent = overlayTxt; document.body.classList.add('modal-open'); overlay.setAttribute('aria-hidden', 'false'); overlay.classList.add('active');
+            
+            setTimeout(() => { btnBoot.focus(); }, 100);
         });
 
-        function openHelp() { snd.playClick(); const overlay = document.getElementById('help-overlay'); document.body.classList.add('modal-open'); overlay.setAttribute('aria-hidden', 'false'); overlay.classList.add('active'); }
+        function openHelp() { 
+            snd.playClick(); 
+            const overlay = document.getElementById('help-overlay'); 
+            document.body.classList.add('modal-open'); 
+            overlay.setAttribute('aria-hidden', 'false'); 
+            overlay.classList.add('active'); 
+            setTimeout(() => { overlay.querySelector('.btn-close').focus(); }, 100);
+        }
+        
+        function openDirectory() {
+            snd.playClick(); 
+            const overlay = document.getElementById('directory-overlay'); 
+            document.body.classList.add('modal-open'); 
+            overlay.setAttribute('aria-hidden', 'false'); 
+            overlay.classList.add('active'); 
+            setTimeout(() => { overlay.querySelector('.btn-close').focus(); }, 100);
+        }
+
         function closeOverlay(id) { snd.playClick(); const overlay = document.getElementById(id); overlay.classList.remove('active'); overlay.setAttribute('aria-hidden', 'true'); document.body.classList.remove('modal-open'); }
         
         document.getElementById('overlay-link').addEventListener('click', function() { 
@@ -739,20 +877,21 @@
         
         function toggleFullScreen() { const btn = document.getElementById('fs-btn'); const doc = document.documentElement; if (!document.fullscreenElement) { if (doc.requestFullscreen) doc.requestFullscreen().then(() => btn.classList.add('active')).catch(()=>{}); } else { if (document.exitFullscreen) { document.exitFullscreen(); btn.classList.remove('active'); } } }
 
-        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.16 */
+        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.20 */
         let deferredPrompt; const installBtn = document.getElementById('pwa-install-btn'); window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'flex'; });
         installBtn.addEventListener('click', async () => { snd.playClick(); if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') installBtn.style.display = 'none'; deferredPrompt = null; } });
         
         if ('serviceWorker' in navigator) { 
             window.addEventListener('load', () => { 
-                navigator.serviceWorker.register('./sw.js?v=6.16').then(reg => { 
-                    console.log('SW v6.16 Registrato');
+                navigator.serviceWorker.register('./sw.js?v=6.20').then(reg => { 
+                    console.log('SW v6.20 Registrato');
                     reg.onupdatefound = () => {
                         const installingWorker = reg.installing;
                         installingWorker.onstatechange = () => {
                             if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                console.log('Nuovo aggiornamento PWA trovato. Ricarico...');
-                                window.location.reload();
+                                console.log('Nuovo aggiornamento PWA trovato.');
+                                pwaUpdateWorker = installingWorker;
+                                document.getElementById('update-btn').classList.add('visible');
                             }
                         };
                     };
@@ -760,32 +899,26 @@
             }); 
         }
 
+        function applyUpdate() {
+            snd.playClick();
+            if (pwaUpdateWorker) {
+                pwaUpdateWorker.postMessage({ action: 'skipWaiting' });
+            }
+            setTimeout(() => { window.location.reload(); }, 300);
+        }
+
+        let refreshing;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (refreshing) return;
+            refreshing = true;
+            window.location.reload();
+        });
+
         document.addEventListener('DOMContentLoaded', () => { 
             setLang(currentLang);
             document.addEventListener('mouseover', e => { if (e.target.closest('.hover-snd')) snd.playHover(); }); 
             document.addEventListener('mousedown', e => { if (e.target.closest('.click-snd')) snd.playClick(); }); 
         });
     </script>
-    <!-- DIRECTORY SEO PER CRAWLER (Invisibile per gli utenti) -->
-<noscript>
-    <div style="visibility: hidden; display: none;">
-        <h2>Directory di Sistema - Indice Progetti</h2>
-        <ul>
-            <!-- Link ai giochi su GitHub -->
-            <li><a href="https://theoldsmokearcade1984.github.io/TheTwelveClassicGameTheOldSmokeArcade1984/">Arcade Collection (GitHub)</a></li>
-            <li><a href="https://theoldsmokearcade1984.github.io/OCTACORE-NULL_SECTOR-Advanced/">Octacore: Null Sector</a></li>
-            <li><a href="https://theoldsmokearcade1984.github.io/Octacore-Multicore-Battle-AI/">Octacore Battle AI</a></li>
-            <li><a href="https://theoldsmokearcade1984.github.io/Knight_Tours_GreenEdition/">Knight's Tour (Green Edition)</a></li>
-            <li><a href="https://theoldsmokearcade1984.github.io/Knigth-s_Tour/">Knight's Tour</a></li>
-            <li><a href="https://theoldsmokearcade1984.github.io/Neon_Specter/">Neon Specter (GitHub)</a></li>
-            
-            <!-- Link alle pagine UFFICIALI dei giochi su itch.io (NON i widget embed) -->
-            <li><a href="https://theoldsmokearcade1984.itch.io/theoldsmokearcade1984">Arcade Collection (itch.io)</a></li>
-            <li><a href="https://theoldsmokearcade1984.itch.io/protocollo-zero-null-sector">Protocollo Zero (itch.io)</a></li>
-            <li><a href="https://theoldsmokearcade1984.itch.io/knight-tour">Knight's Tour (itch.io)</a></li>
-            <li><a href="https://theoldsmokearcade1984.itch.io/neon-specter">Neon Specter (itch.io)</a></li>
-        </ul>
-    </div>
-</noscript>
 </body>
 </html>

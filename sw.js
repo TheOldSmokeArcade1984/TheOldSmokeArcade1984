@@ -1,11 +1,12 @@
-const CACHE_NAME = 'oldsmoke-os-v6.16';
+const CACHE_NAME = 'oldsmoke-os-v6.20';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './manifest-v3.json',
     './icon-192.png',
     './icon-256.png',
-    './icon-512.png'
+    './icon-512.png',
+    './VT323-Regular.woff2'
 ];
 
 // Installazione e salvataggio in cache
@@ -13,21 +14,21 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) => {
-            console.log('[SW v6.15] Caching asset principali');
+            console.log('[SW v6.20] Caching asset principali');
             return cache.addAll(ASSETS_TO_CACHE);
         })
         .then(() => self.skipWaiting())
     );
 });
 
-// Pulizia cache vecchie (rimuoverà in automatico v6.15 e precedenti)
+// Pulizia cache vecchie (rimuoverà in automatico v6.16 e precedenti)
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cache) => {
                     if (cache !== CACHE_NAME) {
-                        console.log('[SW v6.16] Eliminazione vecchia cache:', cache);
+                        console.log('[SW v6.20] Eliminazione vecchia cache:', cache);
                         return caches.delete(cache);
                     }
                 })
@@ -35,6 +36,13 @@ self.addEventListener('activate', (event) => {
         })
     );
     self.clients.claim();
+});
+
+// Ascolto messaggi per aggiornamento manuale
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
 
 // Intercettazione richieste (Strategia: Network First, Fallback to Cache)
