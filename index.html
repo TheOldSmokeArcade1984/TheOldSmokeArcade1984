@@ -43,7 +43,7 @@
       "description": "Sistema Operativo virtuale HTML5 che funge da Hub per videogiochi indie retro-cyberpunk. Architettura basata su due nodi: 'Server Hub' (giochi nativi ospitati su GitHub Pages tramite Iframe) e 'Mirror Nodes' (moduli esterni integrati tramite widget Itch.io).",
       "applicationCategory": "GameApplication",
       "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
-      "softwareVersion": "6.20",
+      "softwareVersion": "6.21",
       "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie", "Logic Puzzle", "Tactical Stealth"],
       "accessibilityFeature": ["alternativeText", "ARIA", "keyboardNavigation", "screenReader", "dynamicTooltips"],
       "accessibilityControl": ["fullKeyboardControl", "fullMouseControl", "fullTouchControl"],
@@ -79,7 +79,7 @@
     <link rel="mask-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>" color="#05010a">
     <meta name="theme-color" content="#05010a">
     <meta name="msapplication-TileColor" content="#05010a">
-    <link rel="manifest" href="manifest-v3.json?v=6.20">
+    <link rel="manifest" href="manifest-v3.json?v=6.21">
 
     <style>
         @font-face {
@@ -103,7 +103,9 @@
         }
 
         ::-webkit-scrollbar { display: none; width: 0; height: 0; }
-        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; scrollbar-width: none; -ms-overflow-style: none; }
+        
+        /* FIX: Bloccata la selezione testo globale e menu contestuali touch per l'OS */
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; scrollbar-width: none; -ms-overflow-style: none; }
         
         html, body { background-color: var(--bg-void); color: var(--text-main); font-family: 'Courier New', Courier, Arial, sans-serif; overflow: hidden; perspective: 1200px; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; }
 
@@ -347,7 +349,7 @@
             #lang-cycle-btn { min-width: 75px; font-size: 0.75rem; }
         }
 
-        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.20 === */
+        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.21 === */
         @media (orientation: landscape) and (max-height: 600px) {
             :root {
                 --pyr-base-scale: 0.35;   
@@ -514,7 +516,7 @@
     </div>
 
     <div id="screen-game" class="screen" aria-hidden="true">
-        <iframe id="game-frame" src="" title="Game Execution Environment"></iframe>
+        <iframe id="game-frame" src="" title="Game Execution Environment" allow="fullscreen" allowfullscreen="true"></iframe>
         <div id="itch-warning" class="itch-warning" data-i18n="itch_warning" role="alert">Nota: Chiudi la finestra di Itch.io per tornare al menu principale.</div>
     </div>
 
@@ -531,7 +533,7 @@
 
     <div id="help-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
         <div class="modal-box" style="border-color: var(--laser-sec);">
-            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.20</h2>
+            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.21</h2>
             <div class="overlay-text" style="text-align: left;">
                 <span data-i18n="help_p1" class="help-highlight">Cos'è TheOldSmokeArcade1984?</span><br>
                 <span data-i18n="help_p2">Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.</span>
@@ -569,7 +571,7 @@
     </div>
 
     <script>
-        console.log("%c/// MANIFESTO DI SISTEMA V6.20 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
+        console.log("%c/// MANIFESTO DI SISTEMA V6.21 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
 
         const langsList = ['it', 'en', 'es', 'de', 'fr', 'ja', 'zh'];
         
@@ -776,6 +778,18 @@
 
         startBootSequence();
 
+        // FIX: Togli il focus dai pulsanti di sistema dopo il click per non rubare i comandi al gioco
+        document.addEventListener('DOMContentLoaded', () => { 
+            setLang(currentLang);
+            document.addEventListener('mouseover', e => { if (e.target.closest('.hover-snd')) snd.playHover(); }); 
+            document.addEventListener('mousedown', e => { if (e.target.closest('.click-snd')) snd.playClick(); }); 
+            
+            document.querySelectorAll('.sys-btn').forEach(btn => {
+                btn.addEventListener('click', function() { this.blur(); });
+                btn.addEventListener('touchend', function() { this.blur(); }, {passive: true});
+            });
+        });
+        
         document.body.addEventListener('click', () => { try { snd.init(); if (snd.ctx && snd.ctx.state === 'suspended') snd.ctx.resume(); } catch (e) {} }, { once: true });
         document.addEventListener('keydown', e => { if((e.key === 'Enter' || e.key === ' ') && e.target.getAttribute('role') === 'button') { e.preventDefault(); e.target.click(); } });
         
@@ -869,15 +883,31 @@
 
         function closeOverlay(id) { snd.playClick(); const overlay = document.getElementById(id); overlay.classList.remove('active'); overlay.setAttribute('aria-hidden', 'true'); document.body.classList.remove('modal-open'); }
         
+        // FIX: Autochiusura banner Itch e rimando del focus all'iframe
         document.getElementById('overlay-link').addEventListener('click', function() { 
-            snd.playClick(); const url = this.getAttribute('data-target-url'); const isItch = this.getAttribute('data-is-itch') === 'true'; document.getElementById('game-frame').src = url; 
-            if (isItch) document.getElementById('itch-warning').classList.add('visible'); else document.getElementById('itch-warning').classList.remove('visible');
-            closeOverlay('instruction-overlay'); navTo('screen-game'); 
+            snd.playClick(); 
+            const url = this.getAttribute('data-target-url'); 
+            const isItch = this.getAttribute('data-is-itch') === 'true'; 
+            document.getElementById('game-frame').src = url; 
+            
+            const warningBanner = document.getElementById('itch-warning');
+            if (isItch) { 
+                warningBanner.classList.add('visible');
+                setTimeout(() => {
+                    warningBanner.classList.remove('visible');
+                }, 4000);
+            } else { 
+                warningBanner.classList.remove('visible'); 
+            }
+            
+            closeOverlay('instruction-overlay'); 
+            navTo('screen-game'); 
+            
+            setTimeout(() => { document.getElementById('game-frame').focus(); }, 100);
         });
         
         function toggleFullScreen() { const btn = document.getElementById('fs-btn'); const doc = document.documentElement; if (!document.fullscreenElement) { if (doc.requestFullscreen) doc.requestFullscreen().then(() => btn.classList.add('active')).catch(()=>{}); } else { if (document.exitFullscreen) { document.exitFullscreen(); btn.classList.remove('active'); } } }
 
-        /* GESTIONE AGGIORNAMENTO FORZATO PWA V6.20 */
         let deferredPrompt; const installBtn = document.getElementById('pwa-install-btn'); window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'flex'; });
         installBtn.addEventListener('click', async () => { snd.playClick(); if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') installBtn.style.display = 'none'; deferredPrompt = null; } });
         
@@ -912,12 +942,6 @@
             if (refreshing) return;
             refreshing = true;
             window.location.reload();
-        });
-
-        document.addEventListener('DOMContentLoaded', () => { 
-            setLang(currentLang);
-            document.addEventListener('mouseover', e => { if (e.target.closest('.hover-snd')) snd.playHover(); }); 
-            document.addEventListener('mousedown', e => { if (e.target.closest('.click-snd')) snd.playClick(); }); 
         });
     </script>
 </body>
