@@ -1,4 +1,4 @@
-const CACHE_NAME = 'oldsmoke-os-v6.21';
+const CACHE_NAME = 'oldsmoke-os-v10.0';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -14,21 +14,21 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) => {
-            console.log('[SW v6.21] Caching asset principali');
+            console.log('[SW v10.0] Caching asset principali');
             return cache.addAll(ASSETS_TO_CACHE);
         })
         .then(() => self.skipWaiting())
     );
 });
 
-// Pulizia cache vecchie (rimuoverà in automatico v6.20 e precedenti)
+// Pulizia cache vecchie (elimina versioni precedenti 6.x)
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cache) => {
                     if (cache !== CACHE_NAME) {
-                        console.log('[SW v6.21] Eliminazione vecchia cache:', cache);
+                        console.log('[SW v10.0] Eliminazione vecchia cache:', cache);
                         return caches.delete(cache);
                     }
                 })
@@ -38,14 +38,14 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Ascolto messaggi per aggiornamento manuale
+// Ascolto messaggi per aggiornamento manuale dall'interfaccia OS
 self.addEventListener('message', (event) => {
   if (event.data && event.data.action === 'skipWaiting') {
     self.skipWaiting();
   }
 });
 
-// Intercettazione richieste (Strategia: Network First, Fallback to Cache)
+// Intercettazione richieste (Strategia: Network First con Fallback Cache)
 self.addEventListener('fetch', (event) => {
     if (!event.request.url.startsWith(self.location.origin)) {
         return; 

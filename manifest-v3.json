@@ -1,27 +1,32 @@
 {
-  "name": "TheOldSmokeArcade1984 OS v6.21",
+  "name": "TheOldSmokeArcade1984 OS v10.0",
   "short_name": "OldSmokeOS",
-  "description": "Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi arcade in un'app e 4 titoli singoli giocabili nel browser o installabili come App.",
+  "description": "Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi arcade in un'app e 5 titoli singoli giocabili nel browser o installabili offline come PWA nativa.",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#05010a",
   "theme_color": "#05010a",
   "orientation": "any",
+  "categories": ["games", "entertainment"],
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "icon-256.png",
       "sizes": "256x256",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

@@ -5,35 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>TheOldSmokeArcade1984 | Giochi Arcade Retrò & Cyberpunk in Browser</title>
     
-    <meta name="description" content="TheOldSmokeArcade1984 OS - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi in un'app e 5 titoli singoli (PWA). Privacy by design, accessibilità totale.">
-    <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, theoldsmokearcade1984, HTML5 games, accessibilità, screen reader">
+    <meta name="description" content="TheOldSmokeArcade1984 OS v10.0 - Hub ufficiale di giochi retro arcade e cyberpunk indie. 12 giochi in un'app e 5 titoli singoli (PWA). Zero tracking, offline-ready, accessibilità totale.">
+    <meta name="keywords" content="giochi indie, retro arcade, cyberpunk, synthwave, pwa, theoldsmokearcade1984, HTML5 games, accessibilità, screen reader, browser games, zero tracking">
     <meta name="author" content="TheOldSmokeArcade1984">
-    
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
-    <meta name="GPTBot" content="index, follow"> 
-    <meta name="ClaudeBot" content="index, follow"> 
-    
     <link rel="canonical" href="https://theoldsmokearcade1984.github.io/">
 
+    <!-- Web Crawlers & AI Search Bots (Google, Bing Copilot, OpenAI, Anthropic, Perplexity, Apple) -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="GPTBot" content="index, follow">
+    <meta name="ChatGPT-User" content="index, follow">
+    <meta name="ClaudeBot" content="index, follow">
+    <meta name="PerplexityBot" content="index, follow">
+    <meta name="Applebot" content="index, follow">
+    <meta name="cohere-ai" content="index, follow">
+
+    <!-- Microsoft & Windows / Edge Copilot Integration -->
+    <meta name="application-name" content="TheOldSmokeArcade1984 OS">
+    <meta name="msapplication-TileColor" content="#05010a">
+    <meta name="msapplication-TileImage" content="icon-256.png">
+    <meta name="msapplication-tooltip" content="TheOldSmokeArcade1984 - Retro Arcade Cyberpunk Hub">
+    <meta name="msapplication-starturl" content="./">
+    <meta name="msapplication-navbutton-color" content="#05010a">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Open Graph (Facebook, LinkedIn, Discord, Slack, Copilot Preview) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="TheOldSmokeArcade1984 | Giochi Arcade Retrò">
-    <meta property="og:description" content="Entra nel terminale. Collezione indie: 1 app da 12 giochi + 5 titoli singoli. PWA accessibile, navigazione da tastiera, zero tracciamento.">
+    <meta property="og:title" content="TheOldSmokeArcade1984 | Giochi Arcade Retrò & Cyberpunk">
+    <meta property="og:description" content="Entra nel terminale. Hub indie cyberpunk: 1 app 12-in-1 + 5 titoli singoli. PWA accessibile, navigazione da tastiera, privacy assoluta.">
     <meta property="og:url" content="https://theoldsmokearcade1984.github.io/">
     <meta property="og:site_name" content="TheOldSmokeArcade1984">
     <meta property="og:locale" content="it_IT">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="zh_CN">
     
     <meta property="og:image" content="https://theoldsmokearcade1984.github.io/og-banner.jpg">
     <meta property="og:image:secure_url" content="https://theoldsmokearcade1984.github.io/og-banner.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TheOldSmokeArcade1984 Cyberpunk Arcade Virtual OS">
 
+    <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TheOldSmokeArcade1984 | Giochi Arcade Retrò">
     <meta name="twitter:description" content="Hub ufficiale retro arcade cyberpunk - 12-in-1 App + 5 giochi singoli. Zero server, accessibilità totale.">
     <meta name="twitter:image" content="https://theoldsmokearcade1984.github.io/og-banner.jpg">
+    <meta name="twitter:image:alt" content="TheOldSmokeArcade1984 Retro Arcade Hub Banner">
 
+    <!-- JSON-LD Dati Strutturati Ottimizzati per Ricerca e Motori LLM -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -42,8 +67,11 @@
       "url": "https://theoldsmokearcade1984.github.io/",
       "description": "Sistema Operativo virtuale HTML5 che funge da Hub per videogiochi indie retro-cyberpunk. Architettura basata su due nodi: 'Server Hub' (giochi nativi ospitati su GitHub Pages tramite Iframe) e 'Mirror Nodes' (moduli esterni integrati tramite widget Itch.io).",
       "applicationCategory": "GameApplication",
-      "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
-      "softwareVersion": "6.21",
+      "operatingSystem": "Web Browser, Android, iOS, Windows, macOS, Linux",
+      "softwareVersion": "10.0",
+      "inLanguage": ["it", "en", "es", "de", "fr", "ja", "zh"],
+      "isAccessibleForFree": true,
+      "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
       "genre": ["Arcade", "Retro", "Cyberpunk", "Synthwave", "Indie", "Logic Puzzle", "Tactical Stealth"],
       "accessibilityFeature": ["alternativeText", "ARIA", "keyboardNavigation", "screenReader", "dynamicTooltips"],
       "accessibilityControl": ["fullKeyboardControl", "fullMouseControl", "fullTouchControl"],
@@ -55,17 +83,61 @@
         "Multilingua Intelligente: Rilevamento automatico di IT, EN, ES, DE, FR, JA, ZH."
       ],
       "hasPart": [
-        { "@type": "SoftwareApplication", "name": "Arcade Collection (12-in-1)", "description": "Raccolta di 12 classici arcade con controlli touch." },
-        { "@type": "SoftwareApplication", "name": "Octacore: Null Sector", "description": "Gioco tattico stealth." },
-        { "@type": "SoftwareApplication", "name": "Octacore Battle AI", "description": "Simulazione tattica multicore VS intelligenza artificiale." },
-        { "@type": "SoftwareApplication", "name": "Knight's Tour (Standard & Green)", "description": "Enigma scacchistico di logica." },
-        { "@type": "SoftwareApplication", "name": "Neon Specter", "description": "Azione arcade frenetica d'evasione." }
+        { 
+          "@type": ["SoftwareApplication", "VideoGame"], 
+          "name": "Arcade Collection (12-in-1)", 
+          "url": "https://theoldsmokearcade1984.github.io/TheTwelveClassicGameTheOldSmokeArcade1984/",
+          "description": "Raccolta di 12 classici arcade con controlli touch e tastiera.",
+          "gamePlatform": "Web Browser",
+          "isAccessibleForFree": true
+        },
+        { 
+          "@type": ["SoftwareApplication", "VideoGame"], 
+          "name": "Octacore: Null Sector", 
+          "url": "https://theoldsmokearcade1984.github.io/OCTACORE-NULL_SECTOR-Advanced/",
+          "description": "Gioco tattico stealth in ambiente cyberpunk.",
+          "gamePlatform": "Web Browser",
+          "isAccessibleForFree": true
+        },
+        { 
+          "@type": ["SoftwareApplication", "VideoGame"], 
+          "name": "Octacore Battle AI", 
+          "url": "https://theoldsmokearcade1984.github.io/Octacore-Multicore-Battle-AI/",
+          "description": "Simulazione tattica multicore VS intelligenza artificiale.",
+          "gamePlatform": "Web Browser",
+          "isAccessibleForFree": true
+        },
+        { 
+          "@type": ["SoftwareApplication", "VideoGame"], 
+          "name": "Knight's Tour (Standard & Green)", 
+          "url": "https://theoldsmokearcade1984.github.io/Knight_Tours_GreenEdition/",
+          "description": "Enigma scacchistico di logica e percorso cavallo.",
+          "gamePlatform": "Web Browser",
+          "isAccessibleForFree": true
+        },
+        { 
+          "@type": ["SoftwareApplication", "VideoGame"], 
+          "name": "Neon Specter", 
+          "url": "https://theoldsmokearcade1984.github.io/Neon_Specter/",
+          "description": "Azione arcade frenetica d'evasione dai sistemi di sicurezza.",
+          "gamePlatform": "Web Browser",
+          "isAccessibleForFree": true
+        }
       ],
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-      "author": { "@type": "Person", "name": "TheOldSmokeArcade1984", "url": "https://github.com/TheOldSmokeArcade1984" }
+      "offers": { 
+        "@type": "Offer", 
+        "price": "0", 
+        "priceCurrency": "EUR" 
+      },
+      "author": { 
+        "@type": "Person", 
+        "name": "TheOldSmokeArcade1984", 
+        "url": "https://github.com/TheOldSmokeArcade1984" 
+      }
     }
     </script>
 
+    <!-- Icons & Manifest -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%2305010a'/><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>">
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
     <link rel="icon" type="image/png" sizes="256x256" href="icon-256.png">
@@ -78,8 +150,7 @@
     
     <link rel="mask-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M32 8 L56 32 L32 56 L8 32 Z' fill='none' stroke='%2300ffcc' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23ff0055'/></svg>" color="#05010a">
     <meta name="theme-color" content="#05010a">
-    <meta name="msapplication-TileColor" content="#05010a">
-    <link rel="manifest" href="manifest-v3.json?v=6.21">
+    <link rel="manifest" href="manifest-v3.json?v=10.0">
 
     <style>
         @font-face {
@@ -104,7 +175,6 @@
 
         ::-webkit-scrollbar { display: none; width: 0; height: 0; }
         
-        /* FIX: Bloccata la selezione testo globale e menu contestuali touch per l'OS */
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; scrollbar-width: none; -ms-overflow-style: none; }
         
         html, body { background-color: var(--bg-void); color: var(--text-main); font-family: 'Courier New', Courier, Arial, sans-serif; overflow: hidden; perspective: 1200px; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; }
@@ -114,11 +184,10 @@
         .global-crt { position: fixed; inset: 0; pointer-events: none; z-index: 99998; background: radial-gradient(circle at center, transparent 40%, rgba(5, 1, 10, 0.9) 100%); display: none; }
         @media (min-width: 900px) {
             .global-crt { display: block; animation: crtFlicker 0.15s infinite; }
-            .global-crt::after { content: " "; display: block; position: absolute; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03)); z-index: 2; background-size: 100% 3px, 3px 100%; pointer-events: none; }
+            .global-crt::after { content: " "; display: block; position: absolute; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.03)); z-index: 2; background-size: 100% 3px, 3px 100%; pointer-events: none; }
         }
         @keyframes crtFlicker { 0% { opacity: 0.97; } 50% { opacity: 1; } 100% { opacity: 0.97; } }
 
-        /* Gestione Accessibilità: Riduzione del Movimento */
         @media (prefers-reduced-motion: reduce) {
             .global-crt { animation: none !important; }
             .finger-guide { animation: none !important; opacity: 1 !important; transform: translateY(60px) rotate(-15deg) !important; }
@@ -349,7 +418,7 @@
             #lang-cycle-btn { min-width: 75px; font-size: 0.75rem; }
         }
 
-        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V6.21 === */
+        /* === CONTROLLO LAYOUT ORIZZONTALE MOBILE V10.0 === */
         @media (orientation: landscape) and (max-height: 600px) {
             :root {
                 --pyr-base-scale: 0.35;   
@@ -386,7 +455,6 @@
         .help-list { text-align: left; margin: 15px 0 15px 25px; color: #fff; font-family: 'Courier New', Courier, Arial, monospace; }
         .help-list li { margin-bottom: 8px; text-shadow: none; } .help-highlight { color: var(--laser-sec); font-weight: bold; }
         
-        /* Directory visibile a pulsante */
         #directory-overlay .modal-box { text-align: left; }
         .dir-list { list-style: none; margin: 0; padding: 0; }
         .dir-list li { margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
@@ -477,7 +545,7 @@
     </div>
 
     <!-- GATEWAY PRINCIPALE -->
-    <div id="screen-gateway" class="screen" aria-hidden="true" role="main">
+    <main id="screen-gateway" class="screen" aria-hidden="true">
         <h1 class="os-title">TheOldSmoke<br>Arcade1984</h1>
         <p class="os-subtitle" data-i18n="subtitle">12 giochi arcade retrò nel browser. Nessun account, nessun tracking.</p>
         <div class="gateway-controls" role="group" aria-label="Main Navigation">
@@ -491,9 +559,9 @@
             </div>
         </div>
         <div class="privacy-note" data-i18n="privacy_text">Privacy by Design: Nessun tracciamento. Salvataggi in locale.</div>
-    </div>
+    </main>
 
-    <div id="screen-github" class="screen laser-zone" aria-hidden="true" role="region" aria-roledescription="carousel">
+    <section id="screen-github" class="screen laser-zone" aria-hidden="true" role="region" aria-roledescription="carousel">
         <h2 class="section-title laser-title" data-i18n="gate_git_title">/// Server Hub</h2>
         <div class="slider-section"><div class="slider-wrapper" id="wrap-github"></div>
             <div class="slider-bottom-controls">
@@ -502,9 +570,9 @@
                 <button class="nav-btn laser-btn next-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_next" aria-label="Successivo">[&gt;]</button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div id="screen-itch" class="screen plasma-zone" aria-hidden="true" role="region" aria-roledescription="carousel">
+    <section id="screen-itch" class="screen plasma-zone" aria-hidden="true" role="region" aria-roledescription="carousel">
         <h2 class="section-title plasma-title" data-i18n="gate_itch_title">>_ Mirror Nodes</h2>
         <div class="slider-section"><div class="slider-wrapper" id="wrap-itch"></div>
             <div class="slider-bottom-controls">
@@ -513,7 +581,7 @@
                 <button class="nav-btn plasma-btn next-btn has-tooltip hover-snd click-snd" data-i18n-tooltip="tt_next" aria-label="Successivo">[&gt;]</button>
             </div>
         </div>
-    </div>
+    </section>
 
     <div id="screen-game" class="screen" aria-hidden="true">
         <iframe id="game-frame" src="" title="Game Execution Environment" allow="fullscreen" allowfullscreen="true"></iframe>
@@ -533,7 +601,7 @@
 
     <div id="help-overlay" class="system-overlay theme-laser" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
         <div class="modal-box" style="border-color: var(--laser-sec);">
-            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v6.21</h2>
+            <h2 id="help-title" class="overlay-title">>_ SYSTEM INFO v10.0</h2>
             <div class="overlay-text" style="text-align: left;">
                 <span data-i18n="help_p1" class="help-highlight">Cos'è TheOldSmokeArcade1984?</span><br>
                 <span data-i18n="help_p2">Non è un semplice sito web. È un OS virtuale che funge da Hub per la mia collezione indipendente di giochi.</span>
@@ -571,7 +639,7 @@
     </div>
 
     <script>
-        console.log("%c/// MANIFESTO DI SISTEMA V6.21 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
+        console.log("%c/// MANIFESTO DI SISTEMA V10.0 ///\n\nIl Sistema osserva ma non registra.\nLa privacy è locale, la presenza è globale.\nLa libertà è nel codice che non dipende da nulla.", "color: #00ffcc; font-family: monospace; font-size: 14px; text-shadow: 0 0 5px #00ffcc;");
 
         const langsList = ['it', 'en', 'es', 'de', 'fr', 'ja', 'zh'];
         
@@ -685,7 +753,6 @@
             bar.classList.add(dockPositions[currentDockIndex]);
         }
 
-        // Funzione per riavvio manuale OS (Nuova Feature)
         function forceReboot() {
             snd.playClick();
             localStorage.removeItem('os_booted');
@@ -696,10 +763,10 @@
 
         function startBootSequence() {
             const hasBootedBefore = localStorage.getItem('os_booted');
-            const isBot = /bot|crawler|spider|crawling|googlebot|google-inspectiontool|chrome-lighthouse|bingbot|yandex|duckduckbot|slurp|baiduspider|gptbot|chatgpt-user|anthropic-ai|claudebot|applebot/i.test(navigator.userAgent);
+            const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|msnbot|google-inspectiontool|chrome-lighthouse|yandex|duckduckbot|slurp|baiduspider|gptbot|chatgpt-user|anthropic-ai|claudebot|perplexitybot|applebot/i.test(navigator.userAgent);
 
             if (isBot || hasBootedBefore === 'true') {
-                console.log('[OS] Boot sequence saltata (Visita di ritorno o Bot).');
+                console.log('[OS v10.0] Boot sequence saltata (Visita di ritorno o Bot).');
                 isBooting = false;
                 
                 const bootScreen = document.getElementById('screen-boot');
@@ -778,7 +845,6 @@
 
         startBootSequence();
 
-        // FIX: Togli il focus dai pulsanti di sistema dopo il click per non rubare i comandi al gioco
         document.addEventListener('DOMContentLoaded', () => { 
             setLang(currentLang);
             document.addEventListener('mouseover', e => { if (e.target.closest('.hover-snd')) snd.playHover(); }); 
@@ -883,7 +949,6 @@
 
         function closeOverlay(id) { snd.playClick(); const overlay = document.getElementById(id); overlay.classList.remove('active'); overlay.setAttribute('aria-hidden', 'true'); document.body.classList.remove('modal-open'); }
         
-        // FIX: Autochiusura banner Itch e rimando del focus all'iframe
         document.getElementById('overlay-link').addEventListener('click', function() { 
             snd.playClick(); 
             const url = this.getAttribute('data-target-url'); 
@@ -913,13 +978,13 @@
         
         if ('serviceWorker' in navigator) { 
             window.addEventListener('load', () => { 
-                navigator.serviceWorker.register('./sw.js?v=6.20').then(reg => { 
-                    console.log('SW v6.20 Registrato');
+                navigator.serviceWorker.register('./sw.js?v=10.0').then(reg => { 
+                    console.log('SW v10.0 Registrato');
                     reg.onupdatefound = () => {
                         const installingWorker = reg.installing;
                         installingWorker.onstatechange = () => {
                             if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                console.log('Nuovo aggiornamento PWA trovato.');
+                                console.log('Nuovo aggiornamento PWA v10.0 trovato.');
                                 pwaUpdateWorker = installingWorker;
                                 document.getElementById('update-btn').classList.add('visible');
                             }
